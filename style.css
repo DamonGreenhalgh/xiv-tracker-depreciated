@@ -1,3 +1,35 @@
 body {
-    margin: 0;
+    margin: 5rem 25%;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.search-results-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.character-banner-container {
+    background-color: #eeeff1;
+    border-radius: 0.5rem;
+    padding: 10px;
+    height: 6rem;
+}
+
+.character-banner-container:hover {
+    background-color: #b8caf0;
+}
+
+.character-banner-avater {
+    border-radius: 100%;
+}
+
+.character-portrait {
+    border-radius: 0.5rem;
+}
+
