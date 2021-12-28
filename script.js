@@ -19,9 +19,19 @@ characterIdTextbox.addEventListener('keyup', function(event) {
 async function requestData(characterId) {
     console.log("Requesting data from XIVAPI...");
 
-    response = await fetch("https://xivapi.com/character/" + characterId + "?data=AC,FR,FC,FCM,MIMO,PVP", {mode: 'cors'});
+    response = await fetch("https://xivapi.com/character/" + characterId, {mode: 'cors'});
     characterJson = await response.json();
 
-    console.log("Data has been successfully recieved from XIVAPI!")
-    console.log(characterJson);
+    const statusLbl = document.getElementById('status-label');
+    if (response.ok) {
+        statusLbl.textContent = "Data retrieved!";
+        console.log("Data retrieved!")
+
+        const container = document.getElementById('container');
+
+        container.setAttribute("src", characterJson.Character.Portrait);
+    } else {
+        statusLbl.textContent = "Character does not exist, or an unexpected error has occured.";
+        console.log("Character does not exist, or an unexpected error has occured.");
+    }
 }
