@@ -1,4 +1,22 @@
+// Load server choices.
+populateServerList();
+
+async function populateServerList() {
+
+    let response = await fetch("https://xivapi.com/Servers", {mode: 'cors'});
+    let data = await response.json();
+
+    const serverList = document.getElementById('server-list');
+
+    for (let i = 0; i < data.length; i++) {
+        const server = document.createElement("option");
+        server.innerHTML = data[i];
+        serverList.append(server);
+    }
+}
+
 const characterNameTextbox = document.getElementById('character-name-textbox');
+const serverList = document.getElementById('server-list');
 const searchBtn = document.getElementById('search-button');
 const searchResultLst = document.getElementById('search-results-list');
 
@@ -7,7 +25,7 @@ let searchResults;
 // Listener on click event for the sumbit button.
 searchBtn.addEventListener('click', function() {
     searchResultLst.innerText = "";
-    requestCharacterSearch(characterNameTextbox.value);
+    requestCharacterSearch(characterNameTextbox.value, serverList.value);
 });
 
 // Listener for textbox on 'Enter' key press to sumbit id.
@@ -17,13 +35,14 @@ characterNameTextbox.addEventListener('keyup', function(event) {
     }
 });
 
-
 // Fetch character data from FFXIVAPI
-async function requestCharacterSearch(name) {
+async function requestCharacterSearch(name, server) {
 
-    response = await fetch("https://xivapi.com/character/search?name=" + name, {mode: 'cors'});
+    response = await fetch("https://xivapi.com/character/search?name=" + name + "&server=" + server, {mode: 'cors'});
     searchResults = (await response.json()).Results;
 
+
+    console.log("https://xivapi.com/character/search?name=" + name + "&server=" + server)
     console.log(searchResults);
     
     // Create and display response character banners.
