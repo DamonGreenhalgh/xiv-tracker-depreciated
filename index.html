@@ -14,15 +14,15 @@
 
         <div class="container">
 
-            <div>
-                <label>Name:</label>
-                <input type="text" id="character-name-textbox">   
-                <label>Server:</label>
-                <select id="server-list">
+            <div class="input-container">
+                <input type="text" value="Bo Breaker" id="character-name-textbox" class="name-textbox">   
+                <select id="server-list" class="server-list">
                     <option></option>
                 </select>
-                <button id="search-button">Search</button>
+                <button id="search-button" class="search-button">Search</button>
             </div>
+
+            <img id="loading-icon" src="img/loading.svg" style="display: none; width: 5rem;">
     
             <div id="search-results-list" class="search-results-container"></div>
 

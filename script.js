@@ -13,6 +13,8 @@ async function populateServerList() {
         server.innerHTML = data[i];
         serverList.append(server);
     }
+
+    serverList.value = "Cactuar";
 }
 
 const characterNameTextbox = document.getElementById('character-name-textbox');
@@ -38,9 +40,12 @@ characterNameTextbox.addEventListener('keyup', function(event) {
 // Fetch character data from FFXIVAPI
 async function requestCharacterSearch(name, server) {
 
+    document.getElementById('loading-icon').style.display = "block";
+
     response = await fetch("https://xivapi.com/character/search?name=" + name + "&server=" + server, {mode: 'cors'});
     searchResults = (await response.json()).Results;
 
+    document.getElementById('loading-icon').style.display = "none";
 
     console.log("https://xivapi.com/character/search?name=" + name + "&server=" + server)
     console.log(searchResults);
@@ -60,14 +65,11 @@ function createCharacterBanner(character) {
     const server = document.createElement("div");
     const link = document.createElement("a");
 
-    // Listener for when user clicks on a character banner.
-    // characterBanner.addEventListener('click', function() {
-    //     window.location.href = "character.html?id=" + character.ID;
-    // }); 
-
-
     name.innerText = character.Name;
     server.innerText = character.Server;
+
+    name.setAttribute('class', "character-name");
+    server.setAttribute('class', "server-name");
 
     link.href = "character.html?id=" + character.ID;
 
