@@ -23,12 +23,13 @@ async function requestCharacterSearch(name) {
 
     response = await fetch("https://xivapi.com/character/search?name=" + name, {mode: 'cors'});
     searchResults = (await response.json()).Results;
+
+    console.log(searchResults);
     
     // Create and display response character banners.
     for (let i = 0; i < searchResults.length; i++) {
         createCharacterBanner(searchResults[i]);
     }
-
 }
 
 // Creates character banners as search results.
@@ -36,23 +37,31 @@ function createCharacterBanner(character) {
 
     const characterBanner = document.createElement("div");
     const avatar = document.createElement("img");
-    const name = document.createTextNode(character.Name);
+    const name = document.createElement("div");
+    const server = document.createElement("div");
+    const link = document.createElement("a");
 
     // Listener for when user clicks on a character banner.
-    characterBanner.addEventListener('click', function() {
-        CharacterData = character;
-        window.location.href = "character.html?id=" + character.ID;
-    }); 
+    // characterBanner.addEventListener('click', function() {
+    //     window.location.href = "character.html?id=" + character.ID;
+    // }); 
+
+
+    name.innerText = character.Name;
+    server.innerText = character.Server;
+
+    link.href = "character.html?id=" + character.ID;
 
     // Link to classes for styling.
     characterBanner.setAttribute('class', "character-banner-container");
-    avatar.setAttribute('src', character.Avatar);
-    avatar.setAttribute('class', "character-banner-avatar");
-    avatar.setAttribute('style', "border-radius: 100%;");
+    avatar.src = character.Avatar;
+    avatar.style.borderRadius = "100%";
 
 
     // Append banner components to banner, and banner to list.
     characterBanner.append(avatar);
     characterBanner.append(name);
-    searchResultLst.append(characterBanner);
+    characterBanner.append(server);
+    link.append(characterBanner);
+    searchResultLst.append(link);
 }

@@ -1,35 +1,80 @@
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+
 body {
-    margin: 5rem 25%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    padding: 1rem;
+    width: 100%;
 }
 
 .container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
+    margin: 5rem 25%;
 }
 
 .search-results-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
 }
 
 .character-banner-container {
+    display: flex;
+    gap: 1rem;
     background-color: #eeeff1;
     border-radius: 0.5rem;
     padding: 10px;
-    height: 6rem;
-}
-
-.character-banner-container:hover {
-    background-color: #b8caf0;
+    height: 5rem;
+    width: 30rem;
 }
 
 .character-banner-avater {
     border-radius: 100%;
 }
 
-.character-portrait {
-    border-radius: 0.5rem;
+.character-banner-text-container {
+    display: flex;
+    flex-direction: column;
 }
 
+.character-name {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.server-name {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+
+.character-portrait {
+    border-radius: 0.5rem;
+    max-width: 500px;
+}
+
+.current-job-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.job-icon {
+    height: 5rem;
+    width: 5rem;
+}
