@@ -9,6 +9,8 @@ async function main() {
     let characterData = (await response.json()).Character;
 
     console.log(characterData);
+
+    document.title = "FFXIV Tracker - " + characterData.Name;
     
     // Display data to the user.
     const characterPortrait = document.getElementById('character-portrait');
