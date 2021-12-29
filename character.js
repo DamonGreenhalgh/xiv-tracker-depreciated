@@ -1,4 +1,3 @@
-
 async function main() {
 
     // Get character id from url parameter.
@@ -8,26 +7,23 @@ async function main() {
     let response = await fetch("https://xivapi.com/character/" + characterId, {mode: 'cors'});
     let characterData = (await response.json()).Character;
 
-    console.log(characterData);
-
     document.title = "FFXIV Tracker - " + characterData.Name;
     
     // Display data to the user.
-    const characterPortrait = document.getElementById('character-portrait');
-    const characterAvater = document.getElementById('character-avater');
-    
     document.getElementById('character-name').innerHTML = characterData.Name;
     document.getElementById('server-name').innerHTML = characterData.Server;
     document.getElementById('job-name').innerHTML = characterData.ActiveClassJob.UnlockedState.Name;
+    document.getElementById('character-portrait').setAttribute('src', characterData.Portrait);
+    document.getElementById('character-avater').setAttribute('src', characterData.Avatar);
+    document.getElementById('level').innerHTML = characterData.ActiveClassJob.Level;
 
-    characterPortrait.setAttribute('src', characterData.Portrait);
-    characterAvater.setAttribute('src', characterData.Avatar);
+    // Display level experience.
+    let ratio = (characterData.ActiveClassJob.ExpLevel / characterData.ActiveClassJob.ExpLevelMax)*100;
+    document.getElementById('level-experience').style.width = ratio.toString() + "%";
 
     // Retrieve title information.
     response = await fetch("https://xivapi.com/title/" + characterData.Title, {mode: 'cors'});
     let titleData = await response.json();
-
-    console.log(titleData);
 
     // Display title, determine if prefix or suffix.
     let titleType;
@@ -39,7 +35,7 @@ async function main() {
 
     document.getElementById(titleType + '-name').innerHTML = titleData.Name;
     
-    // Retrieve job information.
+    // Retrieve job icon.
     response = await fetch("https://xivapi.com/ClassJob/" + characterData.ActiveClassJob.JobID, {mode: 'cors'});
     let jobData = await response.json();
 

@@ -39,7 +39,7 @@ body {
     border-radius: 0.5rem;
     padding: 10px;
     height: 5rem;
-    width: 30rem;
+    width: 100%;
 }
 
 .character-banner-avater {
@@ -61,10 +61,21 @@ body {
     margin-left: auto;
 }
 
-
 .character-portrait {
     border-radius: 0.5rem;
-    max-width: 500px;
+}
+
+.level-bar {
+    overflow: hidden;
+    width: 100%;
+    height: 1rem;
+    background-color: #eeeff1;
+    border-radius: 1rem;
+}
+
+.level-experience {
+    height: 100%;
+    background-color: #d8c870;
 }
 
 .current-job-container {
