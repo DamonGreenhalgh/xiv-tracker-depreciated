@@ -26,14 +26,12 @@ async function main() {
     let titleData = await response.json();
 
     // Display title, determine if prefix or suffix.
-    let titleType;
     if (titleData.IsPrefix) {
-        titleType = 'prefix';
+        document.getElementById('prefix-name').innerHTML = titleData.Name + " ...";
     } else {
-        titleType = 'suffix';
+        document.getElementById('suffix-name').innerHTML = "... " + titleData.Name;
     }
 
-    document.getElementById(titleType + '-name').innerHTML = titleData.Name;
     
     // Retrieve job icon.
     response = await fetch("https://xivapi.com/ClassJob/" + characterData.ActiveClassJob.JobID, {mode: 'cors'});

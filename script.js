@@ -40,6 +40,7 @@ characterNameTextbox.addEventListener('keyup', function(event) {
 // Fetch character data from FFXIVAPI
 async function requestCharacterSearch(name, server) {
 
+    document.getElementById('search-status').innerHTML = "";
     document.getElementById('loading-icon').style.display = "block";
 
     response = await fetch("https://xivapi.com/character/search?name=" + name + "&server=" + server, {mode: 'cors'});
@@ -47,8 +48,9 @@ async function requestCharacterSearch(name, server) {
 
     document.getElementById('loading-icon').style.display = "none";
 
-    console.log("https://xivapi.com/character/search?name=" + name + "&server=" + server)
-    console.log(searchResults);
+    if (searchResults.length == 0) {
+        document.getElementById('search-status').innerHTML = "Sorry, no results for '" + name + "' in server " + server + ".";
+    }
     
     // Create and display response character banners.
     for (let i = 0; i < searchResults.length; i++) {
@@ -61,28 +63,30 @@ function createCharacterBanner(character) {
 
     const characterBanner = document.createElement("div");
     const avatar = document.createElement("img");
-    const name = document.createElement("div");
-    const server = document.createElement("div");
+    const textDiv = document.createElement("div")
+    const name = document.createElement("p");
+    const server = document.createElement("p");
     const link = document.createElement("a");
 
     name.innerText = character.Name;
     server.innerText = character.Server;
 
     name.setAttribute('class', "character-name");
-    server.setAttribute('class', "server-name");
 
     link.href = "character.html?id=" + character.ID;
 
     // Link to classes for styling.
     characterBanner.setAttribute('class', "character-banner-container");
+    textDiv.setAttribute('class', "character-banner-text-container");
     avatar.src = character.Avatar;
     avatar.style.borderRadius = "100%";
 
 
     // Append banner components to banner, and banner to list.
     characterBanner.append(avatar);
-    characterBanner.append(name);
-    characterBanner.append(server);
+    textDiv.append(name);
+    textDiv.append(server);
+    characterBanner.append(textDiv);
     link.append(characterBanner);
     searchResultLst.append(link);
 }
