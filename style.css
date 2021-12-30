@@ -56,6 +56,10 @@ body {
     gap: 1rem;
 }
 
+.search-status {
+    margin: 5rem 0;
+}
+
 .character-banner-container {
     display: flex;
     gap: 1rem;
@@ -115,3 +119,5 @@ body {
     height: 5rem;
     width: 5rem;
 }
+
+

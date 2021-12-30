@@ -50,12 +50,19 @@ async function requestCharacterSearch(name, server) {
 
     if (searchResults.length == 0) {
         document.getElementById('search-status').innerHTML = "Sorry, no results for '" + name + "' in server " + server + ".";
+    } else {
+
+        // Create and display response character banners.
+        for (let i = 0; i < searchResults.length; i++) {
+            createCharacterBanner(searchResults[i]);
+        }
+
+        document.getElementById('search-status').innerHTML = "Didn't find what you were looking for? Try searching with full character name and server!";
+
     }
     
-    // Create and display response character banners.
-    for (let i = 0; i < searchResults.length; i++) {
-        createCharacterBanner(searchResults[i]);
-    }
+    
+
 }
 
 // Creates character banners as search results.
