@@ -39,7 +39,7 @@ body {
 }
 
 .search-element {
-    background-color: #eeeff1;
+    background-color: #f1eeee;
     border: none;
     border-radius: 1rem;
     height: 2.5rem;
@@ -93,6 +93,8 @@ body {
 
 .character-portrait {
     border-radius: 0.5rem;
+    width: 100%;
+    height: auto;
 }
 
 .level-bar {

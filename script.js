@@ -40,7 +40,9 @@ characterNameTextbox.addEventListener('keyup', function(event) {
 // Fetch character data from FFXIVAPI
 async function requestCharacterSearch(name, server) {
 
-    document.getElementById('search-status').innerHTML = "";
+    const searchStatusLbl = document.getElementById('search-status');
+
+    searchStatusLbl.innerHTML = "";
     document.getElementById('loading-icon').style.display = "block";
 
     response = await fetch("https://xivapi.com/character/search?name=" + name + "&server=" + server, {mode: 'cors'});
@@ -48,16 +50,21 @@ async function requestCharacterSearch(name, server) {
 
     document.getElementById('loading-icon').style.display = "none";
 
+    // If we don't get any results, return an error message.
     if (searchResults.length == 0) {
-        document.getElementById('search-status').innerHTML = "Sorry, no results for '" + name + "' in server " + server + ".";
+        searchStatusLbl.style.color = "#d43e3e";
+        searchStatusLbl.innerHTML = "Sorry, no characters by the name of '" + name + "'.";
+        searchStatusLbl.style.cikir =  "#4d4f52";
+
     } else {
 
-        // Create and display response character banners.
+        // Otherwise, display results as character banners
         for (let i = 0; i < searchResults.length; i++) {
             createCharacterBanner(searchResults[i]);
         }
 
-        document.getElementById('search-status').innerHTML = "Didn't find what you were looking for? Try searching with full character name and server!";
+        // Help text, for if the user did not find the item that they were looking for.
+        searchStatusLbl.innerHTML = "Didn't find what you were looking for? Try searching with full character name and server!";
 
     }
     
