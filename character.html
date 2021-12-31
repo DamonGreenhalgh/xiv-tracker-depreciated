@@ -27,17 +27,28 @@
 
             </div>
 
-            <img id="character-portrait" class="character-portrait">
 
-            <div class="level-bar">
-                <div id="level-experience" class="level-experience"></div>
-            </div>
+            <div class="job-container">
 
-            <div class="current-job-container">
-                <img id="job-icon" class="job-icon">
-                <p id="job-name"></p>
-                <p id="level"></p>
+                <div id="current-job" class="current-job-container">
+                    <img id="character-portrait" class="character-portrait">
+                    <div class="job-information">
+                        <img id="active-job-icon" class="active-job-icon">
+                        <div style="display: flex; flex-direction: column; gap: .5rem;">
+                            <p id="job-text" class="job-text"></p>  
+                            <div class="level-bar">
+                                <div id="level-experience" class="level-experience"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="job-stats" class="job-stats-container"></div>
+
             </div>
+            
+
+            
 
         </div>
 
