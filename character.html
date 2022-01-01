@@ -11,7 +11,7 @@
     <body>
 
         <div class="navbar">
-            <a href="index.html"><img src="img/home-logo.png" style="max-width: 2.5rem;"></a>
+            <a href="index.html"><img src="img/home-logo.png" class="home-icon"></a>
         </div>
 
         <div class="container">
@@ -33,12 +33,14 @@
                 <div id="current-job" class="current-job-container">
                     <img id="character-portrait" class="character-portrait">
                     <div class="job-information">
+
                         <img id="active-job-icon" class="active-job-icon">
-                        <div style="display: flex; flex-direction: column; gap: .5rem;">
-                            <p id="job-text" class="job-text"></p>  
+
+                        <div style="display: none;">
                             <div class="level-bar">
                                 <div id="level-experience" class="level-experience"></div>
                             </div>
+                            <p id="job-text" class="job-text"></p>  
                         </div>
                     </div>
                 </div>

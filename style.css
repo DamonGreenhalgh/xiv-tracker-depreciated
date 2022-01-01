@@ -1,5 +1,12 @@
 :root {
-    --experience-color: #f0d044;
+    --experience-color: #fdf148;
+    --job-max-level-color: #f09744;
+    --accent-color: #4e87f6;
+    --main-color: #141518;
+    --complement-color: #1b1d22;
+    --main-text-color: #ffffff;
+    --secondary-text-color: #4d4f55;
+    --contrast-color: #ffffff;
 }
 
 a, a:hover, a:focus, a:active {
@@ -15,7 +22,8 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    color: #4d4f52;
+    color: var(--main-text-color);
+    background-color: var(--main-color);
     font-family: Comfortaa, sans-serif;
 }
 
@@ -25,13 +33,18 @@ body {
     position: fixed;
     padding: 1rem;
     width: 100%;
+    /* background-color: var(--accent-color); */
+}
+
+.home-icon {
+    width: 2.5rem;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin: 5rem 25%;
+    margin: 6rem 25%;
 }
 
 .search-container {
@@ -42,14 +55,18 @@ body {
 }
 
 .search-element {
-    background-color: #f1eeee;
+    background-color: var(--complement-color);
     border: none;
     border-radius: 1rem;
     height: 2.5rem;
     padding: 0 1rem;
     font-size: 1rem;
     font-family: Comfortaa, sans-serif;
-    color: #4d4f52;
+    color: var(--main-text-color);
+}
+
+.search-element:focus {
+    outline: none;
 }
 
 .search-results-container {
@@ -66,17 +83,15 @@ body {
 .character-banner-container {
     display: flex;
     gap: 1rem;
-    background-color: #eeeff1;
+    background-color: var(--complement-color);
     border-radius: 0.5rem;
-    padding: 10px;
     height: 5rem;
+    padding: 1rem;
 }
 
 .character-banner-avater {
     border-radius: 100%;
 }
-
-
 
 .character-banner-text-container {
     display: flex;
@@ -115,7 +130,7 @@ body {
     overflow: hidden;
     height: .75rem;
     width: 100%;
-    background-color: white;
+    background-color: var(--contrast-color);
     border-radius: 1rem;
 }
 
@@ -137,20 +152,34 @@ body {
 }
 
 .job-text {
-    color: white;
+    font-size: .75rem;
+    color: var(--contrast-color);
 }
 
 .job-stats-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
     gap: .5rem;
-    padding: 0 1rem;
+    padding: 0 0 0 1rem;
     width: 50%;
-    height: 40rem;
 }
 
 .job-icon {
-    width: 3rem;
+    width: 2.5rem;
+    text-align: center;
+}
+
+.job-label {
+    font-size: large;
+    font-weight: bold;
+    padding: .25rem;
+}
+
+.utility-flex-class {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 

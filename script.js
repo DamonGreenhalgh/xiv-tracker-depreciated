@@ -24,6 +24,7 @@ const searchResultLst = document.getElementById('search-results-list');
 
 let searchResults;
 
+
 // Listener on click event for the sumbit button.
 searchBtn.addEventListener('click', function() {
     searchResultLst.innerText = "";
@@ -37,6 +38,9 @@ characterNameTextbox.addEventListener('keyup', function(event) {
     }
 });
 
+characterNameTextbox.focus();
+
+
 // Fetch character data from FFXIVAPI
 async function requestCharacterSearch(name, server) {
 
@@ -47,6 +51,8 @@ async function requestCharacterSearch(name, server) {
 
     response = await fetch("https://xivapi.com/character/search?name=" + name + "&server=" + server, {mode: 'cors'});
     searchResults = (await response.json()).Results;
+
+    console.log(searchResults);
 
     document.getElementById('loading-icon').style.display = "none";
 
@@ -67,9 +73,6 @@ async function requestCharacterSearch(name, server) {
         searchStatusLbl.innerHTML = "Didn't find what you were looking for? Try searching with full character name and server!";
 
     }
-    
-    
-
 }
 
 // Creates character banners as search results.
@@ -87,7 +90,7 @@ function createCharacterBanner(character) {
 
     name.setAttribute('class', "character-name");
 
-    link.href = "character.html?id=" + character.ID;
+    link.href = "character.html?id=" + character.ID + "&name=" + character.Name;
 
     // Link to classes for styling.
     characterBanner.setAttribute('class', "character-banner-container");
