@@ -38,8 +38,7 @@ async function main() {
 
     // Request job icon from XIVAPI.
     let jobData = await requestData("ClassJob/" + characterData.ActiveClassJob.JobID);
-
-    document.getElementById('active-job-icon').setAttribute('src', "https://xivapi.com/cj/svg/ClassJob/" + jobAbreviation + ".svg");
+    document.getElementById('active-job-icon').setAttribute('src', "https://xivapi.com/cj/svg/ClassJob/" + jobData.Abbreviation + ".svg");
 
     // Populate job stats container.
     const jobStats = document.getElementById('job-stats');
