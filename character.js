@@ -15,10 +15,11 @@ async function main() {
     const jobAbreviation = (await requestData("ClassJob/" + characterData.ActiveClassJob.ClassID)).Abbreviation
     
     // Display data to the user.
-    document.getElementById('character-name').innerHTML = characterData.Name;
+    document.getElementById('character-name').innerHTML = characterName;
     document.getElementById('server-name').innerHTML = characterData.Server;
     document.getElementById('character-avater').setAttribute('src', characterData.Avatar);
     document.getElementById('character-portrait').style.backgroundImage = "url('" + characterData.Portrait + "')";
+    document.getElementById('active-job-level').innerHTML = "Lv. " + characterData.ActiveClassJob.Level;
 
     // Load title
     let titleData = (await requestData("title/" + characterData.Title));
@@ -78,41 +79,24 @@ async function main() {
         jobDiv.style.gridRowStart = row;
     }
 
-    // Load currently equiped items.
-    const mainHandURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.MainHand.ID)).IconHD + "')";
-    const headURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Head.ID)).IconHD + "')";
-    const handsURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Hands.ID)).IconHD + "')";
-    const bodyURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Body.ID)).IconHD + "')";
-    const legsURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Legs.ID)).IconHD + "')";
-    const feetURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Feet.ID)).IconHD + "')";
-    const earingsURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Earrings.ID)).IconHD + "')";
-    const necklaceURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Necklace.ID)).IconHD + "')";
-    const braceletsURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Bracelets.ID)).IconHD + "')";
-    const ring1URL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Ring1.ID)).IconHD + "')";
-    const ring2URL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Ring2.ID)).IconHD + "')";
-    const soulCrystalURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.SoulCrystal.ID)).IconHD + "')";
+    // Load equiment.
+    const itemType = ["MainHand", "Head", "Hands", "Body", "Legs", "Feet", "Earrings", "Necklace", "Bracelets", "Ring1", "Ring2", "SoulCrystal", "OffHand"];
+    for (let i = 0; i < itemType.length; i++) {
 
-    document.getElementById('MainHand').style.backgroundImage = mainHandURL;
-    document.getElementById('Head').style.backgroundImage = headURL;
-    document.getElementById('Hands').style.backgroundImage = handsURL;
-    document.getElementById('Body').style.backgroundImage = bodyURL;
-    document.getElementById('Legs').style.backgroundImage = legsURL;
-    document.getElementById('Feet').style.backgroundImage = feetURL;
-    document.getElementById('Earings').style.backgroundImage = earingsURL;
-    document.getElementById('Necklace').style.backgroundImage = necklaceURL;
-    document.getElementById('Bracelets').style.backgroundImage = braceletsURL;
-    document.getElementById('Ring1').style.backgroundImage = ring1URL;
-    document.getElementById('Ring2').style.backgroundImage = ring2URL;
-    document.getElementById('SoulCrystal').style.backgroundImage = soulCrystalURL;
+        try {
+            const imageSource = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear[itemType[i]].ID)).IconHD + "')";
+            document.getElementById(itemType[i]).style.backgroundImage = imageSource;
+        } catch(error) {
+            console.log(itemType[i] + " does not exist.");
+        }
+        
+    }
 
     // Main Scenario Quest Timeline
     // This array holds the achievement id of the following expansion completion achievements.
     // A Realm Reborn, Heavensward, Stormblood, Shadowbringers, Endwalker.
     const achievementReference = [788, 1139, 1794, 2298, 2958];
 }
-
-
-
 
 // Function to make requests to XIVAPI
 async function requestData(content) {

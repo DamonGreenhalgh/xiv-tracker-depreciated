@@ -13,8 +13,6 @@ async function populateServerList() {
         server.innerHTML = data[i];
         serverList.append(server);
     }
-
-    serverList.value = "Cactuar";
 }
 
 const characterNameTextbox = document.getElementById('character-name-textbox');
@@ -23,7 +21,6 @@ const searchBtn = document.getElementById('search-button');
 const searchResultLst = document.getElementById('search-results-list');
 
 let searchResults;
-
 
 // Listener on click event for the sumbit button.
 searchBtn.addEventListener('click', function() {
@@ -40,7 +37,6 @@ characterNameTextbox.addEventListener('keyup', function(event) {
 
 characterNameTextbox.focus();
 
-
 // Fetch character data from FFXIVAPI
 async function requestCharacterSearch(name, server) {
 
@@ -48,6 +44,11 @@ async function requestCharacterSearch(name, server) {
 
     searchStatusLbl.innerHTML = "";
     document.getElementById('loading-icon').style.display = "block";
+
+    // Search character across all servers.
+    if (server == "Server") {
+        server = "";
+    }
 
     response = await fetch("https://xivapi.com/character/search?name=" + name + "&server=" + server, {mode: 'cors'});
     searchResults = (await response.json()).Results;
