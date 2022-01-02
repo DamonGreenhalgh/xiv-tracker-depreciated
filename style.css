@@ -4,9 +4,10 @@
     --accent-color: #4e87f6;
     --main-color: #141518;
     --complement-color: #1b1d22;
-    --main-text-color: #ffffff;
-    --secondary-text-color: #4d4f55;
+    --main-text-color: #ecf1f3;
+    --secondary-text-color: #9ea1a8;
     --contrast-color: #ffffff;
+    --shadow-color: #0e1113;
 }
 
 a, a:hover, a:focus, a:active {
@@ -33,7 +34,6 @@ body {
     position: fixed;
     padding: 1rem;
     width: 100%;
-    /* background-color: var(--accent-color); */
 }
 
 .home-icon {
@@ -43,7 +43,8 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    gap: 3rem;
     margin: 6rem 25%;
 }
 
@@ -51,28 +52,48 @@ body {
     display: flex;
     gap: 1rem;
     margin: 35vh 0 5rem 0;
-    width: 100%;
+    background-color: var(--complement-color);
+    border-radius: 2rem;
+    box-shadow: 0 .5rem 1rem var(--shadow-color);
 }
 
-.search-element {
-    background-color: var(--complement-color);
+[class*="search-element"] {
+    background-color: transparent;
     border: none;
-    border-radius: 1rem;
-    height: 2.5rem;
-    padding: 0 1rem;
+    height: 3rem;
+    padding: 1rem;
     font-size: 1rem;
     font-family: Comfortaa, sans-serif;
-    color: var(--main-text-color);
+    color: var(--main-text-color);    
 }
 
 .search-element:focus {
     outline: none;
+    background-color: transparent;
+}
+
+.search-element-dropdown {
+    background-color: var(--accent-color);
+    border-radius: .5rem 0 0 .5rem;
+    width: 14rem;
+    color: var(--main-text-color);    
+}
+
+.search-element-button {
+    padding: .5rem;
+}
+
+.search-element-button:hover {
+    cursor: pointer;
+}
+
+.search-button-icon {
+    width: 2rem;
 }
 
 .search-results-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
     gap: 1rem;
 }
 
@@ -81,12 +102,15 @@ body {
 }
 
 .character-banner-container {
+    box-sizing: border-box;
     display: flex;
     gap: 1rem;
     background-color: var(--complement-color);
     border-radius: 0.5rem;
-    height: 5rem;
+    height: 7rem;
+    width: 100%;
     padding: 1rem;
+    box-shadow: 0 .5rem 1rem var(--shadow-color);
 }
 
 .character-banner-avater {
@@ -112,60 +136,55 @@ body {
 
 .job-container {
     display: flex;
+    width: 100%;
+    height: 35rem;
+    gap: 1rem;
 }
 
-.current-job-container {
-    position: relative;
-    width: 50%;
+.active-job-container {
+    display: flex;
+    width: 60%;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.item {
+    width: 3rem;
+    height: 3rem;
+    border-radius: .5rem;
+    background-position: center;
+    background-size: cover;
+    background-color: var(--complement-color);
 }
 
 .character-portrait {
-    position: absolute;
-    border-radius: .5rem;
-    max-width: 100%;
-    z-index: -1;
-}
-
-.level-bar {
-    overflow: hidden;
-    height: .75rem;
+    background-size: cover;
+    background-position: center;
     width: 100%;
-    background-color: var(--contrast-color);
-    border-radius: 1rem;
-}
-
-.level-experience {
-    height: 100%;
-    background-color: var(--experience-color);
+    border-radius: .5rem;
 }
 
 .active-job-icon {
-    height: 60px;
-    width: auto;
+    width: 4rem;
     filter: invert(90%) sepia(0%) saturate(7459%) hue-rotate(42deg) brightness(114%) contrast(111%);
-}
-
-.job-information {
-    display: flex;
-    padding: 1rem;
-    justify-content: space-between;
-}
-
-.job-text {
-    font-size: .75rem;
-    color: var(--contrast-color);
 }
 
 .job-stats-container {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(8, 2.5rem);
+    grid-template-rows: repeat(5, 4rem);
     gap: .5rem;
-    padding: 0 0 0 1rem;
-    width: 50%;
+    width: 40%;
+    padding: 1rem;
 }
 
 .job-icon {
-    width: 2.5rem;
+    width: 2rem;
     text-align: center;
 }
 
@@ -178,8 +197,11 @@ body {
 .utility-flex-class {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
+.secondary-text {
+    color: var(--secondary-text-color);
+}
 

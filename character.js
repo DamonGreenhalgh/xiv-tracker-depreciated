@@ -8,7 +8,7 @@ async function main() {
     document.title = characterName + " | XIV Tracker";
 
     // Request character data from XIVAPI.
-    let characterData = (await requestData("character/" + characterId + "?private_key=b31232edb76f40cc9e6b71e8845f920c42db69bc4e204cefbfe75f9631046407")).Character;
+    let characterData = (await requestData("character/" + characterId)).Character;
 
     console.log(characterData);
 
@@ -18,10 +18,9 @@ async function main() {
     document.getElementById('character-name').innerHTML = characterData.Name;
     document.getElementById('server-name').innerHTML = characterData.Server;
     document.getElementById('character-avater').setAttribute('src', characterData.Avatar);
-    document.getElementById('character-portrait').setAttribute('src', characterData.Portrait);
-    document.getElementById('job-text').innerHTML = jobAbreviation + " Lv. " + characterData.ActiveClassJob.Level + " EXP " + characterData.ActiveClassJob.ExpLevel + " / " + characterData.ActiveClassJob.ExpLevelMax;
+    document.getElementById('character-portrait').style.backgroundImage = "url('" + characterData.Portrait + "')";
 
-    // Request title name from XIVAPI.
+    // Load title
     let titleData = (await requestData("title/" + characterData.Title));
 
     // Determine if the title is a prefix or suffix, then display on character banner.
@@ -31,12 +30,7 @@ async function main() {
         document.getElementById('suffix-name').innerHTML = titleData.Name;
     }
 
-    // Current job display section
-    // Display level experience bar.
-    const ratio = (characterData.ActiveClassJob.ExpLevel / characterData.ActiveClassJob.ExpLevelMax)*100;
-    document.getElementById('level-experience').style.width = ratio.toString() + "%";
-
-    // Request job icon from XIVAPI.
+    // Load job icon
     let jobData = await requestData("ClassJob/" + characterData.ActiveClassJob.JobID);
     document.getElementById('active-job-icon').setAttribute('src', "https://xivapi.com/cj/svg/ClassJob/" + jobData.Abbreviation + ".svg");
 
@@ -82,8 +76,34 @@ async function main() {
         }
 
         jobDiv.style.gridRowStart = row;
-        
     }
+
+    // Load currently equiped items.
+    const mainHandURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.MainHand.ID)).IconHD + "')";
+    const headURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Head.ID)).IconHD + "')";
+    const handsURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Hands.ID)).IconHD + "')";
+    const bodyURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Body.ID)).IconHD + "')";
+    const legsURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Legs.ID)).IconHD + "')";
+    const feetURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Feet.ID)).IconHD + "')";
+    const earingsURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Earrings.ID)).IconHD + "')";
+    const necklaceURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Necklace.ID)).IconHD + "')";
+    const braceletsURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Bracelets.ID)).IconHD + "')";
+    const ring1URL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Ring1.ID)).IconHD + "')";
+    const ring2URL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.Ring2.ID)).IconHD + "')";
+    const soulCrystalURL = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear.SoulCrystal.ID)).IconHD + "')";
+
+    document.getElementById('MainHand').style.backgroundImage = mainHandURL;
+    document.getElementById('Head').style.backgroundImage = headURL;
+    document.getElementById('Hands').style.backgroundImage = handsURL;
+    document.getElementById('Body').style.backgroundImage = bodyURL;
+    document.getElementById('Legs').style.backgroundImage = legsURL;
+    document.getElementById('Feet').style.backgroundImage = feetURL;
+    document.getElementById('Earings').style.backgroundImage = earingsURL;
+    document.getElementById('Necklace').style.backgroundImage = necklaceURL;
+    document.getElementById('Bracelets').style.backgroundImage = braceletsURL;
+    document.getElementById('Ring1').style.backgroundImage = ring1URL;
+    document.getElementById('Ring2').style.backgroundImage = ring2URL;
+    document.getElementById('SoulCrystal').style.backgroundImage = soulCrystalURL;
 
     // Main Scenario Quest Timeline
     // This array holds the achievement id of the following expansion completion achievements.

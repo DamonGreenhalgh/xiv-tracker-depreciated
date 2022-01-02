@@ -89,6 +89,7 @@ function createCharacterBanner(character) {
     server.innerText = character.Server;
 
     name.setAttribute('class', "character-name");
+    server.setAttribute('class', "secondary-text");
 
     link.href = "character.html?id=" + character.ID + "&name=" + character.Name;
 

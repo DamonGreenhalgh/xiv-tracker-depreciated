@@ -18,11 +18,13 @@
         <div class="container">
 
             <div class="search-container">
-                <input type="text" id="character-name-textbox" class="search-element" style="width: 100%;">   
-                <select id="server-list" class="search-element">
+                <select id="server-list" class="search-element-dropdown">
                     <option></option>
                 </select>
-                <button id="search-button" class="search-element">Search</button>
+                <input type="text" id="character-name-textbox" class="search-element">   
+                <button id="search-button" class="search-element-button">
+                    <img src="img/search-icon.png" class="search-button-icon">
+                </button>
             </div>
 
             <img id="loading-icon" src="img/loading.svg" style="display: none; width: 5rem;">
