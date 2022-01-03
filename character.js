@@ -31,9 +31,9 @@ async function main() {
             }
 
             // Style change to indicate button is selected.
-            tabButtons[i].style.backgroundColor = "var(--accent-color)";
+            tabButtons[i].style.backgroundColor = "var(--foreground-color)";
             tabButtons[i].style.color = "var(--contrast-color)";
-            tabButtons[i].style.boxShadow = "0 1rem 2rem var(--shadow-color)";
+            // tabButtons[i].style.boxShadow = "0 1rem 2rem var(--shadow-color)";
 
             // Make associated content visibile
             document.getElementById(tabID[i]).style.visibility = "visible";
@@ -77,12 +77,13 @@ async function main() {
 
     // Profile data, will be stored in JSON eventually.
     const grandCompanyTypes = ["Maelstrom", "Order of the Twin Adder", "Immortal Flames"];
-    const genderTypes = ["Male", "Female"];
+    const genderTypes = ["male", "female"];
     const raceTypes = ["Hyur", "Elezen", "Lalafell", "Miqo'te", "Roegadyn", "Au Ra", "Hrothgar", "Viera"];
     const tribeTypes = ["Midlander", "Highlander", "Wildwood", "Duskwight", "Plainsfolk", "Dunesfolk", "Seeker of the Sun", "Keeper of the Moon", "Sea Wolf", "Hellsguard", "Raen", "Xaela", "Helions", "The Lost", "Rava", "Veena"];
     const cityStateTypes = ["Limsa Lominsa", "Gridania", "Ul'dah"];
 
-    document.getElementById('race-clan-gender').innerText = raceTypes[characterData.Race-1] + " " + tribeTypes[characterData.Tribe-1] + " " + genderTypes[characterData.Gender-1];
+    document.getElementById('race-clan').innerText = raceTypes[characterData.Race-1] + ", " + tribeTypes[characterData.Tribe-1];
+    document.getElementById('gender').style.backgroundImage = "url('img/gender/" + genderTypes[characterData.Gender-1] + ".png')";
     document.getElementById('city-state').innerText = cityStateTypes[characterData.Town-1];
     document.getElementById('name-day').innerText = characterData.Nameday;
 
@@ -139,10 +140,6 @@ async function main() {
     // Jobs Panel Information
     // ----------------------
 
-    // Load job icon
-    let jobData = await requestData("ClassJob/" + characterData.ActiveClassJob.JobID);
-    document.getElementById('active-job-icon').setAttribute('src', "https://xivapi.com/cj/svg/ClassJob/" + jobData.Abbreviation + ".svg");
-
     // Populate job stats container.
     const jobStats = document.getElementById('job');
     const jobs = characterData.ClassJobs;
@@ -187,6 +184,17 @@ async function main() {
         jobDiv.style.gridRowStart = row;
     }
 
+
+    
+    // Achievements, Minions and Mounts
+    // --------------------------------
+
+    // let data = await requestData("character/" + characterId + "?data=AC,MIMO");
+    // const achievementData = data.Achievements;
+    // const minionData = data.Minions;
+    // const mountData = data.Mounts;
+
+    // console.log(data);
 
 
     // Main Scenario Quest Timeline

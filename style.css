@@ -5,6 +5,7 @@
     --background-color:  #111214;
     --midground-color: #141518;
     --foreground-color: #1b1d22;
+    --hover-color: #262a38;
     --text-foreground-color: #ecf1f3;
     --text-midground-color: #9ea1a8;
     --text-background-color: #595d68;
@@ -103,6 +104,7 @@ body {
 
 .search-status {
     margin: 5rem 0;
+    color: var(--text-midground-color);
 }
 
 .character-banner-container {
@@ -114,6 +116,11 @@ body {
     height: 7rem;
     width: 100%;
     padding: 1rem;
+    transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+.character-banner-container:hover {
+    background-color: var(--hover-color);
     box-shadow: 0 .5rem 1rem var(--shadow-color);
 }
 
@@ -205,32 +212,34 @@ body {
 .content-container {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    /* gap: .5rem; */
     margin: 0 1rem;
     width: 45%;
 }
 
 .tab {
     display: flex;
-    justify-content: space-between;
+    gap: .5rem;
+    /* justify-content: space-between; */
 }
 
 .tab-button {
+    z-index: 1;
     border: none;
     background-color: var(--foreground-color);
     color: var(--text-midground-color);
     font-family: Comfortaa, sans-serif;
     font-weight: bold;
     font-size: 1rem;
-    padding: .5rem 1rem;
-    border-radius: .5rem;
+    padding: .75rem 1rem;
+    border-radius: .5rem .5rem 0 0;
 }
 
 .content {
     position: relative;
     display: flex;
     height: 100%;
-    border-radius: .5rem;
+    border-radius: 0 .5rem .5rem .5rem;
     background-color: var(--foreground-color);
     box-shadow: 0 1rem 2rem var(--shadow-color);
 }
@@ -246,6 +255,12 @@ body {
     height: 100%;
     padding: 2rem;
     font-size: .9rem;
+}
+
+.profile-element-container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .profile-icon {
