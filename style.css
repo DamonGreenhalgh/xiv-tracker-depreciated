@@ -88,7 +88,9 @@ body {
 }
 
 .search-button-icon {
-    width: 2rem;
+    width: 25px;
+    height: 25px;
+    padding: 2.5px 5px;
 }
 
 .search-results-container {
