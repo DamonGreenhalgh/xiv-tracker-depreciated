@@ -7,6 +7,41 @@ async function main() {
 
     document.title = characterName + " | XIV Tracker";
 
+    const tabButtons = document.getElementsByClassName('tab-button');
+    const tabID = ['profile', 'job', 'collection', 'stats'];
+
+    // Add action listeners to each tab button so users can switch between content.
+    for (let i = 0; i < tabButtons.length; i++) {
+
+        const currentTabButton = tabButtons[i];
+        currentTabButton.addEventListener('click', function() {
+
+            // Disable other tab buttons and hide current content.
+            for (let i = 0; i < tabButtons.length; i++) {
+
+                // Style change to indicate hidden content/
+                tabButtons[i].style.backgroundColor = "var(--complement-color)";
+                tabButtons[i].style.color = "var(--secondary-text-color)";
+                tabButtons[i].style.boxShadow = "";
+
+                // Hide current content.
+                document.getElementById(tabID[i]).style.visibility = "hidden";
+            }
+
+            // Style change to indicate button is selected.
+            tabButtons[i].style.backgroundColor = "var(--accent-color)";
+            tabButtons[i].style.color = "var(--main-text-color)";
+            tabButtons[i].style.boxShadow = "0 1rem 2rem var(--shadow-color)";
+
+            // Make associated content visibile
+            document.getElementById(tabID[i]).style.visibility = "visible";
+        })
+    }
+
+
+    // Default tab on window open.
+    tabButtons[1].click();
+
     // Request character data from XIVAPI.
     let characterData = (await requestData("character/" + characterId)).Character;
 
@@ -36,7 +71,7 @@ async function main() {
     document.getElementById('active-job-icon').setAttribute('src', "https://xivapi.com/cj/svg/ClassJob/" + jobData.Abbreviation + ".svg");
 
     // Populate job stats container.
-    const jobStats = document.getElementById('job-stats');
+    const jobStats = document.getElementById('job');
     const jobs = characterData.ClassJobs;
 
     for(let i = 0; i < jobs.length; i++) {
@@ -72,8 +107,8 @@ async function main() {
             case (i < 8): row = "1"; break;
             case (i < 16): row = "2"; break;
             case (i < 20): row = "3"; break;
-            case (i < 28): row = "4"; break;
-            default: row = "5";
+            case (i < 28): row = "5"; break;
+            default: row = "6";
         }
 
         jobDiv.style.gridRowStart = row;
