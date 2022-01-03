@@ -53,8 +53,6 @@ async function requestCharacterSearch(name, server) {
     response = await fetch("https://xivapi.com/character/search?name=" + name + "&server=" + server, {mode: 'cors'});
     searchResults = (await response.json()).Results;
 
-    console.log(searchResults);
-
     document.getElementById('loading-icon').style.display = "none";
 
     // If we don't get any results, return an error message.
@@ -73,6 +71,8 @@ async function requestCharacterSearch(name, server) {
         // Help text, for if the user did not find the item that they were looking for.
         searchStatusLbl.innerHTML = "Didn't find what you were looking for? Try searching with full character name and server!";
 
+        // Show footer
+        document.getElementById('footer').style.display = "block";
     }
 }
 

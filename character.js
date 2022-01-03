@@ -20,8 +20,8 @@ async function main() {
             for (let i = 0; i < tabButtons.length; i++) {
 
                 // Style change to indicate hidden content/
-                tabButtons[i].style.backgroundColor = "var(--complement-color)";
-                tabButtons[i].style.color = "var(--secondary-text-color)";
+                tabButtons[i].style.backgroundColor = "var(--foreground-color)";
+                tabButtons[i].style.color = "var(--text-midground-color)";
                 tabButtons[i].style.boxShadow = "";
 
                 // Hide current content.
@@ -30,7 +30,7 @@ async function main() {
 
             // Style change to indicate button is selected.
             tabButtons[i].style.backgroundColor = "var(--accent-color)";
-            tabButtons[i].style.color = "var(--main-text-color)";
+            tabButtons[i].style.color = "var(--contrast-color)";
             tabButtons[i].style.boxShadow = "0 1rem 2rem var(--shadow-color)";
 
             // Make associated content visibile
@@ -94,7 +94,7 @@ async function main() {
             jobLbl.style.color = "var(--job-max-level-color)"
         } else if (jobLbl.innerHTML == "0") {
             jobLbl.innerHTML = "-";
-            jobLbl.style.color = "var(--secondary-text-color)"
+            jobLbl.style.color = "var(--text-midground-color)"
         }
 
         jobDiv.append(jobIcon);
