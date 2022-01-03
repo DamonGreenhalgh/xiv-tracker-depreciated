@@ -1,11 +1,13 @@
 async function main() {
 
-    // Get character id from url parameter.
+    // Get character id and name from url parameter.
     const searchParams = new URLSearchParams(window.location.search);
     const characterId = searchParams.get('id');
     const characterName = searchParams.get('name');
 
     document.title = characterName + " | XIV Tracker";
+
+
 
     const tabButtons = document.getElementsByClassName('tab-button');
     const tabID = ['profile', 'job', 'collection', 'stats'];
@@ -20,8 +22,8 @@ async function main() {
             for (let i = 0; i < tabButtons.length; i++) {
 
                 // Style change to indicate hidden content/
-                tabButtons[i].style.backgroundColor = "var(--foreground-color)";
-                tabButtons[i].style.color = "var(--text-midground-color)";
+                tabButtons[i].style.backgroundColor = "var(--midground-color)";
+                tabButtons[i].style.color = "var(--text-background-color)";
                 tabButtons[i].style.boxShadow = "";
 
                 // Hide current content.
@@ -38,23 +40,25 @@ async function main() {
         })
     }
 
-
     // Default tab on window open.
-    tabButtons[1].click();
+    tabButtons[0].click();
+
+
+
+    // General Character Information
+    // -----------------------------
 
     // Request character data from XIVAPI.
     let characterData = (await requestData("character/" + characterId)).Character;
 
-    console.log(characterData);
-
     const jobAbreviation = (await requestData("ClassJob/" + characterData.ActiveClassJob.ClassID)).Abbreviation
     
     // Display data to the user.
-    document.getElementById('character-name').innerHTML = characterName;
-    document.getElementById('server-name').innerHTML = characterData.Server;
+    document.getElementById('character-name').innerText = characterName;
+    document.getElementById('server-name').innerText = characterData.Server + " - " + characterData.DC;
     document.getElementById('character-avater').setAttribute('src', characterData.Avatar);
     document.getElementById('character-portrait').style.backgroundImage = "url('" + characterData.Portrait + "')";
-    document.getElementById('active-job-level').innerHTML = "Lv. " + characterData.ActiveClassJob.Level;
+    document.getElementById('active-job-level').innerText = "Lv. " + characterData.ActiveClassJob.Level;
 
     // Load title
     let titleData = (await requestData("title/" + characterData.Title));
@@ -65,6 +69,75 @@ async function main() {
     } else {
         document.getElementById('suffix-name').innerHTML = titleData.Name;
     }
+
+    
+    
+    // Profile Panel Information
+    // ------------------------
+
+    // Profile data, will be stored in JSON eventually.
+    const grandCompanyTypes = ["Maelstrom", "Order of the Twin Adder", "Immortal Flames"];
+    const genderTypes = ["Male", "Female"];
+    const raceTypes = ["Hyur", "Elezen", "Lalafell", "Miqo'te", "Roegadyn", "Au Ra", "Hrothgar", "Viera"];
+    const tribeTypes = ["Midlander", "Highlander", "Wildwood", "Duskwight", "Plainsfolk", "Dunesfolk", "Seeker of the Sun", "Keeper of the Moon", "Sea Wolf", "Hellsguard", "Raen", "Xaela", "Helions", "The Lost", "Rava", "Veena"];
+    const cityStateTypes = ["Limsa Lominsa", "Gridania", "Ul'dah"];
+
+    document.getElementById('race-clan-gender').innerText = raceTypes[characterData.Race-1] + " " + tribeTypes[characterData.Tribe-1] + " " + genderTypes[characterData.Gender-1];
+    document.getElementById('city-state').innerText = cityStateTypes[characterData.Town-1];
+    document.getElementById('name-day').innerText = characterData.Nameday;
+
+    // Load Free Company Information
+    if (characterData.FreeCompanyName) {
+
+        document.getElementById('free-company-name').innerText = characterData.FreeCompanyName;
+
+        const freeCompanyData = await requestData("FreeCompany/" + characterData.FreeCompanyId);
+
+        document.getElementById('free-company-crest-1').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[0] + "')";
+        document.getElementById('free-company-crest-2').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[1] + "')";
+        document.getElementById('free-company-crest-3').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[2] + "')";
+
+    } else {
+        console.log("Character is not associated with any Free Company!");
+    }
+    
+    // Load Grand Company Information
+    if (characterData.GrandCompany) {
+
+        document.getElementById('grand-company-name').innerText = grandCompanyTypes[characterData.GrandCompany.NameID-1];
+        document.getElementById('grand-company-icon').style.backgroundImage = "url('https://xivapi.com/img-misc/gc/character_gc_" + characterData.GrandCompany.NameID + "_" + characterData.GrandCompany.RankID + ".png')";
+
+    } else {
+        console.log("Character is not associated with any Grand Company!");
+    }
+
+    // Guardian Deity Data
+    let guardianData = await requestData("GuardianDeity/" + characterData.GuardianDeity);
+    document.getElementById('guardian-icon').style.backgroundImage = "url('https://xivapi.com" + guardianData.IconHD + "')";
+    document.getElementById('guardian-name').innerText = guardianData.Name;
+
+
+
+    // Character Equipment Information
+    // -------------------------------
+    
+    // Load equiment.
+    const itemType = ["MainHand", "Head", "Hands", "Body", "Legs", "Feet", "Earrings", "Necklace", "Bracelets", "Ring1", "Ring2", "SoulCrystal", "OffHand"];
+    for (let i = 0; i < itemType.length; i++) {
+
+        try {
+            const imageSource = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear[itemType[i]].ID)).IconHD + "')";
+            document.getElementById(itemType[i]).style.backgroundImage = imageSource;
+        } catch(error) {
+            console.log(itemType[i] + " does not exist.");
+        }
+        
+    }
+
+
+
+    // Jobs Panel Information
+    // ----------------------
 
     // Load job icon
     let jobData = await requestData("ClassJob/" + characterData.ActiveClassJob.JobID);
@@ -114,18 +187,7 @@ async function main() {
         jobDiv.style.gridRowStart = row;
     }
 
-    // Load equiment.
-    const itemType = ["MainHand", "Head", "Hands", "Body", "Legs", "Feet", "Earrings", "Necklace", "Bracelets", "Ring1", "Ring2", "SoulCrystal", "OffHand"];
-    for (let i = 0; i < itemType.length; i++) {
 
-        try {
-            const imageSource = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear[itemType[i]].ID)).IconHD + "')";
-            document.getElementById(itemType[i]).style.backgroundImage = imageSource;
-        } catch(error) {
-            console.log(itemType[i] + " does not exist.");
-        }
-        
-    }
 
     // Main Scenario Quest Timeline
     // This array holds the achievement id of the following expansion completion achievements.
