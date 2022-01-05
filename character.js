@@ -8,6 +8,7 @@ async function main() {
     document.title = characterName + " | XIV Tracker";
 
     const tabId = ['profile', 'job', 'mounts', 'minions'];
+    let currentTabIndex;
 
     // Add action listeners to each tab button so users can switch between content.
     for (let i = 0; i < tabId.length; i++) {
@@ -30,6 +31,8 @@ async function main() {
 
             // Make associated content visibile
             document.getElementById(tabId[i]).style.visibility = "visible";
+
+            currentTabIndex = i;
         })
     }
 
@@ -226,29 +229,45 @@ async function main() {
         console.log("Mounts and minions have been stored!")
     } 
 
+    const pageCapacity = 42;
+    let currentMountPage = 1;
+    let currentMinionPage = 1;
+    const lastMountPage = Math.ceil(mountData.length / pageCapacity);
+    const lastMinionPage = Math.ceil(minionData.length / pageCapacity);
+
+    displayPage(pageCapacity, currentMountPage, 'mount-gallery', mountData, 'mount-page-number-label');
+    displayPage(pageCapacity, currentMinionPage, 'minion-gallery', minionData, 'minion-page-number-label');
+
+    // Page listeners.
+    document.getElementById('mount-next-page-button').addEventListener('click', function() {
+        if(currentMountPage < lastMountPage) {
+            currentMountPage++;
+            displayPage(pageCapacity, currentMountPage, 'mount-gallery', mountData, 'mount-page-number-label');
+        }
+    });
+
+    document.getElementById('mount-prev-page-button').addEventListener('click', function() {
+        if(currentMountPage > 1) {
+            currentMountPage--;
+            displayPage(pageCapacity, currentMountPage, 'mount-gallery', mountData, 'mount-page-number-label');
+        }
+    });
+
+    document.getElementById('minion-next-page-button').addEventListener('click', function() {
+        if(currentMinionPage < lastMinionPage) {
+            currentMinionPage++;
+            displayPage(pageCapacity, currentMinionPage, 'minion-gallery', minionData, 'minion-page-number-label');
+        }
+    });
+
+    document.getElementById('minion-prev-page-button').addEventListener('click', function() {
+        if(currentMinionPage > 1) {
+            currentMinionPage--;
+            displayPage(pageCapacity, currentMinionPage, 'minion-gallery', minionData, 'minion-page-number-label');
+        }
+    });
 
     
-    for(let i = 0; i < Math.min(mountData.length, 42); i++) {
-
-        const mountDiv = document.createElement('div');
-        mountDiv.setAttribute('class', "collection-item");
-        mountDiv.style.backgroundImage = "url('" + mountData[i].Icon + "')";
-        document.getElementById('mount-gallery').append(mountDiv);
-
-    }
-
-    for(let i = 0; i < Math.min(minionData.length, 42); i++) {
-
-        const minionDiv = document.createElement('div');
-        minionDiv.setAttribute('class', "collection-item");
-        minionDiv.style.backgroundImage = "url('" + minionData[i].Icon + "')";
-        document.getElementById('minion-gallery').append(minionDiv);
-
-    }
-
-
-
-
 
     // Function to show what is in local storage.
     // console.log("LOCAL STORAGE:");
@@ -260,6 +279,7 @@ async function main() {
     // This array holds the achievement id of the following expansion completion achievements.
     // A Realm Reborn, Heavensward, Stormblood, Shadowbringers, Endwalker.
     const achievementReference = [788, 1139, 1794, 2298, 2958];
+
 }
 
 // Function to make requests to XIVAPI
@@ -268,6 +288,28 @@ async function requestData(content) {
     let data = await response.json();
 
     return data;
+}
+
+
+// Function to display current page for mounts and minions.
+function displayPage(pageCapacity, pageNumber, pageType, content, labelName) {
+
+    // Clear gallery
+    document.getElementById(pageType).innerText = "";
+
+    // Load page elements
+    for(let i = (pageNumber-1) * pageCapacity; i < Math.min(pageNumber * pageCapacity, content.length); i++) {
+
+        // Create item to display.
+        const itemDiv = document.createElement('div');
+        itemDiv.setAttribute('class', "collection-item");
+        itemDiv.style.backgroundImage = "url('" + content[i].Icon + "')";
+        document.getElementById(pageType).append(itemDiv);
+    }
+
+    // Update display label to display page number.
+    document.getElementById(labelName).innerText = pageNumber;
+
 }
 
 main();

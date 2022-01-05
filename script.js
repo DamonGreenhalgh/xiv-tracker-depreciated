@@ -10,7 +10,7 @@ async function populateServerList() {
 
     for (let i = 0; i < data.length; i++) {
         const server = document.createElement("option");
-        server.innerHTML = data[i];
+        server.innerText = data[i];
         serverList.append(server);
     }
 }
@@ -42,7 +42,7 @@ async function requestCharacterSearch(name, server) {
 
     const searchStatusLbl = document.getElementById('search-status');
 
-    searchStatusLbl.innerHTML = "";
+    searchStatusLbl.innerText= "";
     document.getElementById('loading-icon').style.display = "block";
 
     // Search character across all servers.
@@ -58,7 +58,7 @@ async function requestCharacterSearch(name, server) {
     // If we don't get any results, return an error message.
     if (searchResults.length == 0) {
         searchStatusLbl.style.color = "#d43e3e";
-        searchStatusLbl.innerHTML = "Sorry, no characters by the name of '" + name + "'.";
+        searchStatusLbl.innerText = "Sorry, no characters by the name of '" + name + "'.";
         searchStatusLbl.style.cikir =  "#4d4f52";
 
     } else {
@@ -69,7 +69,7 @@ async function requestCharacterSearch(name, server) {
         }
 
         // Help text, for if the user did not find the item that they were looking for.
-        searchStatusLbl.innerHTML = "Didn't find what you were looking for? Try searching with full character name and server!";
+        searchStatusLbl.innerText = "Didn't find what you were looking for? Try searching with full character name and server!";
 
         // Show footer
         document.getElementById('footer').style.display = "block";

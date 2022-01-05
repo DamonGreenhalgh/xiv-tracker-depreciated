@@ -356,6 +356,12 @@ body {
     border: none;
 }
 
+.page-number {
+    width: 2rem;
+    text-align: center;
+    margin: auto 1rem;
+}
+
 .collection-item {
     border-radius: .5rem;
     width: 3rem;
