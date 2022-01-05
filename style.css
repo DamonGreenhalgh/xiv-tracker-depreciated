@@ -9,6 +9,7 @@
     --text-foreground-color: #ecf1f3;
     --text-midground-color: #9ea1a8;
     --text-background-color: #595d68;
+    --mid-color: #36383f;
     --contrast-color: #ffffff;
     --shadow-color: #0c0d0f;
 }
@@ -207,6 +208,9 @@ body {
 
 .secondary-text {
     color: var(--text-midground-color);
+    font-size: .75rem;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .content-container {
@@ -226,8 +230,26 @@ body {
 .tab-button {
     z-index: 1;
     border: none;
+    background-color: var(--midground-color);
+    color: var(--text-background-color);
+    font-family: Comfortaa, sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: .75rem 1rem;
+    border-radius: .5rem .5rem 0 0;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.tab-button:hover {
+    background: var(--hover-color) !important;
+    color: var(--text-foreground-color) !important;
+}
+
+.tab-button-active {
+    z-index: 1;
+    border: none;
     background-color: var(--foreground-color);
-    color: var(--text-midground-color);
+    color: var(--contrast-color);
     font-family: Comfortaa, sans-serif;
     font-weight: bold;
     font-size: 1rem;
@@ -245,11 +267,12 @@ body {
 }
 
 .profile-container {
+    box-sizing: border-box;
     position: absolute;
     visibility: hidden;
     display: grid;
-    grid-template-columns: repeat(2, 10rem);
-    grid-template-rows: repeat(6, 4rem);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     gap: 1rem;
     width: 100%;
     height: 100%;
@@ -261,6 +284,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    grid-column-start: 3;
+    grid-column-end: 6;
 }
 
 .profile-icon {
@@ -301,10 +326,41 @@ body {
 }
 
 .collection-container {
+    box-sizing: border-box;
     position: absolute;
     visibility: hidden;
     width: 100%;
     height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: .5rem;
+}
+
+.gallery-buttons-container {
+    display: flex;
+    width: 100%;
+    margin-top: 2rem;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.gallery-button {
+    background: none;
+    border: none;
+}
+
+.collection-item {
+    border-radius: .5rem;
+    width: 3rem;
+    height: 3rem;
+    background-size: cover;
 }
 
 .stats-container {

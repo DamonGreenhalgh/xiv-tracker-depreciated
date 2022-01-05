@@ -7,41 +7,34 @@ async function main() {
 
     document.title = characterName + " | XIV Tracker";
 
-
-
-    const tabButtons = document.getElementsByClassName('tab-button');
-    const tabID = ['profile', 'job', 'collection', 'stats'];
+    const tabId = ['profile', 'job', 'mounts', 'minions'];
 
     // Add action listeners to each tab button so users can switch between content.
-    for (let i = 0; i < tabButtons.length; i++) {
+    for (let i = 0; i < tabId.length; i++) {
 
-        const currentTabButton = tabButtons[i];
-        currentTabButton.addEventListener('click', function() {
+        // On Click event
+        document.getElementById(tabId[i] + '-tab-button').addEventListener('click', function() {
 
             // Disable other tab buttons and hide current content.
-            for (let i = 0; i < tabButtons.length; i++) {
+            for (let i = 0; i < tabId.length; i++) {
 
-                // Style change to indicate hidden content/
-                tabButtons[i].style.backgroundColor = "var(--midground-color)";
-                tabButtons[i].style.color = "var(--text-background-color)";
-                tabButtons[i].style.boxShadow = "";
+                // Style change to indicate hidden content
+                document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "tab-button");
 
                 // Hide current content.
-                document.getElementById(tabID[i]).style.visibility = "hidden";
+                document.getElementById(tabId[i]).style.visibility = "hidden";
             }
 
             // Style change to indicate button is selected.
-            tabButtons[i].style.backgroundColor = "var(--foreground-color)";
-            tabButtons[i].style.color = "var(--contrast-color)";
-            // tabButtons[i].style.boxShadow = "0 1rem 2rem var(--shadow-color)";
+            document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "tab-button-active");
 
             // Make associated content visibile
-            document.getElementById(tabID[i]).style.visibility = "visible";
+            document.getElementById(tabId[i]).style.visibility = "visible";
         })
     }
 
     // Default tab on window open.
-    tabButtons[0].click();
+    document.getElementById('profile-tab-button').click();
 
 
 
@@ -49,8 +42,9 @@ async function main() {
     // -----------------------------
 
     // Request character data from XIVAPI.
-    let characterData = (await requestData("character/" + characterId)).Character;
-
+    let data = await requestData("character/" + characterId);
+    let characterData = data.Character;
+    console.log(characterData);
     const jobAbreviation = (await requestData("ClassJob/" + characterData.ActiveClassJob.ClassID)).Abbreviation
     
     // Display data to the user.
@@ -65,12 +59,16 @@ async function main() {
 
     // Determine if the title is a prefix or suffix, then display on character banner.
     if (titleData.IsPrefix) {
-        document.getElementById('prefix-name').innerHTML = titleData.Name;
+        document.getElementById('prefix-name').innerText = titleData.Name;
     } else {
-        document.getElementById('suffix-name').innerHTML = titleData.Name;
+        document.getElementById('suffix-name').innerText = titleData.Name;
     }
-
     
+    // Load job icon
+    let jobData = await requestData("ClassJob/" + characterData.ActiveClassJob.JobID);
+    document.getElementById('active-job-icon').setAttribute('src', "https://xivapi.com/cj/svg/ClassJob/" + jobData.Abbreviation + ".svg");
+    
+
     
     // Profile Panel Information
     // ------------------------
@@ -132,7 +130,6 @@ async function main() {
         } catch(error) {
             console.log(itemType[i] + " does not exist.");
         }
-        
     }
 
 
@@ -157,13 +154,13 @@ async function main() {
         jobIcon.setAttribute('class', "job-icon");
         jobLbl.setAttribute('class', "job-label");
 
-        jobLbl.innerHTML = jobs[i].Level;
+        jobLbl.innerText = jobs[i].Level;
 
         // If job is max level, change color to indicate the status.
-        if (jobLbl.innerHTML == "90") {
+        if (jobLbl.innerText == "90") {
             jobLbl.style.color = "var(--job-max-level-color)"
-        } else if (jobLbl.innerHTML == "0") {
-            jobLbl.innerHTML = "-";
+        } else if (jobLbl.innerText == "0") {
+            jobLbl.innerText = "-";
             jobLbl.style.color = "var(--text-midground-color)"
         }
 
@@ -185,17 +182,79 @@ async function main() {
     }
 
 
+
+    // Minions and Mounts
+    // ------------------
+
+    let minionData, mountData;
+    let storedData = localStorage.getItem("storedData");
+
+    if (storedData == null) {
+        localStorage.setItem("storedData", "{}");
+    }
+
+    storedData = JSON.parse(localStorage.getItem("storedData"));
+
+    // Call XIVAPI for character data.
+    data = await requestData("character/" + characterId + "?data=MIMO");
+
+    if (data.Minions == null) {
+
+        // Check if data has been stored loacally.
+        if (storedData[characterId] != null) {
+
+            console.log("Mount and minion data is locally stored, retrieving.")
+
+            // Data is locally stored, retrieve.
+            minionData = storedData[characterId].Minions;
+            mountData = storedData[characterId].Mounts;
+
+        } else {
+
+            console.log("Character does not have any mounts/minions.")
+        }
     
-    // Achievements, Minions and Mounts
-    // --------------------------------
+    } else {
 
-    // let data = await requestData("character/" + characterId + "?data=AC,MIMO");
-    // const achievementData = data.Achievements;
-    // const minionData = data.Minions;
-    // const mountData = data.Mounts;
+        minionData = data.Minions;
+        mountData = data.Mounts;
 
-    // console.log(data);
+        // If data is valid, store into local storage.
+        storedData[characterId] = {"Minions": minionData, "Mounts": mountData};
+        localStorage.setItem("storedData", JSON.stringify(storedData));
 
+        console.log("Mounts and minions have been stored!")
+    } 
+
+
+    
+    for(let i = 0; i < Math.min(mountData.length, 42); i++) {
+
+        const mountDiv = document.createElement('div');
+        mountDiv.setAttribute('class', "collection-item");
+        mountDiv.style.backgroundImage = "url('" + mountData[i].Icon + "')";
+        document.getElementById('mount-gallery').append(mountDiv);
+
+    }
+
+    for(let i = 0; i < Math.min(minionData.length, 42); i++) {
+
+        const minionDiv = document.createElement('div');
+        minionDiv.setAttribute('class', "collection-item");
+        minionDiv.style.backgroundImage = "url('" + minionData[i].Icon + "')";
+        document.getElementById('minion-gallery').append(minionDiv);
+
+    }
+
+
+
+
+
+    // Function to show what is in local storage.
+    // console.log("LOCAL STORAGE:");
+    // for (let i = 0; i < localStorage.length; i++)   {
+    //     console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
+    // }
 
     // Main Scenario Quest Timeline
     // This array holds the achievement id of the following expansion completion achievements.

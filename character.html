@@ -59,17 +59,19 @@
 
                 <div class="content-container">
                     <div class="tab">
-                        <button class="tab-button">Profile</button>
-                        <button class="tab-button">Jobs</button>
-                        <button class="tab-button">Collection</button>
-                        <button class="tab-button">Stats</button>
+                        <button id="profile-tab-button" class="tab-button">Profile</button>
+                        <button id="job-tab-button" class="tab-button">Jobs</button>
+                        <button id="mounts-tab-button" class="tab-button">Mounts</button>
+                        <button id="minions-tab-button" class="tab-button">Minions</button>
                     </div>
 
                     <div id="content" class="content">
 
                         <div id="profile" class="profile-container">
 
+
                             <p class="secondary-text">Free Company</p>
+
                             <div class="profile-element-container">
                                 <p id="free-company-name">-</p>
                                 <div style="position: relative;">
@@ -93,10 +95,10 @@
                             </div>
 
                             <p class="secondary-text">City State</p>
-                            <p id="city-state">-</p>
+                            <p id="city-state" class="profile-element-container">-</p>
 
                             <p class="secondary-text">Name Day</p>
-                            <p id="name-day">-</p>
+                            <p id="name-day" class="profile-element-container">-</p>
 
                             <p class="secondary-text">Guardian Diety</p>
                             <div class="profile-element-container">
@@ -105,9 +107,26 @@
                             </div>
 
                         </div>
+
                         <div id="job" class="job-stats-container"></div>
-                        <div id="collection" class="collection-container"></div>
-                        <div id="stats" class="stats-container"></div>
+
+                        <div id="mounts" class="collection-container">
+                            <div id="mount-gallery" class="item-gallery"></div>
+                            <div class="gallery-buttons-container">
+                                <button class="gallery-button"><img src="img/arrow/left.png" style="width: 1.5rem;"></button>
+                                <button class="gallery-button"><img src="img/arrow/right.png" style="width: 1.5rem;"></button>
+                            </div>
+                           
+                        </div>
+
+                        <div id="minions" class="collection-container">
+                            <div id="minion-gallery" class="item-gallery"></div>
+                            <div class="gallery-buttons-container">
+                                <button class="gallery-button"><img src="img/arrow/left.png" style="width: 1.5rem;"></button>
+                                <button class="gallery-button"><img src="img/arrow/right.png" style="width: 1.5rem;"></button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
