@@ -58,60 +58,99 @@
                 </div>
 
                 <div class="content-container">
+
+
                     <div class="tab">
+                        <button id="attributes-tab-button" class="tab-button">Stats</button>
                         <button id="profile-tab-button" class="tab-button">Profile</button>
                         <button id="job-tab-button" class="tab-button">Jobs</button>
                         <button id="mounts-tab-button" class="tab-button">Mounts</button>
                         <button id="minions-tab-button" class="tab-button">Minions</button>
                     </div>
 
-                    <div id="content" class="content">
+                    <div id="content" class="panel-container">
 
-                        <div id="profile" class="profile-container">
-
-
-                            <p class="secondary-text">Free Company</p>
-
-                            <div class="profile-element-container">
-                                <p id="free-company-name">-</p>
-                                <div style="position: relative;">
-                                    <div id="free-company-crest-1" class="profile-icon" style="position: absolute;"></div>
-                                    <div id="free-company-crest-2" class="profile-icon" style="position: absolute;"></div>
-                                    <div id="free-company-crest-3" class="profile-icon" style="position: absolute;"></div>
+                        <div id="attributes-panel" class="panel">
+                            <div class="hp-mp-container">
+                                <div class="main-attribute-container">
+                                    <div class="main-attribute-text-container">
+                                        <p class="secondary-text">HP</p>
+                                        <p id="hp">-</p>
+                                    </div>
+                                    <div class="bar" style="background-color: var(--health-color);"></div>
+                                </div>
+                                <div class="main-attribute-container">
+                                    <div class="main-attribute-text-container">
+                                        <p class="secondary-text">MP</p>
+                                        <p id="mp">-</p>
+                                    </div>
+                                    <div class="bar" style="background-color: var(--mana-color)"></div>                                  
                                 </div>
                             </div>
-
-                            <p class="secondary-text">Grand Company</p>
-                            <div class="profile-element-container">
-                                <p id="grand-company-name">-</p>
-                                <div id="grand-company-icon" class="profile-icon"></div>
+                            <div id="attributes" class="gallery">
+                                <div class="divider"></div>
                             </div>
+                        </div>
 
-                            <p class="secondary-text">Race / Clan / Gender</p>
-                            <div class="profile-element-container">
-                                <p id="race-clan">-</p>
-                                <div id="gender" class="profile-icon"></div>
-                                
-                            </div>
+                        <div id="profile-panel" class="panel">
 
-                            <p class="secondary-text">City State</p>
-                            <p id="city-state" class="profile-element-container">-</p>
+                            <div class="gallery" style="grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(6, 1fr);">
+                            
+                                <p class="secondary-text">Free Company</p>
+                                <div class="profile-element-container">
+                                    <p id="free-company-name">-</p>
+                                    <div style="position: relative;">
+                                        <div id="free-company-crest-1" class="profile-icon" style="position: absolute;"></div>
+                                        <div id="free-company-crest-2" class="profile-icon" style="position: absolute;"></div>
+                                        <div id="free-company-crest-3" class="profile-icon" style="position: absolute;"></div>
+                                    </div>
+                                </div>
 
-                            <p class="secondary-text">Name Day</p>
-                            <p id="name-day" class="profile-element-container">-</p>
+                                <p class="secondary-text">Grand Company</p>
+                                <div class="profile-element-container">
+                                    <p id="grand-company-name">-</p>
+                                    <div id="grand-company-icon" class="profile-icon"></div>
+                                </div>
 
-                            <p class="secondary-text">Guardian Diety</p>
-                            <div class="profile-element-container">
-                                <p id="guardian-name">-</p>
-                                <div id="guardian-icon" class="profile-icon"></div>
+                                <p class="secondary-text">Race / Clan / Gender</p>
+                                <div class="profile-element-container">
+                                    <p id="race-clan">-</p>
+                                    <div id="gender" class="profile-icon"></div>
+                                </div>
+
+                                <p class="secondary-text">City State</p>
+                                <p id="city-state" class="profile-element-container">-</p>
+
+                                <p class="secondary-text">Name Day</p>
+                                <p id="name-day" class="profile-element-container">-</p>
+
+                                <p class="secondary-text">Guardian Diety</p>
+                                <div class="profile-element-container">
+                                    <p id="guardian-name">-</p>
+                                    <div id="guardian-icon" class="profile-icon"></div>
+                                </div>
                             </div>
 
                         </div>
 
-                        <div id="job" class="job-stats-container"></div>
+                        <div id="job-panel" class="panel">
+                            <div style="display: flex; flex-direction: column; gap: .5rem;">
+                                <p style="color: var(--experience-color);">Disciple of War / Magic</p>
+                                <div style="width: 100%; background-color: var(--mid-color); height: .1rem;"></div>
+                            </div>
+                            
+                            <div id="war-magic-jobs" class="gallery" style="grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(3, 4rem);"></div>
 
-                        <div id="mounts" class="collection-container">
-                            <div id="mount-gallery" class="item-gallery"></div>
+                            <div style="display: flex; flex-direction: column; gap: .5rem; margin-top: 1rem;">
+                                <p style="color: var(--text-foreground-color);">Disciple of Hand / Land</p>
+                                <div style="width: 100%; background-color: var(--mid-color); height: .15rem;"></div>
+                            </div>
+                            <div id="hand-land-jobs" class="gallery" style="grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(2, 4rem);"></div>
+
+                        </div>
+
+                        <div id="mounts-panel" class="panel">
+                            <div id="mount-gallery" class="gallery" style="grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(6, 1fr);"></div>
                             <div class="gallery-buttons-container">
                                 <button id="mount-prev-page-button" class="gallery-button"><img src="img/arrow/left.png" style="width: 1.5rem;"></button>
                                 <label id="mount-page-number-label" class="page-number">1</label>
@@ -120,8 +159,8 @@
                            
                         </div>
 
-                        <div id="minions" class="collection-container">
-                            <div id="minion-gallery" class="item-gallery"></div>
+                        <div id="minions-panel" class="panel">
+                            <div id="minion-gallery" class="gallery" style="grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(7, 1fr);"></div>
                             <div class="gallery-buttons-container">
                                 <button id="minion-prev-page-button" class="gallery-button"><img src="img/arrow/left.png" style="width: 1.5rem;"></button>
                                 <label id="minion-page-number-label" class="page-number">1</label>
@@ -134,7 +173,9 @@
             </div>
 
 
-            
+            <div>Collection</div>
+            <div>Quests</div>
+
 
         </div>
 

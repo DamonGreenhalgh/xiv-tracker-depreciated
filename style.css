@@ -1,5 +1,7 @@
 :root {
-    --experience-color: #fdf148;
+    --experience-color: #ddc580;
+    --health-color: #5d9c22;
+    --mana-color: #be2c9f;
     --job-max-level-color: #f09744;
     --accent-color: #4e87f6;
     --background-color:  #111214;
@@ -165,15 +167,6 @@ body {
     padding: 1rem;
 }
 
-.item {
-    width: 3rem;
-    height: 3rem;
-    border-radius: .5rem;
-    background-position: center;
-    background-size: cover;
-    background-color: var(--foreground-color);
-}
-
 .character-portrait {
     position: relative;
     background-size: cover;
@@ -216,15 +209,14 @@ body {
 .content-container {
     display: flex;
     flex-direction: column;
-    /* gap: .5rem; */
     margin: 0 1rem;
     width: 45%;
+    font-size: .9rem;
 }
 
 .tab {
     display: flex;
-    gap: .5rem;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
 
 .tab-button {
@@ -234,7 +226,7 @@ body {
     color: var(--text-background-color);
     font-family: Comfortaa, sans-serif;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: .8rem;
     padding: .75rem 1rem;
     border-radius: .5rem .5rem 0 0;
     transition: background-color 0.5s, color 0.5s;
@@ -252,32 +244,82 @@ body {
     color: var(--contrast-color);
     font-family: Comfortaa, sans-serif;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: .8rem;
     padding: .75rem 1rem;
     border-radius: .5rem .5rem 0 0;
 }
 
-.content {
+.panel-container {
     position: relative;
     display: flex;
     height: 100%;
-    border-radius: 0 .5rem .5rem .5rem;
+    border-radius: 0 0 .5rem .5rem;
     background-color: var(--foreground-color);
     box-shadow: 0 1rem 2rem var(--shadow-color);
 }
 
-.profile-container {
+.panel {
     box-sizing: border-box;
     position: absolute;
     visibility: hidden;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
     width: 100%;
     height: 100%;
     padding: 2rem;
-    font-size: .9rem;
+}
+
+.hp-mp-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 5rem;
+    border-radius: .5rem;
+    background-color: var(--midground-color);
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.main-attribute-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: .5rem;
+}
+
+.main-attribute-text-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bar {
+    background-color: turquoise;
+    width: 100%;
+    height: .5rem;
+    border-radius: .25rem;
+}
+
+.gallery {
+    width: 100%;
+    height: 100%;
+    gap: .5rem;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+}
+
+.divider {
+    grid-row: 1 / 11; 
+    grid-column: 5 / 6; 
+    background-color: var(--mid-color); 
+    width: .1rem; 
+    margin: 0 auto;
+}
+
+
+.attribute-text {
+    color: var(--text-midground-color);
+    font-size: .75rem;
 }
 
 .profile-element-container {
@@ -295,7 +337,7 @@ body {
     height: 2rem;
 }
 
-.job-stats-container {
+.job-container {
     box-sizing: border-box;
     position: absolute;
     visibility: hidden;
@@ -314,12 +356,11 @@ body {
 }
 
 .job-label {
-    font-size: large;
     font-weight: bold;
     padding: .25rem;
 }
 
-.utility-flex-class {
+.job-item-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -336,17 +377,10 @@ body {
     flex-direction: column;
 }
 
-.item-gallery {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(7, 1fr);
-    gap: .5rem;
-}
-
 .gallery-buttons-container {
     display: flex;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1rem;
     justify-content: center;
     gap: 1rem;
 }
@@ -362,19 +396,36 @@ body {
     margin: auto 1rem;
 }
 
-.collection-item {
+.item {
+    position: relative;
     border-radius: .5rem;
     width: 3rem;
     height: 3rem;
     background-size: cover;
+    background-color: var(--midground-color);
 }
 
-.stats-container {
-    position: absolute;
+.item .tooltip {
     visibility: hidden;
-    width: 100%;
-    height: 100%;
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    text-align: center;
+    border-radius: .25rem;
+    position: absolute;
+    padding: .5rem;
+    z-index: 2;
+    font-weight: bold;
+    font-size: .8rem;
+    box-shadow: 0 .25rem .5rem var(--shadow-color);
+    width: 10rem;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -5.5rem;
 }
+
+.item:hover .tooltip {
+    visibility: visible;
+  }
 
 .footer-wrapper {
     background-color: var(--midground-color);

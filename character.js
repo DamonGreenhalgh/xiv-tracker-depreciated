@@ -7,7 +7,7 @@ async function main() {
 
     document.title = characterName + " | XIV Tracker";
 
-    const tabId = ['profile', 'job', 'mounts', 'minions'];
+    const tabId = ['attributes', 'profile', 'job', 'mounts', 'minions'];
     let currentTabIndex;
 
     // Add action listeners to each tab button so users can switch between content.
@@ -23,21 +23,21 @@ async function main() {
                 document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "tab-button");
 
                 // Hide current content.
-                document.getElementById(tabId[i]).style.visibility = "hidden";
+                document.getElementById(tabId[i] + '-panel').style.visibility = "hidden";
             }
 
             // Style change to indicate button is selected.
             document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "tab-button-active");
 
             // Make associated content visibile
-            document.getElementById(tabId[i]).style.visibility = "visible";
+            document.getElementById(tabId[i] + '-panel').style.visibility = "visible";
 
             currentTabIndex = i;
         })
     }
 
     // Default tab on window open.
-    document.getElementById('profile-tab-button').click();
+    document.getElementById('attributes-tab-button').click();
 
 
 
@@ -72,8 +72,65 @@ async function main() {
     document.getElementById('active-job-icon').setAttribute('src', "https://xivapi.com/cj/svg/ClassJob/" + jobData.Abbreviation + ".svg");
     
 
+    // Atrribute Panel
+    // ---------------
+    const attributeNames = ["Strength", "Dexterity", "Vitality", "Intelligence", "Mind", "Piety", "HP", "MP", "Tenacity", "Attack Power", "Defense", "Direct Hit Rate", "Magic Defense", "Critical Hit", "Attack Magic Potency", "Healing Magic Potency", "Determination", "Skill Speed", "Spell Speed"];
+    const attributeValues = Object.values(characterData.GearSet.Attributes);
+    for(let i = 0; i < attributeNames.length; i++) {
+
+        const attributeName = document.createElement('p');
+        const attributeValue = document.createElement('p');
+
+        attributeName.setAttribute('class', "attribute-text");
+        attributeName.style.gridColumn = "span 3";
+        attributeName.innerText = attributeNames[i];
+
+        attributeValue.style.textAlign = "end";
+        attributeValue.innerText = attributeValues[i];
+
+        document.getElementById('attributes').append(attributeName);
+        document.getElementById('attributes').append(attributeValue);
+
+
+    }
+
+    document.getElementById('hp').innerText = attributeValues[6];
+    document.getElementById('mp').innerText = attributeValues[7];
+
+
+
+
+
+    // Character Equipment Information
+    // -------------------------------
     
-    // Profile Panel Information
+    // Load equiment.
+    const itemType = ["MainHand", "Head", "Hands", "Body", "Legs", "Feet", "Earrings", "Necklace", "Bracelets", "Ring1", "Ring2", "SoulCrystal", "OffHand"];
+    for (let i = 0; i < itemType.length; i++) {
+
+        try {
+
+            // Request equipment data.
+            const equipmentData = await requestData("Item/" + characterData.GearSet.Gear[itemType[i]].ID);
+
+            // Get icon for equipment piece.
+            const imageSource = "url('https://xivapi.com" + equipmentData.IconHD + "')";
+            document.getElementById(itemType[i]).style.backgroundImage = imageSource;
+
+            // Create tooltip for item, add it to the item div.
+            const tooltipDiv = document.createElement('div');
+            tooltipDiv.setAttribute('class', "tooltip");
+            tooltipDiv.innerText = equipmentData.Name;
+            document.getElementById(itemType[i]).append(tooltipDiv);
+
+        } catch(error) {
+            console.log(itemType[i] + " does not exist.");
+        }
+    }
+
+
+
+     // Profile Panel Information
     // ------------------------
 
     // Profile data, will be stored in JSON eventually.
@@ -120,28 +177,10 @@ async function main() {
 
 
 
-    // Character Equipment Information
-    // -------------------------------
-    
-    // Load equiment.
-    const itemType = ["MainHand", "Head", "Hands", "Body", "Legs", "Feet", "Earrings", "Necklace", "Bracelets", "Ring1", "Ring2", "SoulCrystal", "OffHand"];
-    for (let i = 0; i < itemType.length; i++) {
-
-        try {
-            const imageSource = "url('https://xivapi.com" + (await requestData("Item/" + characterData.GearSet.Gear[itemType[i]].ID)).IconHD + "')";
-            document.getElementById(itemType[i]).style.backgroundImage = imageSource;
-        } catch(error) {
-            console.log(itemType[i] + " does not exist.");
-        }
-    }
-
-
-
     // Jobs Panel Information
     // ----------------------
 
     // Populate job stats container.
-    const jobStats = document.getElementById('job');
     const jobs = characterData.ClassJobs;
 
     for(let i = 0; i < jobs.length; i++) {
@@ -152,7 +191,7 @@ async function main() {
         const jobIcon = document.createElement("img");
         const jobLbl = document.createElement("p");
 
-        jobDiv.setAttribute('class', "utility-flex-class");
+        jobDiv.setAttribute('class', "job-item-container");
         jobIcon.setAttribute('src', "https://xivapi.com/cj/1/" + jobName + ".png");
         jobIcon.setAttribute('class', "job-icon");
         jobLbl.setAttribute('class', "job-label");
@@ -169,19 +208,12 @@ async function main() {
 
         jobDiv.append(jobIcon);
         jobDiv.append(jobLbl);
-        jobStats.append(jobDiv);
 
-        let row;
-        // Formatting for jobs.
-        switch (true) {
-            case (i < 8): row = "1"; break;
-            case (i < 16): row = "2"; break;
-            case (i < 20): row = "3"; break;
-            case (i < 28): row = "5"; break;
-            default: row = "6";
+        if (i < 20) {
+            document.getElementById('war-magic-jobs').append(jobDiv);
+        } else {
+            document.getElementById('hand-land-jobs').append(jobDiv);
         }
-
-        jobDiv.style.gridRowStart = row;
     }
 
 
@@ -201,7 +233,13 @@ async function main() {
     // Call XIVAPI for character data.
     data = await requestData("character/" + characterId + "?data=MIMO");
 
-    if (data.Minions == null) {
+
+
+    // If XIVAPI does not return mount and minion data, look in local storage to see if it was retrieved and stored
+    // before. If so, load that data.
+
+    // Check if XIVAPI returns null;
+    if (data.Minions == null || data.Mounts == null) {
 
         // Check if data has been stored loacally.
         if (storedData[characterId] != null) {
@@ -267,6 +305,8 @@ async function main() {
         }
     });
 
+    console.log(mountData);
+
     
 
     // Function to show what is in local storage.
@@ -302,7 +342,11 @@ function displayPage(pageCapacity, pageNumber, pageType, content, labelName) {
 
         // Create item to display.
         const itemDiv = document.createElement('div');
-        itemDiv.setAttribute('class', "collection-item");
+        const tooltipDiv = document.createElement('div');
+        tooltipDiv.setAttribute('class', "tooltip");
+        tooltipDiv.innerText = content[i].Name;
+        itemDiv.append(tooltipDiv);
+        itemDiv.setAttribute('class', "item");
         itemDiv.style.backgroundImage = "url('" + content[i].Icon + "')";
         document.getElementById(pageType).append(itemDiv);
     }
