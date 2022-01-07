@@ -267,59 +267,77 @@ async function main() {
         console.log("Mounts and minions have been stored!")
     } 
 
-    const pageCapacity = 42;
-    let currentMountPage = 1;
-    let currentMinionPage = 1;
-    const lastMountPage = Math.ceil(mountData.length / pageCapacity);
-    const lastMinionPage = Math.ceil(minionData.length / pageCapacity);
 
-    displayPage(pageCapacity, currentMountPage, 'mount-gallery', mountData, 'mount-page-number-label');
-    displayPage(pageCapacity, currentMinionPage, 'minion-gallery', minionData, 'minion-page-number-label');
+    // Check to see if character has valid mount and minion data to display.
+    if (mountData !== undefined && minionData !== undefined) {
+        const pageCapacity = 42;
+        let currentMountPage = 1;
+        let currentMinionPage = 1;
+        const lastMountPage = Math.ceil(mountData.length / pageCapacity);
+        const lastMinionPage = Math.ceil(minionData.length / pageCapacity);
 
-    // Page listeners.
-    document.getElementById('mount-next-page-button').addEventListener('click', function() {
-        if(currentMountPage < lastMountPage) {
-            currentMountPage++;
-            displayPage(pageCapacity, currentMountPage, 'mount-gallery', mountData, 'mount-page-number-label');
+        displayPage(pageCapacity, currentMountPage, 'mount-gallery', mountData, 'mount-page-number-label');
+        displayPage(pageCapacity, currentMinionPage, 'minion-gallery', minionData, 'minion-page-number-label');
+
+        // Page listeners.
+        document.getElementById('mount-next-page-button').addEventListener('click', function() {
+            if(currentMountPage < lastMountPage) {
+                currentMountPage++;
+                displayPage(pageCapacity, currentMountPage, 'mount-gallery', mountData, 'mount-page-number-label');
+            }
+        });
+
+        document.getElementById('mount-prev-page-button').addEventListener('click', function() {
+            if(currentMountPage > 1) {
+                currentMountPage--;
+                displayPage(pageCapacity, currentMountPage, 'mount-gallery', mountData, 'mount-page-number-label');
+            }
+        });
+
+        document.getElementById('minion-next-page-button').addEventListener('click', function() {
+            if(currentMinionPage < lastMinionPage) {
+                currentMinionPage++;
+                displayPage(pageCapacity, currentMinionPage, 'minion-gallery', minionData, 'minion-page-number-label');
+            }
+        });
+
+        document.getElementById('minion-prev-page-button').addEventListener('click', function() {
+            if(currentMinionPage > 1) {
+                currentMinionPage--;
+                displayPage(pageCapacity, currentMinionPage, 'minion-gallery', minionData, 'minion-page-number-label');
+            }
+        });
+    }
+
+    // Main Scenario Quests
+    // This array holds the achievement id of msq.
+    const achievementReference = [788,  0, 0, 1001, 1029, 1129,  1139,  1387, 1493, 1594, 1630, 1691,  1794,  0, 0, 2098, 2124, 2233,  2298,  2424, 2587, 2642, 2714, 2851,  2958];
+    const achievementData = (await requestData("character/" + characterId + "?data=AC")).Achievements;
+
+    // Check if character has achievements public.
+    if (achievementData.List.length !== 0) {
+
+        let maxAchievement = 0;
+
+        // Find the highest msq id achievement.
+        for (let i = 0; i < achievementData.List.length; i++) {
+            
+            let achievementID = achievementData.List[i].ID
+            if(achievementReference.includes(achievementID) && achievementID > maxAchievement) {
+                maxAchievement = achievementID;
+            }
         }
-    });
 
-    document.getElementById('mount-prev-page-button').addEventListener('click', function() {
-        if(currentMountPage > 1) {
-            currentMountPage--;
-            displayPage(pageCapacity, currentMountPage, 'mount-gallery', mountData, 'mount-page-number-label');
-        }
-    });
-
-    document.getElementById('minion-next-page-button').addEventListener('click', function() {
-        if(currentMinionPage < lastMinionPage) {
-            currentMinionPage++;
-            displayPage(pageCapacity, currentMinionPage, 'minion-gallery', minionData, 'minion-page-number-label');
-        }
-    });
-
-    document.getElementById('minion-prev-page-button').addEventListener('click', function() {
-        if(currentMinionPage > 1) {
-            currentMinionPage--;
-            displayPage(pageCapacity, currentMinionPage, 'minion-gallery', minionData, 'minion-page-number-label');
-        }
-    });
-
-    console.log(mountData);
-
-    
-
-    // Function to show what is in local storage.
-    // console.log("LOCAL STORAGE:");
-    // for (let i = 0; i < localStorage.length; i++)   {
-    //     console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
-    // }
-
-    // Main Scenario Quest Timeline
-    // This array holds the achievement id of the following expansion completion achievements.
-    // A Realm Reborn, Heavensward, Stormblood, Shadowbringers, Endwalker.
-    const achievementReference = [788, 1139, 1794, 2298, 2958];
-
+        // Compute the height required to meet current quest.
+        const currentQuest = document.getElementById('msq-list').childNodes[1 + 2*achievementReference.indexOf(maxAchievement)];
+        currentQuest.style.color = "var(--msq-bright-color)";
+        const msqProgressBarHeight = currentQuest.getBoundingClientRect().y - document.getElementById('msq-list').getBoundingClientRect().y;
+        document.getElementById('msq-bar').style.height = (msqProgressBarHeight + currentQuest.getBoundingClientRect().height/2).toString() + "px";      
+        document.getElementById('msq-bar-point').style.top = (msqProgressBarHeight - currentQuest.getBoundingClientRect().height/2).toString() + "px";        
+  
+    } else {
+        console.log("Character has public achievements disabled!")
+    }
 }
 
 // Function to make requests to XIVAPI

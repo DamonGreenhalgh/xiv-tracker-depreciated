@@ -28,7 +28,6 @@
                 <a id="server-name" class="server-name"></a>
             </div>
 
-
             <div class="character-container">
 
                 <div id="active-job" class="active-job-container">
@@ -134,23 +133,23 @@
                         </div>
 
                         <div id="job-panel" class="panel">
-                            <div style="display: flex; flex-direction: column; gap: .5rem;">
-                                <p style="color: var(--experience-color);">Disciple of War / Magic</p>
-                                <div style="width: 100%; background-color: var(--mid-color); height: .1rem;"></div>
+                            <div>
+                                <p style="color: var(--experience-color); margin-bottom: .5rem;">Disciple of War / Magic</p>
+                                <div class="horizontal-divider"></div>
                             </div>
                             
                             <div id="war-magic-jobs" class="gallery" style="grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(3, 4rem);"></div>
 
-                            <div style="display: flex; flex-direction: column; gap: .5rem; margin-top: 1rem;">
-                                <p style="color: var(--text-foreground-color);">Disciple of Hand / Land</p>
-                                <div style="width: 100%; background-color: var(--mid-color); height: .15rem;"></div>
+                            <div>
+                                <p style="color: var(--text-foreground-color); margin-bottom: .5rem;">Disciple of Hand / Land</p>
+                                <div class="horizontal-divider" style="height: .15rem;"></div>
                             </div>
                             <div id="hand-land-jobs" class="gallery" style="grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(2, 4rem);"></div>
 
                         </div>
 
                         <div id="mounts-panel" class="panel">
-                            <div id="mount-gallery" class="gallery" style="grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(6, 1fr);"></div>
+                            <div id="mount-gallery" class="gallery" style="grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(7, 1fr);"></div>
                             <div class="gallery-buttons-container">
                                 <button id="mount-prev-page-button" class="gallery-button"><img src="img/arrow/left.png" style="width: 1.5rem;"></button>
                                 <label id="mount-page-number-label" class="page-number">1</label>
@@ -167,16 +166,59 @@
                                 <button id="minion-next-page-button" class="gallery-button"><img src="img/arrow/right.png" style="width: 1.5rem;"></button>
                             </div>
                         </div>
-
                     </div>
+                </div>
+                
+            </div>
+
+            <h1>Quests</h1>
+
+            <div class="msq-container">
+
+                <div style="display: flex;">
+                    <img src="img/msq-logo.png" style="width: 3rem; height: 3.25rem;">
+                    <P style="margin: auto 3rem; font-size: 1.5rem; font-weight: bold; color: var(--contrast-color)">Main Scenario</P>
+                </div>
+                
+                <div class="msq-content-container">
+
+                    <div class="msq-bar-container">
+                        <div id="msq-bar" class="msq-bar"></div>
+                        <div id="msq-bar-point" class="msq-bar-point"></div>
+                    </div>
+
+                    <ol id="msq-list" class="msq-list">
+                        <li class="quest-text" style="margin-top: 0;">A Realm Reborn</li>
+                        <li>A Realm Awoken</li>
+                        <li>Through the Maelstrom</li>
+                        <li>Defenders of Eorzea</li>
+                        <li>Dreams of Ice</li>
+                        <li>Before the Fall</li>
+                        <li class="quest-text">Heavensward</li>
+                        <li>As Goes Light, So Goes Darkness</li>
+                        <li>The Gears of Change</li>
+                        <li>Revenge of the Horde</li>
+                        <li>Soul Surrender</li>
+                        <li>The Far Edge of Fate</li>
+                        <li class="quest-text">Stormblood</li>
+                        <li>The Legend Returns</li>
+                        <li>Rise of a New Sun</li>
+                        <li>Under the Moonlight</li>
+                        <li>Prelude in Violet</li>
+                        <li>A Requiem for Heroes</li>
+                        <li class="quest-text">Shadowbringers</li>
+                        <li>Vows of Virtue, Deeds of Cruelty</li>
+                        <li>Echos of a Fallen Star</li>
+                        <li>Reflections in Crystal</li>
+                        <li>Futures Rewritten</li>
+                        <li>Death Unto Dawn</li>
+                        <li class="quest-text" style="margin-bottom: 0;">Endwalker</li>
+                    </ol>
+
                 </div>
             </div>
 
-
-            <div>Collection</div>
-            <div>Quests</div>
-
-
+            
         </div>
 
         <div id="footer" class="footer-wrapper">

@@ -70,9 +70,6 @@ async function requestCharacterSearch(name, server) {
 
         // Help text, for if the user did not find the item that they were looking for.
         searchStatusLbl.innerText = "Didn't find what you were looking for? Try searching with full character name and server!";
-
-        // Show footer
-        document.getElementById('footer').style.display = "block";
     }
 }
 
