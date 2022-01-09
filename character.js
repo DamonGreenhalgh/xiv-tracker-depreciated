@@ -313,6 +313,8 @@ async function main() {
     const achievementReference = [788,  0, 0, 1001, 1029, 1129,  1139,  1387, 1493, 1594, 1630, 1691,  1794,  0, 0, 2098, 2124, 2233,  2298,  2424, 2587, 2642, 2714, 2851,  2958];
     const achievementData = (await requestData("character/" + characterId + "?data=AC")).Achievements;
 
+    console.log(achievementData);
+
     // Check if character has achievements public.
     if (achievementData.List.length !== 0) {
 
@@ -343,6 +345,15 @@ async function main() {
         for (let i = 1; i < maxIndex*2; i = i + 2) {
             msqListChildren[i].style.textDecoration = "line-through";
         }
+
+
+
+        // Raids
+        // Bahamut, Alexander, Omega, Eden
+        const raidAchievementReference = [1040, 1639, 2024, 2719]
+
+        // Trials
+
   
     } else {
         console.log("Character has public achievements disabled!")
