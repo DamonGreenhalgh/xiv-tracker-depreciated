@@ -269,7 +269,7 @@ async function main() {
 
     // Check to see if character has valid mount and minion data to display.
     if (mountData !== undefined && minionData !== undefined) {
-        const pageCapacity = 48;
+        const pageCapacity = 42;
         let currentMountPage = 1;
         let currentMinionPage = 1;
         const lastMountPage = Math.ceil(mountData.length / pageCapacity);
