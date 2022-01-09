@@ -52,7 +52,6 @@ async function main() {
     
     // Display data to the user.
     document.getElementById('character-name').innerText = characterName;
-    document.getElementById('server-name').innerText = characterData.Server + " - " + characterData.DC;
     document.getElementById('character-avater').setAttribute('src', characterData.Avatar);
     document.getElementById('character-portrait').style.backgroundImage = "url('" + characterData.Portrait + "')";
     document.getElementById('active-job-level').innerText = "Lv. " + characterData.ActiveClassJob.Level;
@@ -81,7 +80,7 @@ async function main() {
         const attributeName = document.createElement('p');
         const attributeValue = document.createElement('p');
 
-        attributeName.setAttribute('class', "attribute-text");
+        attributeName.setAttribute('class', "secondary-text");
         attributeName.style.gridColumn = "span 3";
         attributeName.innerText = attributeNames[i];
 
@@ -270,7 +269,7 @@ async function main() {
 
     // Check to see if character has valid mount and minion data to display.
     if (mountData !== undefined && minionData !== undefined) {
-        const pageCapacity = 42;
+        const pageCapacity = 48;
         let currentMountPage = 1;
         let currentMinionPage = 1;
         const lastMountPage = Math.ceil(mountData.length / pageCapacity);
@@ -329,11 +328,21 @@ async function main() {
         }
 
         // Compute the height required to meet current quest.
-        const currentQuest = document.getElementById('msq-list').childNodes[1 + 2*achievementReference.indexOf(maxAchievement)];
-        currentQuest.style.color = "var(--msq-bright-color)";
+        const maxIndex = achievementReference.indexOf(maxAchievement);
+        const msqListChildren = document.getElementById('msq-list').childNodes;
+        const currentQuest = msqListChildren[1 + 2*maxIndex];
         const msqProgressBarHeight = currentQuest.getBoundingClientRect().y - document.getElementById('msq-list').getBoundingClientRect().y;
+
+        currentQuest.style.color = "var(--msq-bright-color)";
         document.getElementById('msq-bar').style.height = (msqProgressBarHeight + currentQuest.getBoundingClientRect().height/2).toString() + "px";      
-        document.getElementById('msq-bar-point').style.top = (msqProgressBarHeight - currentQuest.getBoundingClientRect().height/2).toString() + "px";        
+        document.getElementById('msq-bar-point').style.top = (msqProgressBarHeight - currentQuest.getBoundingClientRect().height/2).toString() + "px";   
+        document.getElementById('quests').style.filter = "none";     
+
+        // Strike through all completed main scenario quests.
+        console.log(maxIndex);
+        for (let i = 1; i < maxIndex*2; i = i + 2) {
+            msqListChildren[i].style.textDecoration = "line-through";
+        }
   
     } else {
         console.log("Character has public achievements disabled!")

@@ -11,12 +11,7 @@
     </head>
     <body>
 
-        <div class="navbar">
-            <a href="index.html"><img src="img/home-logo.png" class="home-icon"></a>
-        </div>
-
-
-        <div class="container" style="margin-bottom: 0;">
+        <div class="main" style="margin-bottom: 0; align-items: center;">
 
             <div class="search-container">
                 <select id="server-list" class="search-element-dropdown">
@@ -30,9 +25,9 @@
 
             <img id="loading-icon" src="img/loading.svg" style="display: none; width: 5rem;">
     
-            <div id="search-results-list" class="search-results-container"></div>
+            <div id="search-results-list" class="flex-column"></div>
 
-            <p id="search-status" class="search-status"></p>
+            <p id="search-status" class="sub-text" style="margin: 5rem 0;"></p>
 
         </div>
 

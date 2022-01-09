@@ -7,7 +7,6 @@
     --msq-color: #b63333;
     --msq-bright-color: #f84f4f;
 
-
     --shadow-color: #0c0d0f;
     --background-color:  #111214;
     --midground-color: #141518;
@@ -18,19 +17,46 @@
     --text-midground-color: #9ea1a8;
     --text-foreground-color: #ecf1f3;
     --contrast-color: #ffffff;
+
+    --global-width: 65rem;
+}
+
+.main-text {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.sub-text {
+    font-size: 1rem;
+    color: var(--text-midground-color);
+}
+.minor-text {
+    font-size: .8;
+    color: var(--text-background-color);
+}
+
+.secondary-text {
+    color: var(--text-midground-color);
+    font-size: .75rem;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 * {
     box-sizing: border-box;
 }
 
-a, a:hover, a:focus, a:active {
-    text-decoration: none;
-    color: inherit;
+h1 {
+    margin: 0;
 }
 
 p {
     margin: 0;
+}
+
+/* Disable default link effect */
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
 }
 
 body {
@@ -40,34 +66,35 @@ body {
     color: var(--text-foreground-color);
     background-color: var(--background-color);
     font-family: Comfortaa, sans-serif;
+    font-size: 1rem;
 }
 
 .navbar {
+    z-index: 3;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     position: fixed;
     padding: 1rem;
     width: 100%;
+    background-color: var(--foreground-color);
 }
 
-.home-icon {
-    width: 2.5rem;
-}
-
-.container {
+.main {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-    margin: 6rem 25%;
+    align-self: center;
+    gap: 5rem;
+    margin: 5rem 0;
+    width: var(--global-width);
 }
 
 .search-container {
     display: flex;
+    width: 35rem;
+    margin: 35vh auto 10px auto;
     gap: 1rem;
-    margin: 35vh 0 4rem 0;
-    background-color: var(--foreground-color);
     border-radius: 2rem;
+    background-color: var(--foreground-color);
     box-shadow: 0 .5rem 1rem var(--shadow-color);
 }
 
@@ -94,7 +121,7 @@ body {
 }
 
 .search-element-button {
-    padding: .5rem;
+    padding: .5rem;    
 }
 
 .search-element-button:hover {
@@ -104,18 +131,45 @@ body {
 .search-button-icon {
     width: 25px;
     height: 25px;
-    padding: 2.5px 5px;
 }
 
-.search-results-container {
+.flex-column {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.search-status {
-    margin: 5rem 0;
-    color: var(--text-midground-color);
+.flex-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.center {
+    justify-content: center;
+}
+
+.rounded {
+    border-radius: 100%;
+}
+
+.no-gap {
+    gap: 0;
+}
+
+.half-gap {
+    gap: .5rem;
+}
+
+.max-width {
+    width: 100%;
+}
+
+.half-width {
+    width: 50%;
 }
 
 .character-banner-container {
@@ -155,26 +209,7 @@ body {
     margin-left: auto;
 }
 
-.character-container {
-    display: flex;
-    width: 100%;
-    height: 35rem;
-    gap: 1rem;
-}
-
-.active-job-container {
-    display: flex;
-    width: 55%;
-}
-
-.item-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-}
-
-.character-portrait {
+.active-job-portrait {
     position: relative;
     background-size: cover;
     background-position: center;
@@ -187,7 +222,6 @@ body {
 .active-job-level {
     position: absolute;
     font-weight: bold;
-    font-size: 1rem;
     bottom: 0;
     width: 4rem;
     margin: 1rem;
@@ -195,7 +229,6 @@ body {
     border-radius: .5rem;
     text-align: center;
     background-color: var(--background-color);
-    color: var(--text-foreground-color);
 }
 
 .active-job-icon {
@@ -206,26 +239,6 @@ body {
     filter: invert(90%) sepia(0%) saturate(7459%) hue-rotate(42deg) brightness(114%) contrast(111%);
 }
 
-.secondary-text {
-    color: var(--text-midground-color);
-    font-size: .75rem;
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-
-.content-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 1rem;
-    width: 45%;
-    font-size: .9rem;
-}
-
-.tab {
-    display: flex;
-    justify-content: space-between;
-}
-
 .tab-button {
     z-index: 1;
     border: none;
@@ -233,8 +246,8 @@ body {
     color: var(--text-background-color);
     font-family: Comfortaa, sans-serif;
     font-weight: bold;
-    font-size: .8rem;
-    padding: .75rem 1rem;
+    font-size: .9rem;
+    padding: 1rem;
     border-radius: .5rem .5rem 0 0;
     transition: background-color 0.5s, color 0.5s;
 }
@@ -251,8 +264,8 @@ body {
     color: var(--contrast-color);
     font-family: Comfortaa, sans-serif;
     font-weight: bold;
-    font-size: .8rem;
-    padding: .75rem 1rem;
+    font-size: .9rem;
+    padding: 1rem;
     border-radius: .5rem .5rem 0 0;
 }
 
@@ -260,7 +273,7 @@ body {
     position: relative;
     display: flex;
     height: 100%;
-    border-radius: 0 0 .5rem .5rem;
+    border-radius: 0 .5rem .5rem .5rem;
     background-color: var(--foreground-color);
     box-shadow: 0 1rem 2rem var(--shadow-color);
 }
@@ -268,9 +281,6 @@ body {
 .panel {
     position: absolute;
     visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
     width: 100%;
     height: 100%;
     padding: 2rem;
@@ -281,39 +291,23 @@ body {
     height: 5rem;
     border-radius: .5rem;
     background-color: var(--midground-color);
-    display: flex;
     padding: 1rem;
-    gap: 1rem;
-}
-
-.main-attribute-container {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    gap: .5rem;
-}
-
-.main-attribute-text-container {
-    display: flex;
-    justify-content: space-between;
 }
 
 .bar {
-    background-color: turquoise;
     width: 100%;
     height: .5rem;
     border-radius: .25rem;
 }
 
 .gallery {
+    display: grid;
     width: 100%;
     height: 100%;
     gap: .5rem;
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
 }
 
-.divider {
+.panel-divider {
     grid-row: 1 / 11; 
     grid-column: 5 / 6; 
     background-color: var(--mid-color); 
@@ -325,20 +319,6 @@ body {
     width: 100%;
     height: .1rem; 
     background-color: var(--mid-color); 
-}
-
-
-.attribute-text {
-    color: var(--text-midground-color);
-    font-size: .75rem;
-}
-
-.profile-element-container {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    grid-column-start: 3;
-    grid-column-end: 6;
 }
 
 .profile-icon {
@@ -386,22 +366,14 @@ body {
     flex-direction: column;
 }
 
-.gallery-buttons-container {
-    display: flex;
-    width: 100%;
-    margin-top: 1rem;
-    justify-content: center;
-    gap: 1rem;
-}
-
 .gallery-button {
     background: none;
     border: none;
 }
 
 .page-number {
-    width: 2rem;
     text-align: center;
+    width: 2rem;
     margin: auto 1rem;
 }
 
@@ -416,8 +388,7 @@ body {
 
 .item .tooltip {
     visibility: hidden;
-    background-color: var(--accent-color);
-    color: var(--contrast-color);
+    background-color: var(--foreground-color);
     text-align: center;
     border-radius: .25rem;
     position: absolute;
@@ -436,20 +407,19 @@ body {
     visibility: visible;
   }
 
-  .msq-container {
+.msq-container {
     display: flex; 
     flex-direction: column; 
     gap: 3rem; 
     width: 35%;
-    align-self: flex-start;
-  }
+}
 
-  .msq-content-container {
+.msq-content-container {
     display: flex; 
     width: 100%; 
     height: 60rem; 
     gap: 1rem 3rem;
-  }
+}
 
 .msq-bar-container {
     position: relative;
@@ -459,16 +429,16 @@ body {
     background-color: var(--foreground-color); 
     border-radius: .5rem; 
     box-shadow: 0 0 1rem var(--shadow-color);
-  }
+}
 
-.msq-bar {
+  .msq-bar {
     position: absolute;   
     width: 100%;
     background-color: var(--msq-color);
     border-radius: .5rem; 
-  }
+}
 
-  .msq-bar-point {
+.msq-bar-point {
     position: absolute;
     height: 2rem;
     width: 2rem;
@@ -476,7 +446,7 @@ body {
     background-color: var(--msq-color);
     left: -.5rem;
     box-shadow: 0 0 1rem var(--shadow-color);
-  }
+}
 
 .msq-list {
     display: flex; 
@@ -505,9 +475,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 25%;
     bottom: 0;
     height: 10rem;
+    width: var(--global-width);
+    margin: 0 auto;
     background-color: var(--midground-color);
 }
 
@@ -520,10 +491,18 @@ body {
 .footer-text {
     font-size: .75rem;
     color: var(--text-background-color);
+    user-select: none;
 }
 
 .social-link {
     color: var(--text-midground-color);
+}
+
+.divider {
+    width: 100%;
+    height: .2rem; 
+    border-radius: .1rem; 
+    background-color: var(--foreground-color);
 }
 
 

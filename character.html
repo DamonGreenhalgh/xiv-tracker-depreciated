@@ -11,27 +11,33 @@
     </head>
     <body>
 
+        <!-- Navbar -->
         <div class="navbar">
-            <a href="index.html"><img src="img/home-logo.png" class="home-icon"></a>
+            <a href="index.html"><img src="img/home-logo.png" style="width: 2rem;"></a>
         </div>
 
-        <div class="container">
+        <div class="main">
 
-
-            <div id="character-banner" class="character-banner-container">
-                <img id="character-avater" class="character-banner-avater">
-                <div class="character-banner-text-container">
-                    <a id="prefix-name"></a>
-                    <a id="character-name" class="character-name"></a>
-                    <a id="suffix-name"></a>
+            <!-- Character Header -->
+            <div class="flex-row wrap" style="padding-top: 4rem;">
+                <img id="character-avater" class="rounded">
+                <div class="flex-column center" style="gap: .5rem">
+                    <a id="prefix-name" class="sub-text"></a>
+                    <a id="character-name" class="main-text"></a>
+                    <a id="suffix-name" class="sub-text"></a>
                 </div>
-                <a id="server-name" class="server-name"></a>
+                <div class="divider"></div>
             </div>
 
-            <div class="character-container">
 
-                <div id="active-job" class="active-job-container">
-                    <div class="item-container">
+            <!-- Character Content -->
+            <div class="flex-row" style="height: 35rem;">
+
+                <!-- Active Job Display and Equipment -->
+                <div id="active-job" class="flex-row no-gap half-width">
+
+                    <!-- Left Equipment Column -->
+                    <div class="flex-column" style="padding: 1rem;">
                         <div id="MainHand" class="item"></div>
                         <div id="Head" class="item"></div>
                         <div id="Body" class="item"></div>
@@ -40,12 +46,14 @@
                         <div id="Feet" class="item"></div>
                     </div>
 
-                    <div id="character-portrait" class="character-portrait">
+                    <!-- Active Job Portrait -->
+                    <div id="character-portrait" class="active-job-portrait">
                         <img id="active-job-icon" class="active-job-icon">
                         <p id="active-job-level" class="active-job-level"></p>
                     </div>
 
-                    <div class="item-container">
+                    <!-- Right Equipment Column -->
+                    <div class="flex-column" style="padding: 1rem;">
                         <div id="OffHand" class="item"></div>
                         <div id="Earrings" class="item"></div>
                         <div id="Necklace" class="item"></div>
@@ -56,10 +64,11 @@
                     </div>
                 </div>
 
-                <div class="content-container">
+                <!-- Character Panel -->
+                <div class="flex-column no-gap half-width" style="font-size: .8rem;">
 
-
-                    <div class="tab">
+                    <!-- Tab Buttons -->
+                    <div class="flex-row half-gap">
                         <button id="attributes-tab-button" class="tab-button">Stats</button>
                         <button id="profile-tab-button" class="tab-button">Profile</button>
                         <button id="job-tab-button" class="tab-button">Jobs</button>
@@ -69,34 +78,45 @@
 
                     <div id="content" class="panel-container">
 
-                        <div id="attributes-panel" class="panel">
-                            <div class="hp-mp-container">
-                                <div class="main-attribute-container">
-                                    <div class="main-attribute-text-container">
+                        <!-- Attributes -->
+                        <div id="attributes-panel" class="panel flex-column">
+
+                            <div class="hp-mp-container flex-row">
+
+                                <!-- HP -->
+                                <div class="flex-column half-gap half-width">
+                                    <div class="flex-row" style="justify-content: space-between;">
                                         <p class="secondary-text">HP</p>
                                         <p id="hp">-</p>
                                     </div>
                                     <div class="bar" style="background-color: var(--health-color);"></div>
                                 </div>
-                                <div class="main-attribute-container">
-                                    <div class="main-attribute-text-container">
+
+                                <!-- MP -->
+                                <div class="flex-column half-gap half-width">
+                                    <div class="flex-row" style="justify-content: space-between;">
                                         <p class="secondary-text">MP</p>
                                         <p id="mp">-</p>
                                     </div>
                                     <div class="bar" style="background-color: var(--mana-color)"></div>                                  
                                 </div>
-                            </div>
-                            <div id="attributes" class="gallery">
-                                <div class="divider"></div>
-                            </div>
-                        </div>
 
-                        <div id="profile-panel" class="panel">
+                            </div>
+
+                            <!-- Attributes Grid -->
+                            <div id="attributes" class="gallery" style="grid-template-columns: repeat(9, 1fr);">
+                                <div class="panel-divider"></div>
+                            </div>
+
+                        </div>
+                        
+                        <!-- Profile -->
+                        <div id="profile-panel" class="panel flex-column">
 
                             <div class="gallery" style="grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(6, 1fr);">
                             
                                 <p class="secondary-text">Free Company</p>
-                                <div class="profile-element-container">
+                                <div class="flex-column half-gap" style="grid-column-start: 3; grid-column-end: 6;">
                                     <p id="free-company-name">-</p>
                                     <div style="position: relative;">
                                         <div id="free-company-crest-1" class="profile-icon" style="position: absolute;"></div>
@@ -106,25 +126,25 @@
                                 </div>
 
                                 <p class="secondary-text">Grand Company</p>
-                                <div class="profile-element-container">
+                                <div class="flex-column half-gap" style="grid-column-start: 3; grid-column-end: 6;">
                                     <p id="grand-company-name">-</p>
                                     <div id="grand-company-icon" class="profile-icon"></div>
                                 </div>
 
                                 <p class="secondary-text">Race / Clan / Gender</p>
-                                <div class="profile-element-container">
+                                <div class="flex-column half-gap" style="grid-column-start: 3; grid-column-end: 6;">
                                     <p id="race-clan">-</p>
                                     <div id="gender" class="profile-icon"></div>
                                 </div>
 
                                 <p class="secondary-text">City State</p>
-                                <p id="city-state" class="profile-element-container">-</p>
+                                <p id="city-state" class="flex-column half-gap" style="grid-column-start: 3; grid-column-end: 6;">-</p>
 
                                 <p class="secondary-text">Name Day</p>
-                                <p id="name-day" class="profile-element-container">-</p>
+                                <p id="name-day" class="flex-column half-gap" style="grid-column-start: 3; grid-column-end: 6;">-</p>
 
                                 <p class="secondary-text">Guardian Diety</p>
-                                <div class="profile-element-container">
+                                <div class="flex-column half-gap" style="grid-column-start: 3; grid-column-end: 6;">
                                     <p id="guardian-name">-</p>
                                     <div id="guardian-icon" class="profile-icon"></div>
                                 </div>
@@ -132,7 +152,8 @@
 
                         </div>
 
-                        <div id="job-panel" class="panel">
+                        <!-- Jobs -->
+                        <div id="job-panel" class="panel flex-column" style="font-size: 1rem;">
                             <div>
                                 <p style="color: var(--experience-color); margin-bottom: .5rem;">Disciple of War / Magic</p>
                                 <div class="horizontal-divider"></div>
@@ -141,16 +162,17 @@
                             <div id="war-magic-jobs" class="gallery" style="grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(3, 4rem);"></div>
 
                             <div>
-                                <p style="color: var(--text-foreground-color); margin-bottom: .5rem;">Disciple of Hand / Land</p>
+                                <p style="margin-bottom: .5rem;">Disciple of Hand / Land</p>
                                 <div class="horizontal-divider" style="height: .15rem;"></div>
                             </div>
                             <div id="hand-land-jobs" class="gallery" style="grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(2, 4rem);"></div>
 
                         </div>
 
-                        <div id="mounts-panel" class="panel">
-                            <div id="mount-gallery" class="gallery" style="grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(7, 1fr);"></div>
-                            <div class="gallery-buttons-container">
+                        <!-- Mount -->
+                        <div id="mounts-panel" class="panel flex-column">
+                            <div id="mount-gallery" class="gallery" style="grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(6, 1fr);"></div>
+                            <div class="flex-row center max-width" style="margin-top: 1rem;">
                                 <button id="mount-prev-page-button" class="gallery-button"><img src="img/arrow/left.png" style="width: 1.5rem;"></button>
                                 <label id="mount-page-number-label" class="page-number">1</label>
                                 <button id="mount-next-page-button" class="gallery-button"><img src="img/arrow/right.png" style="width: 1.5rem;"></button>
@@ -158,9 +180,10 @@
                            
                         </div>
 
+                        <!-- Minions -->
                         <div id="minions-panel" class="panel">
-                            <div id="minion-gallery" class="gallery" style="grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(7, 1fr);"></div>
-                            <div class="gallery-buttons-container">
+                            <div id="minion-gallery" class="gallery" style="grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(6, 1fr);"></div>
+                            <div class="flex-row center max-width" style="margin-top: 1rem;">
                                 <button id="minion-prev-page-button" class="gallery-button"><img src="img/arrow/left.png" style="width: 1.5rem;"></button>
                                 <label id="minion-page-number-label" class="page-number">1</label>
                                 <button id="minion-next-page-button" class="gallery-button"><img src="img/arrow/right.png" style="width: 1.5rem;"></button>
@@ -171,56 +194,96 @@
                 
             </div>
 
-            <h1>Quests</h1>
+            <!-- Collection Header-->
+            <!-- <div style="width: 100%;">
+                <h1 class="main-text" style="text-align: center; margin-bottom: 1rem;">Collection</h1>
+                <div class="divider"></div>
+            </div> -->
 
-            <div class="msq-container">
-
-                <div style="display: flex;">
-                    <img src="img/msq-logo.png" style="width: 3rem; height: 3.25rem;">
-                    <P style="margin: auto 3rem; font-size: 1.5rem; font-weight: bold; color: var(--contrast-color)">Main Scenario</P>
+            <!-- Collection Content -->
+            <!-- <div style="display: flex; flex-direction: column; height: 30rem; width: 100%;">
+                <div class="tab">
+                    <button class="tab-button">Mounts</button>
+                    <button class="tab-button">Minions</button>
                 </div>
-                
-                <div class="msq-content-container">
+                <div class="panel-container"></div>
+            </div> -->
 
-                    <div class="msq-bar-container">
-                        <div id="msq-bar" class="msq-bar"></div>
-                        <div id="msq-bar-point" class="msq-bar-point"></div>
+            <!-- Quests Header-->
+            <div style="width: 100%;">
+                <h1 style="text-align: center; margin-bottom: 1rem;">Quests</h1>
+                <div class="divider"></div>
+            </div>
+
+            <!-- Quests Content -->
+            <div id="quests" class="flex-row" style="height: 60rem; filter: blur(5px);">
+
+                <!-- Main Scenario Quests -->
+                <div class="msq-container">
+                    <div style="display: flex;">
+                        <img src="img/msq-logo.png" style="width: 3rem; height: 3.25rem;">
+                        <P style="margin: auto 3rem; font-size: 1.5rem; font-weight: bold; color: var(--contrast-color)">Main Scenario</P>
                     </div>
+                    
+                    <div class="msq-content-container">
+    
+                        <div class="msq-bar-container">
+                            <div id="msq-bar" class="msq-bar"></div>
+                            <div id="msq-bar-point" class="msq-bar-point"></div>
+                        </div>
+    
+                        <ol id="msq-list" class="msq-list">
+                            <li class="quest-text" style="margin-top: 0;">A Realm Reborn</li>
+                            <li>A Realm Awoken</li>
+                            <li>Through the Maelstrom</li>
+                            <li>Defenders of Eorzea</li>
+                            <li>Dreams of Ice</li>
+                            <li>Before the Fall</li>
+                            <li class="quest-text">Heavensward</li>
+                            <li>As Goes Light, So Goes Darkness</li>
+                            <li>The Gears of Change</li>
+                            <li>Revenge of the Horde</li>
+                            <li>Soul Surrender</li>
+                            <li>The Far Edge of Fate</li>
+                            <li class="quest-text">Stormblood</li>
+                            <li>The Legend Returns</li>
+                            <li>Rise of a New Sun</li>
+                            <li>Under the Moonlight</li>
+                            <li>Prelude in Violet</li>
+                            <li>A Requiem for Heroes</li>
+                            <li class="quest-text">Shadowbringers</li>
+                            <li>Vows of Virtue, Deeds of Cruelty</li>
+                            <li>Echos of a Fallen Star</li>
+                            <li>Reflections in Crystal</li>
+                            <li>Futures Rewritten</li>
+                            <li>Death Unto Dawn</li>
+                            <li class="quest-text" style="margin-bottom: 0;">Endwalker</li>
+                        </ol>
+                    </div>
+                </div>
 
-                    <ol id="msq-list" class="msq-list">
-                        <li class="quest-text" style="margin-top: 0;">A Realm Reborn</li>
-                        <li>A Realm Awoken</li>
-                        <li>Through the Maelstrom</li>
-                        <li>Defenders of Eorzea</li>
-                        <li>Dreams of Ice</li>
-                        <li>Before the Fall</li>
-                        <li class="quest-text">Heavensward</li>
-                        <li>As Goes Light, So Goes Darkness</li>
-                        <li>The Gears of Change</li>
-                        <li>Revenge of the Horde</li>
-                        <li>Soul Surrender</li>
-                        <li>The Far Edge of Fate</li>
-                        <li class="quest-text">Stormblood</li>
-                        <li>The Legend Returns</li>
-                        <li>Rise of a New Sun</li>
-                        <li>Under the Moonlight</li>
-                        <li>Prelude in Violet</li>
-                        <li>A Requiem for Heroes</li>
-                        <li class="quest-text">Shadowbringers</li>
-                        <li>Vows of Virtue, Deeds of Cruelty</li>
-                        <li>Echos of a Fallen Star</li>
-                        <li>Reflections in Crystal</li>
-                        <li>Futures Rewritten</li>
-                        <li>Death Unto Dawn</li>
-                        <li class="quest-text" style="margin-bottom: 0;">Endwalker</li>
-                    </ol>
+                <div style="display: flex; width: 65%; flex-direction: column; gap: 3rem;">
+                
+                    <!-- Encounters -->
+                    <div style="height: 70%; background-color: var(--foreground-color); border-radius: .5rem;"></div>
 
+                    <!-- Relic -->
+                    <div style="height: 30%; background-color: var(--foreground-color); border-radius: .5rem;"></div>
+                
                 </div>
             </div>
 
+
+            <!-- Stats Header -->
+            <!-- <div style="width: 100%;">
+                <h1 style="text-align: center; margin-bottom: 1rem;">Stats</h1>
+                <div class="divider"></div>
+            </div> -->
+    
             
         </div>
 
+        <!-- Footer -->
         <div id="footer" class="footer-wrapper">
             <div class="footer">
                 <div class="footer-text-container">
