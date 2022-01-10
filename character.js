@@ -7,6 +7,14 @@ async function main() {
 
     document.title = characterName + " | XIV Tracker";
 
+    // Load server json file
+    let serverData;
+    fetch("data.json")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => serverData = data);
+
     const tabId = ['attributes', 'profile', 'job', 'mounts', 'minions'];
     let currentTabIndex;
 
@@ -47,7 +55,6 @@ async function main() {
     // Request character data from XIVAPI.
     let data = await requestData("character/" + characterId);
     let characterData = data.Character;
-    console.log(characterData);
     const jobAbreviation = (await requestData("ClassJob/" + characterData.ActiveClassJob.ClassID)).Abbreviation
     
     // Display data to the user.
@@ -122,9 +129,7 @@ async function main() {
             tooltipDiv.innerText = equipmentData.Name;
             document.getElementById(itemType[i]).append(tooltipDiv);
 
-        } catch(error) {
-            console.log(itemType[i] + " does not exist.");
-        }
+        } catch(error) { }
     }
 
 
@@ -155,18 +160,14 @@ async function main() {
         document.getElementById('free-company-crest-2').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[1] + "')";
         document.getElementById('free-company-crest-3').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[2] + "')";
 
-    } else {
-        console.log("Character is not associated with any Free Company!");
     }
-    
+
     // Load Grand Company Information
     if (characterData.GrandCompany) {
 
         document.getElementById('grand-company-name').innerText = grandCompanyTypes[characterData.GrandCompany.NameID-1];
         document.getElementById('grand-company-icon').style.backgroundImage = "url('https://xivapi.com/img-misc/gc/character_gc_" + characterData.GrandCompany.NameID + "_" + characterData.GrandCompany.RankID + ".png')";
 
-    } else {
-        console.log("Character is not associated with any Grand Company!");
     }
 
     // Guardian Deity Data
@@ -243,17 +244,11 @@ async function main() {
         // Check if data has been stored loacally.
         if (storedData[characterId] != null) {
 
-            console.log("Mount and minion data is locally stored, retrieving.")
-
             // Data is locally stored, retrieve.
             minionData = storedData[characterId].Minions;
             mountData = storedData[characterId].Mounts;
-
-        } else {
-
-            console.log("Character does not have any mounts/minions.")
         }
-    
+
     } else {
 
         minionData = data.Minions;
@@ -262,8 +257,6 @@ async function main() {
         // If data is valid, store into local storage.
         storedData[characterId] = {"Minions": minionData, "Mounts": mountData};
         localStorage.setItem("storedData", JSON.stringify(storedData));
-
-        console.log("Mounts and minions have been stored!")
     } 
 
 
@@ -308,12 +301,12 @@ async function main() {
         });
     }
 
-    // Main Scenario Quests
-    // This array holds the achievement id of msq.
-    const achievementReference = [788,  0, 0, 1001, 1029, 1129,  1139,  1387, 1493, 1594, 1630, 1691,  1794,  0, 0, 2098, 2124, 2233,  2298,  2424, 2587, 2642, 2714, 2851,  2958];
-    const achievementData = (await requestData("character/" + characterId + "?data=AC")).Achievements;
 
-    console.log(achievementData);
+
+    // Quests
+    // ------
+    const msqAchievementsId = Object.values(serverData.msq);
+    const achievementData = (await requestData("character/" + characterId + "?data=AC")).Achievements;
 
     // Check if character has achievements public.
     if (achievementData.List.length !== 0) {
@@ -324,13 +317,13 @@ async function main() {
         for (let i = 0; i < achievementData.List.length; i++) {
             
             let achievementID = achievementData.List[i].ID
-            if(achievementReference.includes(achievementID) && achievementID > maxAchievement) {
+            if(msqAchievementsId.includes(achievementID) && achievementID > maxAchievement) {
                 maxAchievement = achievementID;
             }
         }
 
         // Compute the height required to meet current quest.
-        const maxIndex = achievementReference.indexOf(maxAchievement);
+        const maxIndex = msqAchievementsId.indexOf(maxAchievement);
         const msqListChildren = document.getElementById('msq-list').childNodes;
         const currentQuest = msqListChildren[1 + 2*maxIndex];
         const msqProgressBarHeight = currentQuest.getBoundingClientRect().y - document.getElementById('msq-list').getBoundingClientRect().y;
@@ -341,22 +334,9 @@ async function main() {
         document.getElementById('quests').style.filter = "none";     
 
         // Strike through all completed main scenario quests.
-        console.log(maxIndex);
         for (let i = 1; i < maxIndex*2; i = i + 2) {
             msqListChildren[i].style.textDecoration = "line-through";
         }
-
-
-
-        // Raids
-        // Bahamut, Alexander, Omega, Eden
-        const raidAchievementReference = [1040, 1639, 2024, 2719]
-
-        // Trials
-
-  
-    } else {
-        console.log("Character has public achievements disabled!")
     }
 }
 
@@ -367,7 +347,6 @@ async function requestData(content) {
 
     return data;
 }
-
 
 // Function to display current page for mounts and minions.
 function displayPage(pageCapacity, pageNumber, pageType, content, labelName) {

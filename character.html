@@ -29,7 +29,7 @@
                     <a id="suffix-name" class="sub-text"></a>
                 </div>
 
-                <div class="divider"></div>
+                <div class="divider divider--horizontal"></div>
             </div>
 
 
@@ -163,14 +163,14 @@
 
                             <div>
                                 <p class="job__header-text job__header-text--yellow">Disciple of War / Magic</p>
-                                <div class="divider--panel"></div>
+                                <div class="divider divider--panel"></div>
                             </div>
                             
                             <div class="gallery gallery--job"id="war-magic-jobs"></div>
 
                             <div>
                                 <p class="job__header-text">Disciple of Hand / Land</p>
-                                <div class="divider--panel" style="height: .15rem;"></div>
+                                <div class="divider divider--panel" style="height: .15rem;"></div>
                             </div>
                             <div class="gallery gallery--job" id="hand-land-jobs"></div>
 
@@ -207,37 +207,35 @@
             </div>
 
             <!-- Collection Header-->
-            <!-- <div style="width: 100%;">
-                <h1 class="main-text" style="text-align: center; margin-bottom: 1rem;">Collection</h1>
-                <div class="divider"></div>
-            </div> -->
+            <div style="width: 100%;">
+                <h1>Collection</h1>
+                <div class="divider divider--horizontal"></div>
+            </div>
 
             <!-- Collection Content -->
-            <!-- <div style="display: flex; flex-direction: column; height: 30rem; width: 100%;">
+            <div style="display: flex; flex-direction: column; height: 30rem; width: 100%;">
                 <div class="tab">
                     <button class="tab-button">Mounts</button>
                     <button class="tab-button">Minions</button>
                 </div>
                 <div class="panel-container"></div>
-            </div> -->
+            </div>
 
             <!-- Quests Header-->
             <div style="width: 100%;">
                 <h1>Quests</h1>
-                <div class="divider"></div>
+                <div class="divider divider--horizontal"></div>
             </div>
 
             <!-- Quests Content -->
             <div id="quests" class="quests">
 
                 <!-- Main Scenario Quests -->
-                <div class="msq">
+                <div class="quests-column quest-column--msq">
 
-                    <div class="msq__header">
-
-                        <img class="msq__logo" src="img/msq-logo.png">
-                        <P class="msq__text">Main Scenario</P>
-
+                    <div class="quests__header">
+                        <img class="quests__logo quests__logo--msq" src="img/msq-logo.png">
+                        <h2>Main Scenario</h2>
                     </div>
                     
                     <div class="msq__content">
@@ -247,7 +245,7 @@
                             <div class="progress-bar__point" id="msq-bar-point"></div>
                         </div>
     
-                        <ol class="msq__list" id="msq-list">
+                        <ol class="list list--msq" id="msq-list">
                             <li class="quest-text" style="margin-top: 0;">A Realm Reborn</li>
                             <li>A Realm Awoken</li>
                             <li>Through the Maelstrom</li>
@@ -274,24 +272,123 @@
                             <li>Death Unto Dawn</li>
                             <li class="quest-text" style="margin-bottom: 0;">Endwalker</li>
                         </ol>
-                    
                     </div>
-                    
-
                 </div>
 
-                <div style="display: flex; width: 65%; flex-direction: column; gap: 3rem;">
+                <div class="divider divider--vertical"></div>
                 
-                    <!-- Encounters -->
-                    <div style="height: 70%; background-color: var(--foreground-color); border-radius: .5rem;">
+                <!-- Raids and High End Duties-->
+                <div class="quests-column">
+                    
+                    <!-- Raids -->
+                    <div class="quests__header">
+                        <img src="img/raids-icon.png" class="quests__logo">
+                        <h2>Raids</h2>
                     </div>
 
-                    <!-- Relic -->
-                    <div style="height: 30%; background-color: var(--foreground-color); border-radius: .5rem;"></div>
-                
+                    <h3 style="margin-top: 1rem;">Normal</h3>
+                    <ol class="list">
+                        <l1>Bahamut</l1>
+                        <li>Alexander</li>
+                        <li>Omega</li>
+                        <li>Eden</li>
+                        <li>Pandæmonium</li>
+                    </ol>
+
+                    <h3>Alliance</h3>
+                    <ol class="list">
+                        <li>Crystal Tower</li>
+                        <li>Shadow of Mhach</li>
+                        <li>Return to Ivalice</li>
+                        <li>YoRHa: Dark Apocalypse</li>
+                    </ol>
+
+                    <!-- High End Duty -->
+                    <div class="quests__header">
+                        <img src="img/high-end-duty-icon.png" class="quests__logo">
+                        <h2>High End Duties</h2>
+                    </div>
+                    
+                    <h3>Savage</h3>
+                    <ol class="list">
+                        <l1>Bahamut</l1>
+                        <li>Alexander</li>
+                        <li>Omega</li>
+                        <li>Eden</li>
+                    </ol>
+
+                    <h3>Ultimate</h3>
+                    <ol class="list">
+                        <li>The Unending Coils of Bahamut</li>
+                        <li>The Weapon's Refrain</li>
+                        <li>The Epic of Alexander</li>
+                    </ol>
+                </div>
+
+                <div class="divider divider--vertical"></div>
+
+                <!-- Trials -->
+                <div class="quests-column">
+                    
+                    <div class="quests__header">
+                        <img src="img/trial-icon.png" style="width: 3rem;">
+                        <h2>Trials</h2>
+                    </div>
+                    
+                    <h3>A Realm Reborn</h3>
+                    <ol class="list">
+                        <li>The Howling Eye</li>
+                        <li>The Bowl of Embers</li>
+                        <li>The Navel</li>
+                        <li>Thornmarch</li>
+                        <li>The Whorleater</li>
+                        <li>The Striking Tree</li>
+                        <li>Akh Afah Amphitheatre</li>
+                        <li>Urth's Fount</li>
+                    </ol>
+                    
+                    <h3>Heavensward</h3>
+                    <ol class="list">
+                        <li>The Limitless Blue</li>
+                        <li>Thok ask Thok</li>
+                        <li>Thordan's Reign</li>
+                        <li>Nidhogg's Rage</li>
+                        <li>Containment Bay S1T7</li>
+                        <li>Containment Bay P1T6</li>
+                        <li>Containment Bay Z1T9</li>
+                    </ol>
+
+                    <h3>Stormblood</h3>
+                    <ol class="list">
+                        <li>The Pool of Tribute</li>
+                        <li>Emanation</li>
+                        <li>Shinryu's Domain</li>
+                        <li>Tsukuyomi's Pain</li>
+                        <li>The Jade Stoa</li>
+                        <li>The Great Hunt</li>
+                        <li>Hell's Kier</li>
+                        <li>The Wreath of Snakes</li>
+                    </ol>
+
+                    <h3>Shadowbringers</h3>
+                    <ol class="list">
+                        <li>The Dancing Plague</li>
+                        <li>The Crown of the Immaculate</li>
+                        <li>Hade's Elegy</li>
+                        <li>The Seat of Sacrifice</li>
+                        <li>Memoria Misera</li>
+                        <li>Cinder Drift</li>
+                        <li>Castrum Marinum</li>
+                        <li>The Cloud Deck</li>
+                    </ol>
+
+                    <h3>Endwalker</h3>
+                    <ol class="list">
+                        <li>Zodiark's Fall</li>
+                        <li>Hydaelyn's Call</li>
+                    </ol>
                 </div>
             </div>
-
 
             <!-- Stats Header -->
             <!-- <div style="width: 100%;">
@@ -299,7 +396,6 @@
                 <div class="divider"></div>
             </div> -->
     
-            
         </div>
 
         <!-- Footer -->
@@ -313,9 +409,5 @@
             </div>
         </div>
         
-
-        
-
-
     </body>
 </html>

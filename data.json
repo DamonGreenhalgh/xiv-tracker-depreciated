@@ -1,0 +1,91 @@
+{
+    "msq": {
+        "A Realm Reborn": 788,
+        "A Realm Awoken": 0,
+        "Through the Maelstrom": 0,
+        "Defenders of Eorzea": 1001,
+        "Dreams of Ice": 1029,
+        "Before the Fall": 1129,
+        "Heavensward": 1139,
+        "As Goes Light, So Goes Darkness": 1387,
+        "The Gears of Change": 1493,
+        "Revenge of the Horde": 1594,
+        "Soul Surrender": 1630,
+        "The Far Edge of Fate": 1691,
+        "Stormblood": 1794, 
+        "The Legend Returns": 0,
+        "Rise of a New Sun": 0,
+        "Under the Moonlight": 2098,
+        "Prelude in Violet": 2124,
+        "A Requiem for Heroes": 2233,
+        "Shadowbringers": 2298,
+        "Vows of Virtue, Deeds of Cruelty": 2424,
+        "Echos of a Fallen Star": 2587,
+        "Reflections in Crystal": 2642,
+        "Futures Rewritten": 2714,
+        "Death Unto Dawn": 2851,
+        "Endwalker": 2958
+    },
+    "trials": {
+        "The Howling Eye": 855,
+        "The Bowl of Embers": 856,
+        "The Navel": 857,
+        "Thornmarch": 894,
+        "The Whorleater": 893,
+        "The Striking Tree": 994,
+        "Akh Afah Amphitheatre": 1045,
+        "Urth's Fount": 1064,
+        "The Limitless Blue": 1220,
+        "Thok ask Thok": 1221,
+        "Thordan's Reign": 1400,
+        "Nidhogg's Rage": 1601,
+        "Containment Bay S1T7": 1485,
+        "Containment Bay P1T6": 1636,
+        "Containment Bay Z1T9": 1685,
+        "The Pool of Tribute": 1902,
+        "Emanation": 1901,
+        "Shinryu's Domain": 1989,
+        "Tsukuyomi's Pain": 2060,
+        "The Jade Stoa": 2023,
+        "The Great Hunt": 2109,
+        "Hell's Kier": 2117,
+        "The Wreath of Snakes": 2165,
+        "The Dancing Plague": 2385,
+        "The Crown of the Immaculate": 2386,
+        "Hade's Elegy": 2441,
+        "The Seat of Sacrifice": 2621,
+        "Memoria Misera": 2586,
+        "Cinder Drift": 2590,
+        "Castrum Marinum": 2718,
+        "The Cloud Deck": 2846,
+        "Zodiark's Fall": 2988,
+        "Hydaelyn's Call": 2989
+    },
+    "raids": {
+        "normal": {
+            "Bahamut": 1040,
+            "Alexander": 1639,
+            "Omega": 2024,
+            "Eden": 2719,
+            "Pandæmonium": 3035
+        },
+        "savage": {
+            "Bahamut": 1000,
+            "Alexander": 1642,
+            "Omega": 2027,
+            "Eden": 2722,
+            "Pandæmonium": 3038
+        },
+        "alliance": {
+            "Crystal Tower": 1068,
+            "Shadow of Mhach": 1689,
+            "Return to Ivalice": 2164,
+            "YoRHa: Dark Apocalypse": 2847
+        },
+        "ultimate": {
+            "The Unending Coils of Bahamut": 1993,
+            "The Weapon's Refrain": 2107,
+            "The Epic of Alexander": 2444
+        }
+    }
+}
