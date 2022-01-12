@@ -28,14 +28,14 @@ async function main() {
             for (let i = 0; i < tabId.length; i++) {
 
                 // Style change to indicate hidden content
-                document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "tab-button");
+                document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "button button--tab");
 
                 // Hide current content.
                 document.getElementById(tabId[i] + '-panel').style.visibility = "hidden";
             }
 
             // Style change to indicate button is selected.
-            document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "tab-button-active");
+            document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "button button--active");
 
             // Make associated content visibile
             document.getElementById(tabId[i] + '-panel').style.visibility = "visible";
@@ -46,6 +46,20 @@ async function main() {
 
     // Default tab on window open.
     document.getElementById('attributes-tab-button').click();
+
+    // Action listener for the show more button for quests.
+    let showQuestContent = false;
+    document.getElementById('show-quests').addEventListener('click', function() {
+        if (showQuestContent) {
+            document.getElementById('quests').style.height = "60.5rem";
+            document.getElementById('show-quests').innerText = "Show More";
+            showQuestContent = false;
+        } else {
+            document.getElementById('quests').style.height = "200rem";
+            document.getElementById('show-quests').innerText = "Show Less";
+            showQuestContent = true;
+        }
+    });
 
 
 
@@ -310,60 +324,92 @@ async function main() {
     // Check if character has achievements public.
     if (achievementData.length !== 0) {
 
-        // MSQ
-        const msqId = Object.values(serverData.msq);
+        // // MSQ
+        // const msqId = Object.values(serverData.msq);
 
-        let maxAchievement = 0;
+        // let maxAchievement = 0;
 
-        // Find the highest msq id achievement.
-        for (let i = 0; i < achievementData.length; i++) {
+        // // Find the highest msq id achievement.
+        // for (let i = 0; i < achievementData.length; i++) {
             
-            let achievementID = achievementData[i].ID
-            if(msqId.includes(achievementID) && achievementID > maxAchievement) {
-                maxAchievement = achievementID;
-            }
-        }
+        //     let achievementID = achievementData[i].ID
+        //     if(msqId.includes(achievementID) && achievementID > maxAchievement) {
+        //         maxAchievement = achievementID;
+        //     }
+        // }
 
-        // Compute the height required to meet current quest.
-        const maxIndex = msqId.indexOf(maxAchievement);
-        const msqListChildren = document.getElementById('msq-list').childNodes;
-        const currentQuest = msqListChildren[1 + 2*maxIndex];
-        const msqProgressBarHeight = currentQuest.getBoundingClientRect().y - document.getElementById('msq-list').getBoundingClientRect().y;
+        // // Compute the height required to meet current quest.
+        // const maxIndex = msqId.indexOf(maxAchievement);
+        // const msqListChildren = document.getElementById('msq-list').childNodes;
+        // const currentQuest = msqListChildren[1 + 2*maxIndex];
+        // const msqProgressBarHeight = currentQuest.getBoundingClientRect().y - document.getElementById('msq-list').getBoundingClientRect().y;
 
-        document.getElementById('msq-bar').style.height = (msqProgressBarHeight + currentQuest.getBoundingClientRect().height/2).toString() + "px";      
-        document.getElementById('msq-bar-point').style.top = (msqProgressBarHeight - currentQuest.getBoundingClientRect().height/2).toString() + "px";   
-        document.getElementById('quests').style.filter = "none";     
+        // document.getElementById('msq-bar').style.height = (msqProgressBarHeight + currentQuest.getBoundingClientRect().height/2).toString() + "px";      
+        // document.getElementById('msq-bar-point').style.top = (msqProgressBarHeight - currentQuest.getBoundingClientRect().height/2).toString() + "px";   
 
-        // Highlight all completed quests
-        for (let i = 1; i < maxIndex*2 + 2; i = i + 2) {
-            msqListChildren[i].style.color = "var(--completed-color)";
-            msqListChildren[i].style.color = "var(--completed-color)";
+        // // Highlight all completed quests
+        // for (let i = 1; i < maxIndex*2 + 2; i = i + 2) {
+        //     msqListChildren[i].style.color = "var(--completed-color)";
+        // }
 
-        }
+        // document.getElementById('quests').style.filter = "none";   
+
+
 
         let characterAchievements = [];
-
-
-
         // Parse data
         for (let i = 0; i < achievementData.length; i++) {
             characterAchievements.push(achievementData[i].ID);
         }
         achievementData = characterAchievements;
 
+        // MSQ Achievements
+        const msqId = Object.values(serverData.msq);
+        const msqList = document.getElementById('msq-list').getElementsByTagName('li');
+        let completedMainQuests = 0;
+        
+        for (let i = 0; i < msqId.length; i++) {
+            if (achievementData.includes(msqId[i])) {
+                msqList[i].style.color = "var(--completed-color)";
+                completedMainQuests++;
+            }
+        }
+
+
+        // Compute the height required to meet current quest.
+        const maxIndex = completedMainQuests-1;
+        const msqListChildren = document.getElementById('msq-list').childNodes;
+        const currentQuest = msqListChildren[1 + 2*maxIndex];
+        const msqProgressBarHeight = currentQuest.getBoundingClientRect().y - document.getElementById('msq-list').getBoundingClientRect().y;
+        document.getElementById('msq-bar').style.height = (msqProgressBarHeight + currentQuest.getBoundingClientRect().height/2).toString() + "px";      
+        document.getElementById('msq-bar-point').style.top = (msqProgressBarHeight - currentQuest.getBoundingClientRect().height/2).toString() + "px";   
+
 
         // Checklist
+        const dungeonId = Object.values(serverData.dungeons);
+        const trialId = Object.values(serverData.trials);
         const normalRaidId = Object.values(serverData.raids.normal);
         const allianceRaidId = Object.values(serverData.raids.alliance);
         const savageRaidId = Object.values(serverData.raids.savage);
         const ultimateRaidId = Object.values(serverData.raids.ultimate);
-        const trialId = Object.values(serverData.trials);
 
-        displayActivityCompletion(normalRaidId, 'normal-raids-list', achievementData);
-        displayActivityCompletion(allianceRaidId, 'alliance-raids-list', achievementData);
-        displayActivityCompletion(savageRaidId, 'savage-raids-list', achievementData);
-        displayActivityCompletion(ultimateRaidId, 'ultimate-raids-list', achievementData);
-        displayActivityCompletion(trialId, 'trials-list', achievementData);
+        const completedDungeons = displayActivityCompletion(dungeonId, 'dungeons', achievementData);
+        const completedTrials = displayActivityCompletion(trialId, 'trials', achievementData);
+        const completedNormalRaids = displayActivityCompletion(normalRaidId, 'normal-raids', achievementData);
+        const completedAllianceRaids = displayActivityCompletion(allianceRaidId, 'alliance-raids', achievementData);
+        const completedSavageRaids = displayActivityCompletion(savageRaidId, 'savage-raids', achievementData);
+        const completedUltimateRaids = displayActivityCompletion(ultimateRaidId, 'ultimate-raids', achievementData);
+
+        // Set percentage completion labels.
+        document.getElementById("main-scenario-completion-label").innerText = (Math.ceil(completedMainQuests / msqId.length * 100)).toString() + "%";
+        document.getElementById("dungeons-completion-label").innerText = (Math.ceil(completedDungeons / dungeonId.length * 100)).toString() + "%";
+        document.getElementById("trials-completion-label").innerText = (Math.ceil(completedTrials / trialId.length * 100)).toString() + "%";
+        document.getElementById("raids-completion-label").innerText = (Math.ceil((completedNormalRaids + completedAllianceRaids) / (normalRaidId.length + allianceRaidId.length) * 100)).toString() + "%";
+        document.getElementById("high-end-completion-label").innerText = (Math.ceil((completedSavageRaids + completedUltimateRaids) / (savageRaidId.length + ultimateRaidId.length) * 100)).toString() + "%";
+
+        // Remove blur filter when everything has been loaded.
+        document.getElementById('quests').style.filter = "none";   
+
     }
 }
 
@@ -403,9 +449,11 @@ function displayPage(pageCapacity, pageNumber, pageType, content, labelName) {
 // This function highlights and checkmarks all completed duties/quests.
 function displayActivityCompletion(id, type, achievements) {
 
-    document.getElementById(type).style.marginLeft = "0";
+    document.getElementById(type + "-list").style.marginLeft = "0";
     // Get duty/quest lists
-    const dutyList = document.getElementById(type).getElementsByTagName('li');
+    const dutyList = document.getElementById(type + "-list").getElementsByTagName('li');
+
+    let completedCount = 0;
 
     for (let i = 0; i < id.length; i++) {
 
@@ -422,6 +470,8 @@ function displayActivityCompletion(id, type, achievements) {
             duty.prepend(checkmark);
             duty.setAttribute('class', "quests-text--complete");
 
+            completedCount++;
+
         } else {
 
             // No, styling
@@ -429,10 +479,13 @@ function displayActivityCompletion(id, type, achievements) {
         }
     }
 
-    const dutyHeaders = document.getElementById(type).getElementsByTagName('h3');
+    const dutyHeaders = document.getElementById(type + "-list").getElementsByTagName('h3');
     for (let i = 0; i < dutyHeaders.length; i++) {
         dutyHeaders[i].style.marginLeft = "6rem";
     }
+
+    return completedCount;
+
 }
 
 main();

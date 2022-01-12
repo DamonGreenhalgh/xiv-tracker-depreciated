@@ -11,27 +11,48 @@
     </head>
     <body>
 
+
         <!-- Navbar -->
         <div class="navbar">
-            <a href="index.html"><img src="img/home-logo.png" style="width: 2rem;"></a>
+
+            <!-- Navigation -->
+            <div style="display: flex; gap: 2rem">
+                <a>Character</a>
+                <a>Collection</a>
+                <a>Jobs</a>
+                <a>Quests</a>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <select class="search-bar__item search-bar__item--server-list">
+                    <option>Server</option>
+                </select>
+                <input type="text" placeholder="Character Name" class="search-bar__item">   
+                <button class="search-bar__item">
+                    <img src="img/search-icon.png" style="width: 1.5rem;">
+                </button>
+            </div>
+
         </div>
 
-        <div class="main">
+
+        <div class="main" style="margin-top: 8rem;">
 
             <!-- Character Header -->
-            <div class="character-header" style="padding-top: 4rem;">
+            <div class="character-header">
 
                 <img id="character-avater" class="character-header__avatar">
 
                 <div class="character-header__text">
-                    <a id="prefix-name" class="sub-text"></a>
-                    <a id="character-name" class="main-text"></a>
-                    <a id="suffix-name" class="sub-text"></a>
+                    <p id="prefix-name" class="sub-text"></p>
+                    <p id="character-name" class="main-text"></p>
+                    <p id="suffix-name" class="sub-text"></p>
                 </div>
 
                 <div class="divider divider--horizontal"></div>
-            </div>
 
+            </div>
 
             <!-- Character Content -->
             <div class="character">
@@ -53,7 +74,7 @@
                 </div>
 
                 <!-- Right Equipment Column -->
-                <div class="character__equipment">
+                <div class="character__equipment" style="margin-right: auto;">
                     <div id="OffHand" class="item"></div>
                     <div id="Earrings" class="item"></div>
                     <div id="Necklace" class="item"></div>
@@ -68,11 +89,11 @@
 
                     <!-- Tab Buttons -->
                     <div class="character-panel__tab">
-                        <button id="attributes-tab-button" class="tab-button">Stats</button>
-                        <button id="profile-tab-button" class="tab-button">Profile</button>
-                        <button id="job-tab-button" class="tab-button">Jobs</button>
-                        <button id="mounts-tab-button" class="tab-button">Mounts</button>
-                        <button id="minions-tab-button" class="tab-button">Minions</button>
+                        <button id="attributes-tab-button" class="button button--tab">Attributes</button>
+                        <button id="profile-tab-button" class="button button--tab">Profile</button>
+                        <button id="job-tab-button" class="button button--tab">Jobs</button>
+                        <button id="mounts-tab-button" class="button button--tab">Mounts</button>
+                        <button id="minions-tab-button" class="button button--tab">Minions</button>
                     </div>
 
                     <div class="panel-container" id="content" >
@@ -186,7 +207,7 @@
                                 <label class="gallery-navigation__text" id="mount-page-number-label">1</label>
                                 <button class="gallery-navigation__button" id="mount-next-page-button"><img src="img/arrow/right.png"></button>
                             </div>
-                           
+                        
                         </div>
 
                         <!-- Minions -->
@@ -201,28 +222,30 @@
                             </div>
                             
                         </div>
+
                     </div>
                 </div>
                 
             </div>
 
             <!-- Collection Header-->
-            <div style="width: 100%;">
+            <div class="section-header">
+                <div class="divider divider--horizontal"></div>
                 <h1>Collection</h1>
                 <div class="divider divider--horizontal"></div>
             </div>
 
-            <!-- Collection Content -->
-            <div style="display: flex; flex-direction: column; height: 30rem; width: 100%;">
-                <div class="tab">
-                    <button class="tab-button">Mounts</button>
-                    <button class="tab-button">Minions</button>
-                </div>
-                <div class="panel-container"></div>
+            <!-- Jobs Header-->
+            <div class="section-header">
+                <div class="divider divider--horizontal"></div>
+                <h1>Jobs</h1>
+                <div class="divider divider--horizontal"></div>
             </div>
 
+
             <!-- Quests Header-->
-            <div style="width: 100%;">
+            <div class="section-header">
+                <div class="divider divider--horizontal"></div>
                 <h1>Quests</h1>
                 <div class="divider divider--horizontal"></div>
             </div>
@@ -231,11 +254,12 @@
             <div id="quests" class="quests">
 
                 <!-- Main Scenario Quests -->
-                <div class="quests-column quest-column--msq">
+                <div class="quests-column">
 
-                    <div class="quests__header">
-                        <img class="quests__logo quests__logo--msq" src="img/msq-logo.png">
-                        <h2>Main Scenario</h2>
+                    <div class="quests__header" style="margin-bottom: .75rem;">
+                        <img class="quests__logo" src="img/msq-logo.png">
+                        <h2>Main</h2>
+                        <h2 class="quests__completion-label" id="main-scenario-completion-label">-%</h2>
                     </div>
                     
                     <div class="quests__content">
@@ -247,7 +271,7 @@
     
                         <ol class="list list--msq" id="msq-list">
 
-                            <h3>A Realm Reborn</h3>
+                            <li class="quests-text">A Realm Reborn</li>
                             
                             <li>A Realm Awoken</li>
                             <li>Through the Maelstrom</li>
@@ -255,7 +279,7 @@
                             <li>Dreams of Ice</li>
                             <li>Before the Fall</li>
 
-                            <h3>Heavensward</h3>
+                            <li class="quests-text">Heavensward</li>
 
                             <li>As Goes Light, So Goes Darkness</li>
                             <li>The Gears of Change</li>
@@ -263,7 +287,7 @@
                             <li>Soul Surrender</li>
                             <li>The Far Edge of Fate</li>
 
-                            <h3>Stormblood</h3>
+                            <li class="quests-text">Stormblood</li>
 
                             <li>The Legend Returns</li>
                             <li>Rise of a New Sun</li>
@@ -271,7 +295,7 @@
                             <li>Prelude in Violet</li>
                             <li>A Requiem for Heroes</li>
 
-                            <h3>Shadowbringers</h3>
+                            <li class="quests-text">Shadowbringers</li>
 
                             <li>Vows of Virtue, Deeds of Cruelty</li>
                             <li>Echos of a Fallen Star</li>
@@ -279,22 +303,16 @@
                             <li>Futures Rewritten</li>
                             <li>Death Unto Dawn</li>
 
-                            <h3>Endwalker</h3>
+                            <li class="quests-text">Endwalker</li>
                         </ol>
                     </div>
-                </div>
 
-                <div class="divider divider--vertical"></div>
-                
-                <!-- Raids and High End Duties-->
-                <div class="quests-column">
-                    
                     <!-- Raids -->
                     <div class="quests__header">
                         <img src="img/raids-icon.png" class="quests__logo">
                         <h2>Raids</h2>
+                        <h2 class="quests__completion-label" id="raids-completion-label">-%</h2>
                     </div>
-
 
                     <ol class="list" id="normal-raids-list">
 
@@ -307,7 +325,6 @@
                         <li>Pandæmonium</li>
                     </ol>
 
-
                     <ol class="list" id="alliance-raids-list">
 
                         <h3>Alliance</h3>
@@ -316,34 +333,126 @@
                         <li>Shadow of Mhach</li>
                         <li>Return to Ivalice</li>
                         <li>YoRHa: Dark Apocalypse</li>
+
                     </ol>
 
-                    <!-- High End Duty -->
+                </div>
+
+                <div class="divider divider--vertical"></div>
+                
+                <!-- Dungeons -->
+                <div class="quests-column">
+
                     <div class="quests__header">
-                        <img src="img/high-end-duty-icon.png" class="quests__logo">
-                        <h2>High End Duties</h2>
+                        <img src="img/dungeons-icon.png" class="quests__logo">
+                        <h2>Dungeons</h2>
+                        <h2 class="quests__completion-label" id="dungeons-completion-label">-%</h2>
                     </div>
-                    
-                    <ol class="list" id="savage-raids-list">
 
-                        <h3>Savage</h3>
+                    <ol class="list" id="dungeons-list">
 
-                        <li>Bahamut</li>
-                        <li>Alexander</li>
-                        <li>Omega</li>
-                        <li>Eden</li>
-                        <li>Pandæmonium</li>
+                        <h3>A Realm Reborn</h3>
+
+                        <li>Sastasha</li>
+                        <li>The Tam-Tara Deepcroft</li>
+                        <li>Copperbell Mines</li>
+                        <li>Halatali</li>
+                        <li>The Thousand Maws of Toto-Rak</li>
+                        <li>Haukke Manor</li>
+                        <li>Brayflox's Longstop</li>
+                        <li>The Sunken Temple of Qarn</li>
+                        <li>Cutter's Cry</li>
+                        <li>The Stone Vigil</li>
+                        <li>Dzemael Darkhold</li>
+                        <li>The Aurum Vale</li>
+                        <li class="quests-text--hidden">Castrum Meridianum</li>
+                        <li class="quests-text--hidden">The Praetorium</li>
+                        <li class="quests-text--hidden">Snowcloak</li>
+                        <li class="quests-text--hidden">The Keeper of the Lake</li>
+                        <li>The Wanderer's Palace</li>
+                        <li>Amdapor Keep</li>
+                        <li>Pharos Sirius</li>
+                        <li>Copperbell Mines (Hard)</li>
+                        <li>Haukke Manor (Hard)</li>
+                        <li>The Lost City of Amdapor</li>
+                        <li>Halatali (Hard)</li>
+                        <li>Brayflox's Longstop (Hard)</li>
+                        <li>Hullbreaker Isle</li>
+                        <li>The Stone Vigil (Hard)</li>
+                        <li>The Tam-Tara Deepcroft (Hard)</li>
+                        <li>Sastasha (Hard)</li>
+                        <li>The Sunken Temple of Qarn (Hard)</li>
+                        <li>The Wanderer's Palace (Hard)</li>
+                        <li>Amdapor Keep (Hard)</li>
+
+                        <h3>Heavensward</h3>
+
+                        <li>The Dusk Vigil</li>
+                        <li class="quests-text--hidden">Sohm Al</li>
+                        <li class="quests-text--hidden">The Aery</li>
+                        <li class="quests-text--hidden">The Vault</li>
+                        <li class="quests-text--hidden">The Great Gubal Library</li>
+                        <li class="quests-text--hidden">The Aetherochemical Research Facility</li>
+                        <li class="quests-text--hidden">The Antitower</li>
+                        <li class="quests-text--hidden">Sohr Khai</li>
+                        <li class="quests-text--hidden">Xelphatol</li>
+                        <li class="quests-text--hidden">Baelsar's Wall</li>
+                        <li>Neverreap</li>
+                        <li>The Fractal Continuum</li>
+                        <li>Saint Mocianne's Arboretum</li>
+                        <li>Pharos Sirius (Hard)</li>
+                        <li>The Lost City of Amdapor (Hard)</li>
+                        <li>Hullbreaker Isle (Hard)</li>
+                        <li class="quests-text--hidden">The Great Gubal Library (Hard)</li>
+                        <li class="quests-text--hidden">Sohm Al (Hard)</li>
+
+                        <h3>Stormblood</h3>
+
+                        <li class="quests-text--hidden">The Sirensong Sea</li>
+                        <li class="quests-text--hidden">Shisui of the Violet Tides</li>
+                        <li class="quests-text--hidden">Bardam's Mettle</li>
+                        <li class="quests-text--hidden">Doma Castle</li>
+                        <li class="quests-text--hidden">Castrum Abania</li>
+                        <li class="quests-text--hidden">Ala Mhigo</li>
+                        <li class="quests-text--hidden">The Drowned City of Skalla</li>
+                        <li class="quests-text--hidden">The Burn</li>
+                        <li class="quests-text--hidden">The Ghimlyt Dark</li>
+                        <li>Kugane Castle</li>
+                        <li>The Temple of the Fist</li>
+                        <li>Hells' Lid</li>
+                        <li>The Fractal Continuum (Hard)</li>
+                        <li>The Swallow's Compas</li>
+                        <li>Saint Mocianne's Arboretum (Hard)</li>
+
+                        <h3>Shadowbringers</h3>
+
+                        <li class="quests-text--hidden">Holminster Switch</li>
+                        <li class="quests-text--hidden">Dohn Mheg</li>
+                        <li class="quests-text--hidden">The Qitana Ravel</li>
+                        <li class="quests-text--hidden">Malikah's Well</li>
+                        <li class="quests-text--hidden">Mt. Gulg</li>
+                        <li class="quests-text--hidden">Amaurot</li>
+                        <li class="quests-text--hidden">The Grand Cosmos</li>
+                        <li class="quests-text--hidden">Anamnesis Anyder</li>
+                        <li class="quests-text--hidden">The Heroes' Gauntlet</li>
+                        <li class="quests-text--hidden">Paglth'an</li>
+                        <li>The Twinning</li>
+                        <li>Akadaemia Anyder</li>
+                        <li>Matoya's Relict</li>
+
+                        <h3>Endwalker</h3>
+
+                        <li class="quests-text--hidden">The Tower of Zot</li>
+                        <li class="quests-text--hidden">The Tower of Babil</li>
+                        <li class="quests-text--hidden">Vanaspati</li>
+                        <li class="quests-text--hidden">Ktisis Hyperboreia</li>
+                        <li class="quests-text--hidden">The Aitiascope</li>
+                        <li class="quests-text--hidden">The Dead Ends</li>
+                        <li>Smileton</li>
+                        <li>The Stigma Dreamscape</li>
+
                     </ol>
 
-
-                    <ol class="list" id="ultimate-raids-list">
-
-                        <h3>Ultimate</h3>
-
-                        <li>The Unending Coils of Bahamut</li>
-                        <li>The Weapon's Refrain</li>
-                        <li>The Epic of Alexander</li>
-                    </ol>
                 </div>
 
                 <div class="divider divider--vertical"></div>
@@ -352,8 +461,9 @@
                 <div class="quests-column">
                     
                     <div class="quests__header">
-                        <img src="img/trial-icon.png" style="width: 3rem;">
+                        <img src="img/trial-icon.png" class="quests__logo">
                         <h2>Trials</h2>
+                        <h2 style="color: var(--completed-color); margin-left: auto;" id="trials-completion-label">-%</h2>
                     </div>
 
                     <ol class="list" id="trials-list">
@@ -406,9 +516,42 @@
                         <li class="quests-text--hidden">Zodiark's Fall</li>
                         <li class="quests-text--hidden">Hydaelyn's Call</li>
                     </ol>
+
+                    <!-- High End Duty -->
+                    <div class="quests__header">
+                        <img src="img/high-end-duty-icon.png" class="quests__logo">
+                        <h2>High End</h2>
+                        <h2 class="quests__completion-label" id="high-end-completion-label">-%</h2>
+                    </div>
+                    
+                    <ol class="list" id="savage-raids-list">
+
+                        <h3>Savage</h3>
+
+                        <li>Bahamut</li>
+                        <li>Alexander</li>
+                        <li>Omega</li>
+                        <li>Eden</li>
+                        <li>Pandæmonium</li>
+
+                    </ol>
+
+                    <ol class="list" id="ultimate-raids-list">
+
+                        <h3>Ultimate</h3>
+
+                        <li>The Unending Coils of Bahamut</li>
+                        <li>The Weapon's Refrain</li>
+                        <li>The Epic of Alexander</li>
+
+                    </ol>
+
                 </div>
+                    
             </div>
-    
+
+            <button class="button button--show-more" id="show-quests">Show More</button>
+
         </div>
 
         <!-- Footer -->
