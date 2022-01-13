@@ -69,7 +69,6 @@ async function main() {
     // Request character data from XIVAPI.
     let data = await requestData("character/" + characterId);
     let characterData = data.Character;
-    const jobAbreviation = (await requestData("ClassJob/" + characterData.ActiveClassJob.ClassID)).Abbreviation
     
     // Display data to the user.
     document.getElementById('character-name').innerText = characterName;
@@ -314,6 +313,38 @@ async function main() {
             }
         });
     }
+
+
+    // Jobs
+    // ----
+
+    let job;
+
+    const jobLevel = document.getElementsByClassName('jobs__level');
+    const jobName = document.getElementsByClassName('jobs__name');
+    const jobProgress = document.getElementsByClassName('jobs__bar--active');
+
+    for (let i = 0; i < characterData.ClassJobs.length; i++) {
+
+        job = characterData.ClassJobs[i];
+
+        jobLevel[i].innerText = job.Level;
+        jobProgress[i].style.width = (job.ExpLevel / job.ExpLevelMax * 100).toString() + "%";
+
+        if (job.Level == 90) {
+            jobLevel[i].style.color = "var(--job-max-level-color)";
+        }
+
+        if (job.Level == 0) {
+            jobLevel[i].innerText = "-";
+            jobLevel[i].style.color = "var(--text-midground-color)";
+            jobName[i].style.color = "var(--text-midground-color)";
+        }
+    }
+
+    document.getElementById('jobs').style.filter = "none";
+    
+
 
 
 
