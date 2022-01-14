@@ -340,52 +340,20 @@ async function main() {
             jobLevel[i].style.color = "var(--text-midground-color)";
             jobName[i].style.color = "var(--text-midground-color)";
         }
+
     }
 
     document.getElementById('jobs').style.filter = "none";
     
 
 
-
-
+    
     // Quests
     // ------
     let achievementData = (await requestData("character/" + characterId + "?data=AC")).Achievements.List;
 
     // Check if character has achievements public.
     if (achievementData.length !== 0) {
-
-        // // MSQ
-        // const msqId = Object.values(serverData.msq);
-
-        // let maxAchievement = 0;
-
-        // // Find the highest msq id achievement.
-        // for (let i = 0; i < achievementData.length; i++) {
-            
-        //     let achievementID = achievementData[i].ID
-        //     if(msqId.includes(achievementID) && achievementID > maxAchievement) {
-        //         maxAchievement = achievementID;
-        //     }
-        // }
-
-        // // Compute the height required to meet current quest.
-        // const maxIndex = msqId.indexOf(maxAchievement);
-        // const msqListChildren = document.getElementById('msq-list').childNodes;
-        // const currentQuest = msqListChildren[1 + 2*maxIndex];
-        // const msqProgressBarHeight = currentQuest.getBoundingClientRect().y - document.getElementById('msq-list').getBoundingClientRect().y;
-
-        // document.getElementById('msq-bar').style.height = (msqProgressBarHeight + currentQuest.getBoundingClientRect().height/2).toString() + "px";      
-        // document.getElementById('msq-bar-point').style.top = (msqProgressBarHeight - currentQuest.getBoundingClientRect().height/2).toString() + "px";   
-
-        // // Highlight all completed quests
-        // for (let i = 1; i < maxIndex*2 + 2; i = i + 2) {
-        //     msqListChildren[i].style.color = "var(--completed-color)";
-        // }
-
-        // document.getElementById('quests').style.filter = "none";   
-
-
 
         let characterAchievements = [];
         // Parse data

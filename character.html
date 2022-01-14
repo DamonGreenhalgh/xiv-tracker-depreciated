@@ -4,6 +4,7 @@
         <title>FFXIV Tracker - </title>
         <link rel="stylesheet" href="style.css"></link>
         <script src="character.js" defer></script>
+        <link rel="icon" href="img/home-logo.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&display=swap" rel="stylesheet">
@@ -16,11 +17,14 @@
         <div class="navbar">
 
             <!-- Navigation -->
-            <div style="display: flex; gap: 2rem">
-                <a href="#character-page">Character</a>
-                <a href="#jobs-page">Jobs</a>
-                <a href="#collection-page">Collection</a>
-                <a href="#quests-page">Quests</a>
+            <div style="display: flex; align-items: center; gap: 2rem">
+
+                <a href="index.html"><img src="img/home-logo.png" style="width: 3rem; margin-right: 1rem;"></a>
+
+                <a href="#character-page" class="navbar__button">Character</a>
+                <a href="#jobs-page" class="navbar__button">Jobs</a>
+                <a href="#collection-page" class="navbar__button">Collection</a>
+                <a href="#quests-page" class="navbar__button">Quests</a>
             </div>
             
             <!-- Search Bar -->
@@ -230,7 +234,7 @@
             </div>
 
             <!-- Jobs Header-->
-            <a id="jobs-page"></a>
+            <a id="jobs-page" style="padding-bottom: 3rem;"></a>
             <div class="section-header">
                 <div class="divider divider--horizontal"></div>
                 <h1>Jobs</h1>
@@ -395,7 +399,7 @@
 
                 </div>
 
-                <div class="divider divider--vertical" style="grid-area: divider;"></div>
+                <div class="divider divider--vertical" style="background-color: var(--midground-color);"></div>
 
                 <!-- Hand -->
                 <div class="jobs__column">
@@ -486,9 +490,8 @@
 
             </div>
 
-
             <!-- Collection Header-->
-            <a id="collection-page"></a>
+            <a id="collection-page" style="padding-bottom: 3rem;"></a>
             <div class="section-header">
                 <div class="divider divider--horizontal"></div>
                 <h1>Collection</h1>
@@ -496,7 +499,7 @@
             </div>
 
             <!-- Quests Header-->
-            <a id="quests-page"></a>
+            <a id="quests-page" style="padding-bottom: 3rem;"></a>
             <div class="section-header">
                 <div class="divider divider--horizontal"></div>
                 <h1>Quests</h1>

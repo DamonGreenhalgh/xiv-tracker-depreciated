@@ -1,11 +1,16 @@
 :root {
-    --experience-color: #ddc580;
+    /* --experience-color: #ddc580; */
+    /* --experience-color: #42a17a; */
+    --experience-color: #cfb671;
     --health-color: #5d9c22;
     --mana-color: #be2c9f;
     --job-max-level-color: #f09744;
-    --accent-color: #4e87f6;
+    /* --accent-color: #4e87f6; */
+    --accent-color: #585bd5;
     --msq-color: #b63333;
-    --completed-color: #33b967;
+    /* --completed-color: #33b967; */
+    --completed-color: #30bb65; 
+
 
     --shadow-color: #0c0d0f;
     --background-color:  #111214;
@@ -100,6 +105,14 @@ body {
     box-shadow: 0 0 1rem var(--shadow-color);
 }
 
+.navbar__button {
+    color: var(--text-midground-color)
+}
+
+.navbar__button:hover {
+    color: var(--text-foreground-color);
+}
+
 .search-bar {
     display: flex; 
     justify-content: center; 
@@ -128,6 +141,7 @@ body {
     background-color: var(--accent-color);
     border-radius: .5rem .25rem .25rem .5rem;
     height: 100%;
+    font-weight: bold;
 }
 
 .main {
@@ -137,6 +151,19 @@ body {
     gap: 5rem;
     margin: 5rem 0;
     width: var(--global-width);
+}
+
+.main-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-column--left {
+    width: 35%;
+}
+
+.main-column--right {
+    width: 65%;
 }
 
 .search-results-list {
@@ -210,7 +237,7 @@ body {
 .character-panel {
     display: flex;
     flex-direction: column;
-    width: 35rem;
+    width: 30rem;
 }
 
 .character-panel__tab {
@@ -534,20 +561,20 @@ body {
     gap: 1rem;
     justify-content: space-between;
     width: 100%;
-    height: 40rem;
-    padding: 0 1rem;
+    height: 45rem;
+    padding: 1rem;
     filter: blur(5px);
 }
 
 .jobs__item {
     display: grid;
-    grid-template-columns: 2rem .5rem 2rem .5rem 10rem;
+    grid-template-columns: 2rem .5rem 2rem .5rem 7rem;
     grid-template-rows: 1rem 1rem;
     grid-template-areas: 
         "icon . level . name"
         "icon . level . bar "
     ;
-    width: 15rem;
+    width: 12rem;
     align-items: center;
 }
 
@@ -581,7 +608,7 @@ body {
     width: 100%;
     height: .5rem;
     background-color: var(--foreground-color);
-    border-radius: .1rem;
+    border-radius: .25rem;
 }
 
 .jobs__bar--active {
