@@ -19,21 +19,114 @@
             <!-- Navigation -->
             <div style="display: flex; align-items: center; gap: 2rem">
 
+                <!-- Main Logo -->
                 <a href="index.html"><img src="img/home-logo.png" style="width: 3rem; margin-right: 1rem;"></a>
 
+                <!-- Nav Buttons -->
                 <a href="#character-page" class="navbar__button">Character</a>
                 <a href="#jobs-page" class="navbar__button">Jobs</a>
-                <a href="#collection-page" class="navbar__button">Collection</a>
                 <a href="#quests-page" class="navbar__button">Quests</a>
             </div>
             
             <!-- Search Bar -->
+            <script src="search.js" defer></script>
             <div class="search-bar">
-                <select class="search-bar__item search-bar__item--server-list">
+                <select id="server-list" class="search-bar__item search-bar__item--server-list interactable">
                     <option>Server</option>
+                    <option>Adamantoise</option>
+                    <option>Aegis</option>
+                    <option>Alexander</option>
+                    <option>Anima</option>
+                    <option>Asura</option>
+                    <option>Atomos</option>
+                    <option>Bahamut</option>
+                    <option>Balmung</option>
+                    <option>Behemoth</option>
+                    <option>Belias</option>
+                    <option>Brynhildr</option>
+                    <option>Cactuar</option>
+                    <option>Carbuncle</option>
+                    <option>Cerberus</option>
+                    <option>Chocobo</option>
+                    <option>Coeurl</option>
+                    <option>Diabolos</option>
+                    <option>Durandal</option>
+                    <option>Excalibur</option>
+                    <option>Exodus</option>
+                    <option>Faerie</option>
+                    <option>Famfrit</option>
+                    <option>Fenrir</option>
+                    <option>Garuda</option>
+                    <option>Gilgamesh</option>
+                    <option>Goblin</option>
+                    <option>Gungnir</option>
+                    <option>Hades</option>
+                    <option>Hyperion</option>
+                    <option>Ifrit</option>
+                    <option>Ixion</option>
+                    <option>Jenova</option>
+                    <option>Kujata</option>
+                    <option>Lamia</option>
+                    <option>Leviathan</option>
+                    <option>Lich</option>
+                    <option>Louisoix</option>
+                    <option>Malboro</option>
+                    <option>Mandragora</option>
+                    <option>Masamune</option>
+                    <option>Mateus</option>
+                    <option>Midgardsormr</option>
+                    <option>Moogle</option>
+                    <option>Odin</option>
+                    <option>Omega</option>
+                    <option>Pandaemonium</option>
+                    <option>Phoenix</option>
+                    <option>Ragnarok</option>
+                    <option>Ramuh</option>
+                    <option>Ridill</option>
+                    <option>Sargatanas</option>
+                    <option>Shinryu</option>
+                    <option>Shiva</option>
+                    <option>Siren</option>
+                    <option>Tiamat</option>
+                    <option>Titan</option>
+                    <option>Tonberry</option>
+                    <option>Typhon</option>
+                    <option>Ultima</option>
+                    <option>Ultros</option>
+                    <option>Unicorn</option>
+                    <option>Valefor</option>
+                    <option>Yojimbo</option>
+                    <option>Zalera</option>
+                    <option>Zeromus</option>
+                    <option>Zodiark</option>
+                    <option>Spriggan</option>
+                    <option>Twintania</option>
+                    <option>HongYuHai</option>
+                    <option>ShenYiZhiDi</option>
+                    <option>LaNuoXiYa</option>
+                    <option>HuanYingQunDao</option>
+                    <option>MengYaChi</option>
+                    <option>YuZhouHeYin</option>
+                    <option>WoXianXiRan</option>
+                    <option>ChenXiWangZuo</option>
+                    <option>BaiYinXiang</option>
+                    <option>BaiJinHuanXiang</option>
+                    <option>ShenQuanHen</option>
+                    <option>ChaoFengTing</option>
+                    <option>LvRenZhanQiao</option>
+                    <option>FuXiaoZhiJian</option>
+                    <option>Longchaoshendian</option>
+                    <option>MengYuBaoJing</option>
+                    <option>ZiShuiZhanQiao</option>
+                    <option>YanXia</option>
+                    <option>JingYuZhuangYuan</option>
+                    <option>MoDuNa</option>
+                    <option>HaiMaoChaWu</option>
+                    <option>RouFengHaiWan</option>
+                    <option>HuPoYuan</option>
                 </select>
-                <input type="text" placeholder="Character Name" class="search-bar__item">   
-                <button class="search-bar__item">
+                <input id="character-name-textbox" type="text" placeholder="Character Name" class="search-bar__item">   
+                <button id="search-button" class="search-bar__item interactable">
                     <img src="img/search-icon.png" style="width: 1.5rem;">
                 </button>
             </div>
@@ -44,22 +137,20 @@
 
         <div class="main" style="margin-top: 8rem;">
 
-            <!-- Character Header -->
-            <div class="character-header">
+            <!-- Header -->
+            <div class="header">
 
-                <img id="character-avater" class="character-header__avatar">
-
-                <div class="character-header__text">
-                    <p id="prefix-name" class="sub-text"></p>
-                    <p id="character-name" class="main-text"></p>
-                    <p id="suffix-name" class="sub-text"></p>
-                </div>
-
-                <div class="divider divider--horizontal"></div>
+                <img id="character-avater" class="header__avatar">
+                <p id="prefix-name" class="header__title--prefix secondary-text"></p>
+                <h1 id="character-name" class="header__name"></h1>
+                <p id="suffix-name" class="header__title--suffix secondary-text"></p>
+                <p id="character-server" class="header__server secondary-text"></p>
+                <div class=" header__divider divider divider--horizontal"></div>
 
             </div>
 
-            <!-- Character Content -->
+
+            <!-- Character -->
             <div class="character">
 
                 <!-- Left Equipment Column -->
@@ -94,11 +185,10 @@
 
                     <!-- Tab Buttons -->
                     <div class="character-panel__tab">
-                        <button id="attributes-tab-button" class="button button--tab">Attributes</button>
-                        <button id="profile-tab-button" class="button button--tab">Profile</button>
-                        <button id="job-tab-button" class="button button--tab">Jobs</button>
-                        <button id="mounts-tab-button" class="button button--tab">Mounts</button>
-                        <button id="minions-tab-button" class="button button--tab">Minions</button>
+                        <button id="attributes-tab-button" class="button button--left-corner">Attributes</button>
+                        <button id="profile-tab-button" class="button">Profile</button>
+                        <button id="mounts-tab-button" class="button">Mounts</button>
+                        <button id="minions-tab-button" class="button button--right-corner">Minions</button>
                     </div>
 
                     <div class="panel-container" id="content" >
@@ -130,7 +220,6 @@
 
                             <!-- Attributes Grid -->
                             <div class="gallery gallery--attributes" id="attributes" >
-                                <div class="attributes__divider"></div>
                             </div>
 
                         </div>
@@ -142,63 +231,39 @@
                             
                                 <!-- Free Company -->
                                 <p class="secondary-text">Free Company</p>
-                                <div class="profile__character-data">
-                                    <p id="free-company-name">-</p>
-                                    <div style="position: relative;">
-                                        <div class="profile__icon profile__icon--free-company" id="free-company-crest-1"></div>
-                                        <div class="profile__icon profile__icon--free-company" id="free-company-crest-2"></div>
-                                        <div class="profile__icon profile__icon--free-company" id="free-company-crest-3"></div>
-                                    </div>
+                                <p id="free-company-name">-</p>
+                                <div style="position: relative; align-self: flex-start; margin-top: .75rem;">
+                                    <div class="profile__icon profile__icon--free-company" id="free-company-crest-1"></div>
+                                    <div class="profile__icon profile__icon--free-company" id="free-company-crest-2"></div>
+                                    <div class="profile__icon profile__icon--free-company" id="free-company-crest-3"></div>
                                 </div>
-
+                                
                                 <!-- Grand Company -->
                                 <p class="secondary-text">Grand Company</p>
-                                <div class="profile__character-data">
-                                    <p id="grand-company-name">-</p>
-                                    <div class="profile__icon" id="grand-company-icon"></div>
-                                </div>
+                                <p id="grand-company-name">-</p>
+                                <div class="profile__icon" id="grand-company-icon"></div>
 
                                 <!-- Race / Clan / Gender -->
                                 <p class="secondary-text">Race / Clan / Gender</p>
-                                <div class="profile__character-data">
-                                    <p id="race-clan">-</p>
-                                    <div class="profile__icon" id="gender"></div>
-                                </div>
+                                <p id="race-clan">-</p>
+                                <div class="profile__icon" id="gender"></div>
 
                                 <!-- City State -->
                                 <p class="secondary-text">City State</p>
                                 <p class="profile__character-data" id="city-state">-</p>
+                                <div class="profile__icon" id="city-state-icon"></div>
 
                                 <!-- Name Day -->
                                 <p class="secondary-text">Name Day</p>
                                 <p class="profile__character-data" id="name-day">-</p>
+                                <div></div>
 
                                 <!-- Guardian Diety -->
                                 <p class="secondary-text">Guardian Diety</p>
-                                <div class="profile__character-data">
-                                    <p id="guardian-name">-</p>
-                                    <div class="profile__icon" id="guardian-icon"></div>
-                                </div>
+                                <p id="guardian-name">-</p>
+                                <div class="profile__icon" id="guardian-icon"></div>
 
                             </div>
-
-                        </div>
-
-                        <!-- Jobs -->
-                        <div class="panel" id="job-panel">
-
-                            <div>
-                                <p class="job__header-text job__header-text--yellow">Disciple of War / Magic</p>
-                                <div class="divider divider--panel"></div>
-                            </div>
-                            
-                            <div class="gallery gallery--job"id="war-magic-jobs"></div>
-
-                            <div>
-                                <p class="job__header-text">Disciple of Hand / Land</p>
-                                <div class="divider divider--panel" style="height: .15rem;"></div>
-                            </div>
-                            <div class="gallery gallery--job" id="hand-land-jobs"></div>
 
                         </div>
 
@@ -233,7 +298,7 @@
                 
             </div>
 
-            <!-- Jobs Header-->
+
             <a id="jobs-page" style="padding-bottom: 3rem;"></a>
             <div class="section-header">
                 <div class="divider divider--horizontal"></div>
@@ -241,8 +306,8 @@
                 <div class="divider divider--horizontal"></div>
             </div>
 
+            <!-- Jobs -->
             <div class="jobs" id="jobs">
-
 
                 <!-- Tanks and Healers -->
                 <div class="jobs__column">
@@ -399,7 +464,7 @@
 
                 </div>
 
-                <div class="divider divider--vertical" style="background-color: var(--midground-color);"></div>
+                <div class="divider divider--vertical"></div>
 
                 <!-- Hand -->
                 <div class="jobs__column">
@@ -490,15 +555,7 @@
 
             </div>
 
-            <!-- Collection Header-->
-            <a id="collection-page" style="padding-bottom: 3rem;"></a>
-            <div class="section-header">
-                <div class="divider divider--horizontal"></div>
-                <h1>Collection</h1>
-                <div class="divider divider--horizontal"></div>
-            </div>
 
-            <!-- Quests Header-->
             <a id="quests-page" style="padding-bottom: 3rem;"></a>
             <div class="section-header">
                 <div class="divider divider--horizontal"></div>
@@ -506,7 +563,7 @@
                 <div class="divider divider--horizontal"></div>
             </div>
 
-            <!-- Quests Content -->
+            <!-- Quests -->
             <div id="quests" class="quests" style="position: relative;">
 
                 <!-- Main Scenario Quests -->

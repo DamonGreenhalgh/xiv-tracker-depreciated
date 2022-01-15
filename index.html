@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>FFXIV Tracker</title>
+        <title>XIV Tracker</title>
         <link rel="stylesheet" href="style.css"></link>
         <script src="script.js" defer></script>
         <link rel="icon" href="img/home-logo.png">
@@ -14,23 +14,114 @@
 
         <div class="main" style="margin-bottom: 0; align-items: center;">
 
-            <img src="img/home-logo-extended.png" style="height: 10rem; margin-top: 7rem;">
+            <a href="index.html"><img src="img/home-logo-extended.png" style="height: 10rem; margin-top: 7rem;"></a>
 
             <div class="search-bar">
-                <select id="server-list" class="search-bar__item search-bar__item--server-list">
+                <select id="server-list" class="search-bar__item search-bar__item--server-list interactable">
                     <option>Server</option>
+                    <option>Adamantoise</option>
+                    <option>Aegis</option>
+                    <option>Alexander</option>
+                    <option>Anima</option>
+                    <option>Asura</option>
+                    <option>Atomos</option>
+                    <option>Bahamut</option>
+                    <option>Balmung</option>
+                    <option>Behemoth</option>
+                    <option>Belias</option>
+                    <option>Brynhildr</option>
+                    <option>Cactuar</option>
+                    <option>Carbuncle</option>
+                    <option>Cerberus</option>
+                    <option>Chocobo</option>
+                    <option>Coeurl</option>
+                    <option>Diabolos</option>
+                    <option>Durandal</option>
+                    <option>Excalibur</option>
+                    <option>Exodus</option>
+                    <option>Faerie</option>
+                    <option>Famfrit</option>
+                    <option>Fenrir</option>
+                    <option>Garuda</option>
+                    <option>Gilgamesh</option>
+                    <option>Goblin</option>
+                    <option>Gungnir</option>
+                    <option>Hades</option>
+                    <option>Hyperion</option>
+                    <option>Ifrit</option>
+                    <option>Ixion</option>
+                    <option>Jenova</option>
+                    <option>Kujata</option>
+                    <option>Lamia</option>
+                    <option>Leviathan</option>
+                    <option>Lich</option>
+                    <option>Louisoix</option>
+                    <option>Malboro</option>
+                    <option>Mandragora</option>
+                    <option>Masamune</option>
+                    <option>Mateus</option>
+                    <option>Midgardsormr</option>
+                    <option>Moogle</option>
+                    <option>Odin</option>
+                    <option>Omega</option>
+                    <option>Pandaemonium</option>
+                    <option>Phoenix</option>
+                    <option>Ragnarok</option>
+                    <option>Ramuh</option>
+                    <option>Ridill</option>
+                    <option>Sargatanas</option>
+                    <option>Shinryu</option>
+                    <option>Shiva</option>
+                    <option>Siren</option>
+                    <option>Tiamat</option>
+                    <option>Titan</option>
+                    <option>Tonberry</option>
+                    <option>Typhon</option>
+                    <option>Ultima</option>
+                    <option>Ultros</option>
+                    <option>Unicorn</option>
+                    <option>Valefor</option>
+                    <option>Yojimbo</option>
+                    <option>Zalera</option>
+                    <option>Zeromus</option>
+                    <option>Zodiark</option>
+                    <option>Spriggan</option>
+                    <option>Twintania</option>
+                    <option>HongYuHai</option>
+                    <option>ShenYiZhiDi</option>
+                    <option>LaNuoXiYa</option>
+                    <option>HuanYingQunDao</option>
+                    <option>MengYaChi</option>
+                    <option>YuZhouHeYin</option>
+                    <option>WoXianXiRan</option>
+                    <option>ChenXiWangZuo</option>
+                    <option>BaiYinXiang</option>
+                    <option>BaiJinHuanXiang</option>
+                    <option>ShenQuanHen</option>
+                    <option>ChaoFengTing</option>
+                    <option>LvRenZhanQiao</option>
+                    <option>FuXiaoZhiJian</option>
+                    <option>Longchaoshendian</option>
+                    <option>MengYuBaoJing</option>
+                    <option>ZiShuiZhanQiao</option>
+                    <option>YanXia</option>
+                    <option>JingYuZhuangYuan</option>
+                    <option>MoDuNa</option>
+                    <option>HaiMaoChaWu</option>
+                    <option>RouFengHaiWan</option>
+                    <option>HuPoYuan</option>
                 </select>
                 <input type="text" placeholder="Character Name" id="character-name-textbox" class="search-bar__item">   
-                <button id="search-button" class="search-bar__item">
+                <button id="search-button" class="search-bar__item interactable">
                     <img src="img/search-icon.png" style="width: 1.5rem;">
                 </button>
             </div>
 
             <img id="loading-icon" src="img/loading.svg" style="display: none; width: 5rem;">
     
-            <div id="search-results-list" class="search-results-list"></div>
+            <div id="search-results-list" class="search__results-list"></div>
 
-            <p id="search-status" class="sub-text" style="margin: 5rem 0;"></p>
+            <p id="search-status" class="search__status-label"></p>
 
         </div>
 

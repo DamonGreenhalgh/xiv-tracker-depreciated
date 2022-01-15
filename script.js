@@ -1,34 +1,31 @@
-// Load server choices.
-populateServerList();
 
-async function populateServerList() {
-
-    let response = await fetch("https://xivapi.com/Servers", {mode: 'cors'});
-    let data = await response.json();
-
-    const serverList = document.getElementById('server-list');
-
-    for (let i = 0; i < data.length; i++) {
-        const server = document.createElement("option");
-        server.innerText = data[i];
-        serverList.append(server);
-    }
-}
-
+// Elements
 const characterNameTextbox = document.getElementById('character-name-textbox');
 const serverList = document.getElementById('server-list');
 const searchBtn = document.getElementById('search-button');
 const searchResultLst = document.getElementById('search-results-list');
-
+const searchStatusLbl = document.getElementById('search-status');
+const loadingIcon = document.getElementById('loading-icon');
 let searchResults;
 
-// Listener on click event for the sumbit button.
+// Character page linking, if there are search parameters, search using those parameters.
+const searchParams = new URLSearchParams(window.location.search);
+const characterName = searchParams.get('name');
+const serverName = searchParams.get('server');
+
+if (characterName !== "" && characterName !== null) {
+    characterNameTextbox.value = characterName;
+    serverList.value = serverName;
+    requestCharacterSearch(characterName, serverName);
+}
+
+
+// Listener for search button on 'click'.
 searchBtn.addEventListener('click', function() {
-    searchResultLst.innerText = "";
     requestCharacterSearch(characterNameTextbox.value, serverList.value);
 });
 
-// Listener for textbox on 'Enter' key press to sumbit id.
+// Listener for textbox on 'Enter' key press.
 characterNameTextbox.addEventListener('keyup', function(event) {
     if (event.key == "Enter") {
         searchBtn.click();
@@ -37,29 +34,31 @@ characterNameTextbox.addEventListener('keyup', function(event) {
 
 characterNameTextbox.focus();
 
+
 // Fetch character data from FFXIVAPI
 async function requestCharacterSearch(name, server) {
 
-    const searchStatusLbl = document.getElementById('search-status');
-
+    // Clear previous results, and status label.
+    searchResultLst.innerText = "";
     searchStatusLbl.innerText= "";
-    document.getElementById('loading-icon').style.display = "block";
 
-    // Search character across all servers.
-    if (server == "Server") {
-        server = "";
-    }
+    // Display loading icon.
+    loadingIcon.style.display = "flex";
 
-    response = await fetch("https://xivapi.com/character/search?name=" + name + "&server=" + server, {mode: 'cors'});
-    searchResults = (await response.json()).Results;
+    // If no server selected, set to empty string
+    server = server == "Server" ? "" : server;
 
-    document.getElementById('loading-icon').style.display = "none";
+    // Request character search from xivapi.com
+    await fetch("https://xivapi.com/character/search?name=" + name + "&server=" + server, {mode: 'cors'})
+        .then(response => response.json())
+        .then(data => searchResults = data.Results);
+
+    // Hide loading icon.
+    loadingIcon.style.display = "none";
 
     // If we don't get any results, return an error message.
     if (searchResults.length == 0) {
-        searchStatusLbl.style.color = "#d43e3e";
         searchStatusLbl.innerText = "Sorry, no characters by the name of '" + name + "'.";
-        searchStatusLbl.style.cikir =  "#4d4f52";
 
     } else {
 
@@ -73,20 +72,19 @@ async function requestCharacterSearch(name, server) {
     }
 }
 
-// Creates character banners as search results.
+// Function to create a character banner
 function createCharacterBanner(character) {
 
     const characterBanner = document.createElement("div");
     const avatar = document.createElement("img");
     const textDiv = document.createElement("div")
-    const name = document.createElement("p");
+    const name = document.createElement("h1");
     const server = document.createElement("p");
     const link = document.createElement("a");
 
     name.innerText = character.Name;
     server.innerText = character.Server;
 
-    name.setAttribute('class', "character-name");
     server.setAttribute('class', "secondary-text");
 
     link.href = "character.html?id=" + character.ID + "&name=" + character.Name;

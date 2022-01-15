@@ -178,5 +178,12 @@
             "The Weapon's Refrain": 2107,
             "The Epic of Alexander": 2444
         }
+    },
+    "relic": {
+        "Zodiac": 0,
+        "Anima": 0,
+        "Eurekan": 0,
+        "Resistance": 0,
+        "Skysteel": 0
     }
 }

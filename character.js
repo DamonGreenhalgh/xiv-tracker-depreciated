@@ -15,7 +15,7 @@ async function main() {
         })
         .then(data => serverData = data);
 
-    const tabId = ['attributes', 'profile', 'job', 'mounts', 'minions'];
+    const tabId = ['attributes', 'profile', 'mounts', 'minions'];
     let currentTabIndex;
 
     // Add action listeners to each tab button so users can switch between content.
@@ -28,7 +28,7 @@ async function main() {
             for (let i = 0; i < tabId.length; i++) {
 
                 // Style change to indicate hidden content
-                document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "button button--tab");
+                document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "button");
 
                 // Hide current content.
                 document.getElementById(tabId[i] + '-panel').style.visibility = "hidden";
@@ -72,9 +72,11 @@ async function main() {
     
     // Display data to the user.
     document.getElementById('character-name').innerText = characterName;
+    document.getElementById('character-server').innerText = characterData.Server;
     document.getElementById('character-avater').setAttribute('src', characterData.Avatar);
     document.getElementById('character-portrait').style.backgroundImage = "url('" + characterData.Portrait + "')";
     document.getElementById('active-job-level').innerText = "Lv. " + characterData.ActiveClassJob.Level;
+
 
     // Load title
     let titleData = (await requestData("title/" + characterData.Title));
@@ -101,7 +103,6 @@ async function main() {
         const attributeValue = document.createElement('p');
 
         attributeName.setAttribute('class', "secondary-text");
-        attributeName.style.gridColumn = "span 3";
         attributeName.innerText = attributeNames[i];
 
         attributeValue.style.textAlign = "end";
@@ -109,14 +110,10 @@ async function main() {
 
         document.getElementById('attributes').append(attributeName);
         document.getElementById('attributes').append(attributeValue);
-
-
     }
 
     document.getElementById('hp').innerText = attributeValues[6];
     document.getElementById('mp').innerText = attributeValues[7];
-
-
 
 
 
@@ -147,7 +144,7 @@ async function main() {
 
 
 
-     // Profile Panel Information
+    // Profile Panel Information
     // ------------------------
 
     // Profile data, will be stored in JSON eventually.
@@ -156,10 +153,12 @@ async function main() {
     const raceTypes = ["Hyur", "Elezen", "Lalafell", "Miqo'te", "Roegadyn", "Au Ra", "Hrothgar", "Viera"];
     const tribeTypes = ["Midlander", "Highlander", "Wildwood", "Duskwight", "Plainsfolk", "Dunesfolk", "Seeker of the Sun", "Keeper of the Moon", "Sea Wolf", "Hellsguard", "Raen", "Xaela", "Helions", "The Lost", "Rava", "Veena"];
     const cityStateTypes = ["Limsa Lominsa", "Gridania", "Ul'dah"];
+    const cityStateIconNames = ["limsa-lominsa", "gridania", "ul-dah"];
 
     document.getElementById('race-clan').innerText = raceTypes[characterData.Race-1] + ", " + tribeTypes[characterData.Tribe-1];
     document.getElementById('gender').style.backgroundImage = "url('img/gender/" + genderTypes[characterData.Gender-1] + ".png')";
     document.getElementById('city-state').innerText = cityStateTypes[characterData.Town-1];
+    document.getElementById('city-state-icon').style.backgroundImage = "url('img/city-states/" + cityStateIconNames[characterData.Town-1] + ".png')";
     document.getElementById('name-day').innerText = characterData.Nameday;
 
     // Load Free Company Information
@@ -187,47 +186,6 @@ async function main() {
     let guardianData = await requestData("GuardianDeity/" + characterData.GuardianDeity);
     document.getElementById('guardian-icon').style.backgroundImage = "url('https://xivapi.com" + guardianData.IconHD + "')";
     document.getElementById('guardian-name').innerText = guardianData.Name;
-
-
-
-    // Jobs Panel Information
-    // ----------------------
-
-    // Populate job stats container.
-    const jobs = characterData.ClassJobs;
-
-    for(let i = 0; i < jobs.length; i++) {
-        const index = (jobs[i].Name).indexOf("/");
-        const jobName = ((jobs[i].Name).slice(index+1)).replace(/ /g, "");
-
-        const jobDiv = document.createElement("div");
-        const jobIcon = document.createElement("img");
-        const jobLbl = document.createElement("p");
-
-        jobDiv.setAttribute('class', "job-item-container");
-        jobIcon.setAttribute('src', "https://xivapi.com/cj/1/" + jobName + ".png");
-        jobIcon.setAttribute('class', "job-icon");
-        jobLbl.setAttribute('class', "job-label");
-
-        jobLbl.innerText = jobs[i].Level;
-
-        // If job is max level, change color to indicate the status.
-        if (jobLbl.innerText == "90") {
-            jobLbl.style.color = "var(--job-max-level-color)"
-        } else if (jobLbl.innerText == "0") {
-            jobLbl.innerText = "-";
-            jobLbl.style.color = "var(--text-midground-color)"
-        }
-
-        jobDiv.append(jobIcon);
-        jobDiv.append(jobLbl);
-
-        if (i < 20) {
-            document.getElementById('war-magic-jobs').append(jobDiv);
-        } else {
-            document.getElementById('hand-land-jobs').append(jobDiv);
-        }
-    }
 
 
 
@@ -275,7 +233,7 @@ async function main() {
 
     // Check to see if character has valid mount and minion data to display.
     if (mountData !== undefined && minionData !== undefined) {
-        const pageCapacity = 42;
+        const pageCapacity = 49;
         let currentMountPage = 1;
         let currentMinionPage = 1;
         const lastMountPage = Math.ceil(mountData.length / pageCapacity);
@@ -347,7 +305,7 @@ async function main() {
     
 
 
-    
+
     // Quests
     // ------
     let achievementData = (await requestData("character/" + characterId + "?data=AC")).Achievements.List;
@@ -488,3 +446,4 @@ function displayActivityCompletion(id, type, achievements) {
 }
 
 main();
+
