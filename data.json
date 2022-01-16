@@ -125,32 +125,41 @@
         "The Whorleater": 893,
         "The Striking Tree": 994,
         "Akh Afah Amphitheatre": 1045,
+        "The Chrysalis": 1067,
+        "The Steps of Faith": 1065,
+        "Battle in the Big Keep": 1066,
         "Urth's Fount": 1064,
+
         "Thok ask Thok": 1221,
         "The Limitless Blue": 1220,
         "Thordan's Reign": 1400,
-        "Nidhogg's Rage": 1601,
         "Containment Bay S1T7": 1485,
+        "Nidhogg's Rage": 1601,
         "Containment Bay P1T6": 1636,
         "Containment Bay Z1T9": 1685,
+
         "The Pool of Tribute": 1902,
         "Emanation": 1901,
         "Shinryu's Domain": 1989,
-        "Tsukuyomi's Pain": 2060,
         "The Jade Stoa": 2023,
+        "Tsukuyomi's Pain": 2060,
         "The Great Hunt": 2109,
         "Hell's Kier": 2117,
         "The Wreath of Snakes": 2165,
+        "Kugane Ohashi": 2236,
+
         "The Dancing Plague": 2385,
         "The Crown of the Immaculate": 2386,
         "Hade's Elegy": 2441,
+        "Cinder Drift": 2590,
         "The Seat of Sacrifice": 2621,
         "Memoria Misera": 2586,
-        "Cinder Drift": 2590,
         "Castrum Marinum": 2718,
         "The Cloud Deck": 2846,
+
         "Zodiark's Fall": 2988,
-        "Hydaelyn's Call": 2989
+        "Hydaelyn's Call": 2989,
+        "The Final Day": 2958
     },
     "raids": {
         "normal": {
@@ -160,18 +169,60 @@
             "Eden": 2719,
             "Pandæmonium": 3035
         },
+        "alliance": {
+            "Crystal Tower": 1068,
+            "Shadow of Mhach": 1689,
+            "Return to Ivalice": 2164,
+            "YoRHa: Dark Apocalypse": 2847
+        }
+    },
+    "highEnd": {
+        "extreme": {
+            "The Bowl of Embers": 856,
+            "The Navel": 857,
+            "The Howling Eye": 855,
+            "Thornmarch": 894,
+            "The Whorleater": 893,
+            "The Striking Tree": 994,
+            "Akh Afah Amphitheatre": 1045,
+            "Urth's Fount": 1064,
+            "Thok ask Thok": 1221,
+            "The Limitless Blue": 1220,
+            "Thordan's Reign": 1400,
+            "Nidhogg's Rage": 1601,
+            "Containment Bay S1T7": 1485,
+            "Containment Bay P1T6": 1636,
+            "Containment Bay Z1T9": 1685,
+            "The Pool of Tribute": 1902,
+            "Emanation": 1901,
+            "Shinryu's Domain": 1989,
+            "Tsukuyomi's Pain": 2060,
+            "The Jade Stoa": 2023,
+            "The Great Hunt": 2109,
+            "Hell's Kier": 2117,
+            "The Wreath of Snakes": 2165,
+            "The Dancing Plague": 2385,
+            "The Crown of the Immaculate": 2386,
+            "Hade's Elegy": 2441,
+            "The Seat of Sacrifice": 2621,
+            "Memoria Misera": 2586,
+            "Cinder Drift": 2590,
+            "Castrum Marinum": 2718,
+            "The Cloud Deck": 2846,
+            "Zodiark's Fall": 2988,
+            "Hydaelyn's Call": 2989
+        },
+        "unreal": {
+            "The Navel": 0,
+            "The Whorleater": 0,
+            "The Akh Amphitheatre": 0
+        },
         "savage": {
             "Bahamut": 1000,
             "Alexander": 1642,
             "Omega": 2027,
             "Eden": 2722,
             "Pandæmonium": 3038
-        },
-        "alliance": {
-            "Crystal Tower": 1068,
-            "Shadow of Mhach": 1689,
-            "Return to Ivalice": 2164,
-            "YoRHa: Dark Apocalypse": 2847
         },
         "ultimate": {
             "The Unending Coils of Bahamut": 1993,
@@ -180,8 +231,8 @@
         }
     },
     "relic": {
-        "Zodiac": 0,
-        "Anima": 0,
+        "Zodiac": 1081,
+        "Anima": [1708, 1720],
         "Eurekan": 0,
         "Resistance": 0,
         "Skysteel": 0
