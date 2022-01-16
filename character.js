@@ -55,7 +55,7 @@ async function main() {
             document.getElementById('show-quests').innerText = "Show More";
             showQuestContent = false;
         } else {
-            document.getElementById('quests').style.height = "200rem";
+            document.getElementById('quests').style.height = "190rem";
             document.getElementById('show-quests').innerText = "Show Less";
             showQuestContent = true;
         }
@@ -347,8 +347,8 @@ async function main() {
         const trialId = Object.values(serverData.trials);
         const normalRaidId = Object.values(serverData.raids.normal);
         const allianceRaidId = Object.values(serverData.raids.alliance);
-        const savageRaidId = Object.values(serverData.raids.savage);
-        const ultimateRaidId = Object.values(serverData.raids.ultimate);
+        const savageRaidId = Object.values(serverData.highEnd.savage);
+        const ultimateRaidId = Object.values(serverData.highEnd.ultimate);
 
         const completedDungeons = displayActivityCompletion(dungeonId, 'dungeons', achievementData);
         const completedTrials = displayActivityCompletion(trialId, 'trials', achievementData);

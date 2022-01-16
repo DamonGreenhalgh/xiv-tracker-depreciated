@@ -645,8 +645,11 @@ body {
     margin-left: 6rem;
 }
 
-.quests-text--hidden {
+.hidden {
     filter: blur(5px);
+    user-select: none;
+    pointer-events: none;
+
 }
 
 .footer-wrapper {
