@@ -75,32 +75,55 @@ async function requestCharacterSearch(name, server) {
 // Function to create a character banner
 function createCharacterBanner(character) {
 
-    const characterBanner = document.createElement("div");
-    const avatar = document.createElement("img");
-    const textDiv = document.createElement("div")
-    const name = document.createElement("h1");
-    const server = document.createElement("p");
-    const link = document.createElement("a");
+    // const characterBanner = document.createElement("div");
+    // const avatar = document.createElement("img");
+    // const textDiv = document.createElement("div")
+    // const name = document.createElement("h1");
+    // const server = document.createElement("p");
+    // const link = document.createElement("a");
+
+    // name.innerText = character.Name;
+    // server.innerText = character.Server;
+
+    // server.setAttribute('class', "secondary-text");
+
+    // link.href = "character.html?id=" + character.ID + "&name=" + character.Name;
+
+    // // Link to classes for styling.
+    // characterBanner.setAttribute('class', "character-banner-container");
+    // textDiv.setAttribute('class', "character-banner-text-container");
+    // avatar.src = character.Avatar;
+    // avatar.style.borderRadius = "100%";
+
+
+    // // Append banner components to banner, and banner to list.
+    // characterBanner.append(avatar);
+    // textDiv.append(name);
+    // textDiv.append(server);
+    // characterBanner.append(textDiv);
+    // link.append(characterBanner);
+    // searchResultLst.append(link);
+
+    const banner = document.createElement('div');
+    const avatar = document.createElement('img');
+    const name = document.createElement('h1');
+    const server = document.createElement('p');
+    const link = document.createElement('a');
 
     name.innerText = character.Name;
     server.innerText = character.Server;
 
-    server.setAttribute('class', "secondary-text");
-
     link.href = "character.html?id=" + character.ID + "&name=" + character.Name;
 
-    // Link to classes for styling.
-    characterBanner.setAttribute('class', "character-banner-container");
-    textDiv.setAttribute('class', "character-banner-text-container");
-    avatar.src = character.Avatar;
-    avatar.style.borderRadius = "100%";
+    banner.setAttribute('class', "header header--character-banner");
+    avatar.setAttribute('class', "header__avatar");
+    avatar.setAttribute('src', character.Avatar);
+    name.setAttribute('class', "header__name");
+    server.setAttribute('class', "header__server secondary-text");
 
-
-    // Append banner components to banner, and banner to list.
-    characterBanner.append(avatar);
-    textDiv.append(name);
-    textDiv.append(server);
-    characterBanner.append(textDiv);
-    link.append(characterBanner);
+    banner.append(avatar);
+    banner.append(name);
+    banner.append(server);
+    link.append(banner);
     searchResultLst.append(link);
 }
