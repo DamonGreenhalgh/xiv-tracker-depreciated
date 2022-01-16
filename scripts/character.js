@@ -6,13 +6,12 @@ async function main() {
     const characterName = searchParams.get('name');
 
     document.title = characterName + " | XIV Tracker";
+    document.getElementById('character-name').innerText = characterName;
 
     // Load server json file
     let serverData;
     fetch("data.json")
-        .then(response => {
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => serverData = data);
 
     const tabId = ['attributes', 'profile', 'mounts', 'minions'];
@@ -71,22 +70,18 @@ async function main() {
     let characterData = data.Character;
     
     // Display data to the user.
-    document.getElementById('character-name').innerText = characterName;
     document.getElementById('character-server').innerText = characterData.Server;
     document.getElementById('character-avater').setAttribute('src', characterData.Avatar);
     document.getElementById('character-portrait').style.backgroundImage = "url('" + characterData.Portrait + "')";
     document.getElementById('active-job-level').innerText = "Lv. " + characterData.ActiveClassJob.Level;
 
-
     // Load title
     let titleData = (await requestData("title/" + characterData.Title));
 
-    // Determine if the title is a prefix or suffix, then display on character banner.    
+    // Determine if it is a prefix or suffix.   
     const titleType = titleData.IsPrefix ? 'prefix-name' : 'suffix-name'; 
-
     document.getElementById(titleType).innerText = titleData.Name;
 
-    
     // Load job icon
     document.getElementById('active-job-icon').setAttribute('src', "img/job-svg/" + characterData.ActiveClassJob.UnlockedState.Name.toLowerCase() + ".svg");
 
@@ -130,11 +125,17 @@ async function main() {
             const imageSource = "url('https://xivapi.com" + equipmentData.IconHD + "')";
             document.getElementById(itemType[i]).style.backgroundImage = imageSource;
 
-            // Create tooltip for item, add it to the item div.
+            // Create tooltip and frame for the item.
             const tooltipDiv = document.createElement('div');
+            const itemFrame = document.createElement('img');
+
+            itemFrame.setAttribute('class', "icon");
+            itemFrame.setAttribute('src', "img/job-misc/item-frame.png");
             tooltipDiv.setAttribute('class', "tooltip");
             tooltipDiv.innerText = equipmentData.Name;
+
             document.getElementById(itemType[i]).append(tooltipDiv);
+            document.getElementById(itemType[i]).append(itemFrame);
 
         } catch(error) { }
     }
@@ -385,19 +386,25 @@ function displayPage(pageCapacity, pageNumber, pageType, content, labelName) {
     for(let i = (pageNumber-1) * pageCapacity; i < Math.min(pageNumber * pageCapacity, content.length); i++) {
 
         // Create item to display.
-        const itemDiv = document.createElement('div');
-        const tooltipDiv = document.createElement('div');
-        tooltipDiv.setAttribute('class', "tooltip");
-        tooltipDiv.innerText = content[i].Name;
-        itemDiv.append(tooltipDiv);
-        itemDiv.setAttribute('class', "item");
-        itemDiv.style.backgroundImage = "url('" + content[i].Icon + "')";
-        document.getElementById(pageType).append(itemDiv);
+        const item = document.createElement('div');
+        const tooltip = document.createElement('div');
+        const frame = document.createElement('img');
+
+        tooltip.setAttribute('class', "tooltip");
+        item.setAttribute('class', "item");
+        frame.setAttribute('src', "img/job-misc/item-frame.png");
+        frame.setAttribute('class', "icon");
+
+        tooltip.innerText = content[i].Name;
+        item.style.backgroundImage = "url('" + content[i].Icon + "')";
+
+        item.append(frame);
+        item.append(tooltip);
+        document.getElementById(pageType).append(item);
     }
 
     // Update display label to display page number.
     document.getElementById(labelName).innerText = pageNumber;
-
 }
 
 // This function highlights and checkmarks all completed duties/quests.
