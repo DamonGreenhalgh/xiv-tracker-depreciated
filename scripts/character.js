@@ -81,17 +81,17 @@ async function main() {
     // Load title
     let titleData = (await requestData("title/" + characterData.Title));
 
-    // Determine if the title is a prefix or suffix, then display on character banner.
-    if (titleData.IsPrefix) {
-        document.getElementById('prefix-name').innerText = titleData.Name;
-    } else {
-        document.getElementById('suffix-name').innerText = titleData.Name;
-    }
+    // Determine if the title is a prefix or suffix, then display on character banner.    
+    const titleType = titleData.IsPrefix ? 'prefix-name' : 'suffix-name'; 
+
+    document.getElementById(titleType).innerText = titleData.Name;
+
     
     // Load job icon
-    let jobData = await requestData("ClassJob/" + characterData.ActiveClassJob.JobID);
-    document.getElementById('active-job-icon').setAttribute('src', "https://xivapi.com/cj/svg/ClassJob/" + jobData.Abbreviation + ".svg");
+    // let jobData = await requestData("ClassJob/" + characterData.ActiveClassJob.JobID);
+    // document.getElementById('active-job-icon').setAttribute('src', "https://xivapi.com/cj/svg/ClassJob/" + jobData.Abbreviation + ".svg");
     
+    document.getElementById('active-job-icon').setAttribute('src', "img/job/" + characterData.ActiveClassJob.UnlockedState.Name.toLowerCase() + ".png");
 
     // Atrribute Panel
     // ---------------

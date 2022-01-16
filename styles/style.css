@@ -237,7 +237,6 @@ body {
     margin: .5rem;
     right: 0;
     width: 4rem;
-    filter: invert(90%) sepia(0%) saturate(7459%) hue-rotate(42deg) brightness(114%) contrast(111%);
 }
 
 .character__level {
@@ -482,7 +481,6 @@ body {
 .item:hover .tooltip {
     visibility: visible;
 }
-
 
 .jobs {
     display: flex;
