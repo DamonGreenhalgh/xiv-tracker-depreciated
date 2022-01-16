@@ -88,10 +88,7 @@ async function main() {
 
     
     // Load job icon
-    // let jobData = await requestData("ClassJob/" + characterData.ActiveClassJob.JobID);
-    // document.getElementById('active-job-icon').setAttribute('src', "https://xivapi.com/cj/svg/ClassJob/" + jobData.Abbreviation + ".svg");
-    
-    document.getElementById('active-job-icon').setAttribute('src', "img/job/" + characterData.ActiveClassJob.UnlockedState.Name.toLowerCase() + ".png");
+    document.getElementById('active-job-icon').setAttribute('src', "img/job-svg/" + characterData.ActiveClassJob.UnlockedState.Name.toLowerCase() + ".svg");
 
     // Atrribute Panel
     // ---------------
