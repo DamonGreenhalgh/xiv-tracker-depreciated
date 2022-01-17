@@ -8,35 +8,31 @@ async function main() {
     document.title = characterName + " | XIV Tracker";
     document.getElementById('character-name').innerText = characterName;
 
+
     // Load server json file
     let serverData;
     fetch("data.json")
         .then(response => response.json())
         .then(data => serverData = data);
 
+
     const tabId = ['attributes', 'profile', 'mounts', 'minions'];
     let currentTabIndex;
 
-    // Add action listeners to each tab button so users can switch between content.
     for (let i = 0; i < tabId.length; i++) {
 
-        // On Click event
+        // Add action listeners to each tab button so users can switch between content.
         document.getElementById(tabId[i] + '-tab-button').addEventListener('click', function() {
 
             // Disable other tab buttons and hide current content.
             for (let i = 0; i < tabId.length; i++) {
 
-                // Style change to indicate hidden content
                 document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "button");
-
-                // Hide current content.
                 document.getElementById(tabId[i] + '-panel').style.visibility = "hidden";
             }
 
-            // Style change to indicate button is selected.
+            // Enable current content.
             document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "button button--active");
-
-            // Make associated content visibile
             document.getElementById(tabId[i] + '-panel').style.visibility = "visible";
 
             currentTabIndex = i;
@@ -48,145 +44,161 @@ async function main() {
 
     // Action listener for the show more button for quests.
     let showQuestContent = false;
-    document.getElementById('show-quests').addEventListener('click', function() {
+    const showQuestsBtn = document.getElementById('show-quests');
+    const questContent = document.getElementById('quests');
+
+    showQuestsBtn.addEventListener('click', function() {
+
         if (showQuestContent) {
-            document.getElementById('quests').style.height = "60.5rem";
-            document.getElementById('show-quests').innerText = "Show More";
+
+            questContent.style.height = "60.5rem";
+            showQuestsBtn.innerText = "Show More";
             showQuestContent = false;
+
         } else {
-            document.getElementById('quests').style.height = "190rem";
-            document.getElementById('show-quests').innerText = "Show Less";
+
+            questContent.style.height = "190rem";
+            showQuestsBtn.innerText = "Show Less";
             showQuestContent = true;
+
         }
     });
 
 
-
     // General Character Information
     // -----------------------------
-
-    // Request character data from XIVAPI.
-    let data = await requestData("character/" + characterId);
-    let characterData = data.Character;
+    let characterData;
+    await fetch("https://xivapi.com/character/" + characterId + "?extended=1", {mode: "cors"})
+        .then(response => response.json())
+        .then(data => characterData = data.Character)
     
-    // Display data to the user.
+    console.log(characterData);
+
+    // Update DOM elements with recieved data for xivapi
     document.getElementById('character-server').innerText = characterData.Server;
     document.getElementById('character-avater').setAttribute('src', characterData.Avatar);
     document.getElementById('character-portrait').style.backgroundImage = "url('" + characterData.Portrait + "')";
     document.getElementById('active-job-level').innerText = "Lv. " + characterData.ActiveClassJob.Level;
+    document.getElementById('active-job-icon').setAttribute('src', "img/job-svg/" + characterData.ActiveClassJob.Job.Name.replace(/ /g, "") + ".svg");
 
-    // Load title
-    let titleData = (await requestData("title/" + characterData.Title));
+    // Determine if the title is a prefix or suffix.
+    const titleType = characterData.TitleTop ? 'prefix-name' : 'suffix-name'; 
+    document.getElementById(titleType).innerText = characterData.Title.Name;
 
-    // Determine if it is a prefix or suffix.   
-    const titleType = titleData.IsPrefix ? 'prefix-name' : 'suffix-name'; 
-    document.getElementById(titleType).innerText = titleData.Name;
+    // Load gear icons
+    const equipmentType = Object.keys(characterData.GearSet.Gear);
+    let gear;
 
-    // Load job icon
-    document.getElementById('active-job-icon').setAttribute('src', "img/job-svg/" + characterData.ActiveClassJob.UnlockedState.Name.toLowerCase() + ".svg");
+    for (let i = 0; i < equipmentType.length; i++) {
 
-    // Atrribute Panel
-    // ---------------
-    const attributeNames = ["Strength", "Dexterity", "Vitality", "Intelligence", "Mind", "Piety", "HP", "MP", "Tenacity", "Attack Power", "Defense", "Direct Hit Rate", "Magic Defense", "Critical Hit", "Attack Magic Potency", "Healing Magic Potency", "Determination", "Skill Speed", "Spell Speed"];
-    const attributeValues = Object.values(characterData.GearSet.Attributes);
-    for(let i = 0; i < attributeNames.length; i++) {
+        // Set gear icon
+        gear = document.getElementById(equipmentType[i]);
+        gear.style.backgroundImage = "url('https://xivapi.com" + characterData.GearSet.Gear[equipmentType[i]].Item.Icon.slice(0, -4) + "_hr1.png')";
+        
+        // Create tooltip and item frame and append to gear element.
+        const tooltip = document.createElement('div');
+        const frame = document.createElement('img');
 
-        const attributeName = document.createElement('p');
-        const attributeValue = document.createElement('p');
+        frame.setAttribute('class', "icon");
+        frame.setAttribute('src', "img/job-misc/item-frame.png");
+        tooltip.setAttribute('class', "tooltip");
+        tooltip.innerText = characterData.GearSet.Gear[equipmentType[i]].Item.Name;
 
-        attributeName.setAttribute('class', "secondary-text");
-        attributeName.innerText = attributeNames[i];
+        gear.append(tooltip);
+        gear.append(frame); 
 
-        attributeValue.style.textAlign = "end";
-        attributeValue.innerText = attributeValues[i];
-
-        document.getElementById('attributes').append(attributeName);
-        document.getElementById('attributes').append(attributeValue);
     }
 
-    document.getElementById('hp').innerText = attributeValues[6];
-    document.getElementById('mp').innerText = attributeValues[7];
 
 
+    // Atrributes
+    // ----------
 
-    // Character Equipment Information
-    // -------------------------------
+    const attributeType = characterData.GearSet.Attributes;
+    const attributeTypeLength = attributeType.length;
+    const attributeListElement = document.getElementById('attributes-list').getElementsByTagName('li');
     
-    // Load equiment.
-    const itemType = ["MainHand", "Head", "Hands", "Body", "Legs", "Feet", "Earrings", "Necklace", "Bracelets", "Ring1", "Ring2", "SoulCrystal", "OffHand"];
-    for (let i = 0; i < itemType.length; i++) {
+    for (let i = 0; i < attributeTypeLength - 2; i++) {
 
-        try {
+        attributeListElement[i].innerText = attributeType[i].Value;
 
-            // Request equipment data.
-            const equipmentData = await requestData("Item/" + characterData.GearSet.Gear[itemType[i]].ID);
-
-            // Get icon for equipment piece.
-            const imageSource = "url('https://xivapi.com" + equipmentData.IconHD + "')";
-            document.getElementById(itemType[i]).style.backgroundImage = imageSource;
-
-            // Create tooltip and frame for the item.
-            const tooltipDiv = document.createElement('div');
-            const itemFrame = document.createElement('img');
-
-            itemFrame.setAttribute('class', "icon");
-            itemFrame.setAttribute('src', "img/job-misc/item-frame.png");
-            tooltipDiv.setAttribute('class', "tooltip");
-            tooltipDiv.innerText = equipmentData.Name;
-
-            document.getElementById(itemType[i]).append(tooltipDiv);
-            document.getElementById(itemType[i]).append(itemFrame);
-
-        } catch(error) { }
     }
 
+    // Set hp and mp values
+    document.getElementById('hp').innerText = attributeType[attributeTypeLength - 2].Value;
+    document.getElementById('mp').innerText = attributeType[attributeTypeLength - 1].Value;
 
 
-    // Profile Panel Information
-    // ------------------------
 
-    // Profile data, will be stored in JSON eventually.
-    const grandCompanyTypes = ["Maelstrom", "Order of the Twin Adder", "Immortal Flames"];
-    const genderTypes = ["male", "female"];
-    const raceTypes = ["Hyur", "Elezen", "Lalafell", "Miqo'te", "Roegadyn", "Au Ra", "Hrothgar", "Viera"];
-    const tribeTypes = ["Midlander", "Highlander", "Wildwood", "Duskwight", "Plainsfolk", "Dunesfolk", "Seeker of the Sun", "Keeper of the Moon", "Sea Wolf", "Hellsguard", "Raen", "Xaela", "Helions", "The Lost", "Rava", "Veena"];
-    const cityStateTypes = ["Limsa Lominsa", "Gridania", "Ul'dah"];
-    const cityStateIconNames = ["limsa-lominsa", "gridania", "ul-dah"];
-
-    document.getElementById('race-clan').innerText = raceTypes[characterData.Race-1] + ", " + tribeTypes[characterData.Tribe-1];
-    document.getElementById('gender').style.backgroundImage = "url('img/gender/" + genderTypes[characterData.Gender-1] + ".png')";
-    document.getElementById('city-state').innerText = cityStateTypes[characterData.Town-1];
-    document.getElementById('city-state-icon').style.backgroundImage = "url('img/city-states/" + cityStateIconNames[characterData.Town-1] + ".png')";
+    // Profile
+    // -------
+    document.getElementById('race-clan').innerText = characterData.Race.Name + ", " + characterData.Tribe.Name;
+    document.getElementById('gender').style.backgroundImage = "url('img/gender/" + characterData.Gender + ".png')";
+    document.getElementById('city-state').innerText = characterData.Town.Name;
+    document.getElementById('city-state-icon').style.backgroundImage = "url('https://xivapi.com" + characterData.Town.Icon.slice(0, -4) + "_hr1.png')";
     document.getElementById('name-day').innerText = characterData.Nameday;
+    document.getElementById('guardian-icon').style.backgroundImage = "url('https://xivapi.com" + characterData.GuardianDeity.Icon + "')";
+    document.getElementById('guardian-name').innerText = characterData.GuardianDeity.Name;
 
-    // Load Free Company Information
-    if (characterData.FreeCompanyName) {
 
+    // If the character is associated with a grand company.
+    if (characterData.GrandCompany.Company !== null) {
+        document.getElementById('grand-company-name').innerText = characterData.GrandCompany.Company.Name;
+        document.getElementById('grand-company-icon').style.backgroundImage = "url('https://xivapi.com" + characterData.GrandCompany.Rank.Icon + "')";
+    }
+
+    // If the character is associated with a free company.
+    if (characterData.FreeCompany !== undefined) {
         document.getElementById('free-company-name').innerText = characterData.FreeCompanyName;
 
-        const freeCompanyData = await requestData("FreeCompany/" + characterData.FreeCompanyId);
+        let freeCompanyData;
+        await fetch("https://xivapi.com/freecompany/" + characterData.FreeCompanyId, {mode: "cors"})
+            .then(response => response.json())
+            .then(data => freeCompanyData = data);
 
         document.getElementById('free-company-crest-1').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[0] + "')";
         document.getElementById('free-company-crest-2').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[1] + "')";
         document.getElementById('free-company-crest-3').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[2] + "')";
-
     }
 
-    // Load Grand Company Information
-    if (characterData.GrandCompany) {
+    // Jobs
+    // ----
 
-        document.getElementById('grand-company-name').innerText = grandCompanyTypes[characterData.GrandCompany.NameID-1];
-        document.getElementById('grand-company-icon').style.backgroundImage = "url('https://xivapi.com/img-misc/gc/character_gc_" + characterData.GrandCompany.NameID + "_" + characterData.GrandCompany.RankID + ".png')";
+    let job;
 
+    const jobLevel = document.getElementsByClassName('jobs__level');
+    const jobName = document.getElementsByClassName('jobs__name');
+    const jobProgress = document.getElementsByClassName('jobs__bar--active');
+
+    for (let i = 0; i < characterData.ClassJobs.length; i++) {
+
+        job = characterData.ClassJobs[i];
+        jobLevel[i].innerText = job.Level;
+
+        // Calculate the % of progress within the job level and display.
+        jobProgress[i].style.width = (job.ExpLevel / job.ExpLevelMax * 100).toString() + "%";
+
+        // If job is a max level.
+        if (job.Level == 90) {
+            jobLevel[i].style.color = "var(--job-max-level-color)";
+        }
+
+        // If job is not aquired yet.
+        if (job.Level == 0) {
+            jobLevel[i].innerText = "-";
+            jobLevel[i].style.color = "var(--text-midground-color)";
+            jobName[i].style.color = "var(--text-midground-color)";
+        }
     }
 
-    // Guardian Deity Data
-    let guardianData = await requestData("GuardianDeity/" + characterData.GuardianDeity);
-    document.getElementById('guardian-icon').style.backgroundImage = "url('https://xivapi.com" + guardianData.IconHD + "')";
-    document.getElementById('guardian-name').innerText = guardianData.Name;
+    document.getElementById('jobs').style.filter = "none";
+
+    
 
 
 
+
+    
     // Minions and Mounts
     // ------------------
 
@@ -271,36 +283,7 @@ async function main() {
     }
 
 
-    // Jobs
-    // ----
 
-    let job;
-
-    const jobLevel = document.getElementsByClassName('jobs__level');
-    const jobName = document.getElementsByClassName('jobs__name');
-    const jobProgress = document.getElementsByClassName('jobs__bar--active');
-
-    for (let i = 0; i < characterData.ClassJobs.length; i++) {
-
-        job = characterData.ClassJobs[i];
-
-        jobLevel[i].innerText = job.Level;
-        jobProgress[i].style.width = (job.ExpLevel / job.ExpLevelMax * 100).toString() + "%";
-
-        if (job.Level == 90) {
-            jobLevel[i].style.color = "var(--job-max-level-color)";
-        }
-
-        if (job.Level == 0) {
-            jobLevel[i].innerText = "-";
-            jobLevel[i].style.color = "var(--text-midground-color)";
-            jobName[i].style.color = "var(--text-midground-color)";
-        }
-
-    }
-
-    document.getElementById('jobs').style.filter = "none";
-    
 
 
 
@@ -407,20 +390,34 @@ function displayPage(pageCapacity, pageNumber, pageType, content, labelName) {
     document.getElementById(labelName).innerText = pageNumber;
 }
 
-// This function highlights and checkmarks all completed duties/quests.
+/**DisplayActivityCompeltion
+ * 
+ * Description: This function updates the list items of the quests section of 
+ * the webpage. If the character has completed a certain quest/duty, it will be 
+ * marked with green text and a checkmark.
+ * 
+ * Params:
+ * id: An array containing specific xivapi achievements id.
+ * type: A string used to get elements in the DOM.
+ * achievements: An array containing all the character achievement ids.
+ * 
+ * Return:
+ * count: An integer representing the number of completed duties/quests.
+ * */ 
 function displayActivityCompletion(id, type, achievements) {
 
     document.getElementById(type + "-list").style.marginLeft = "0";
+
     // Get duty/quest lists
     const dutyList = document.getElementById(type + "-list").getElementsByTagName('li');
 
-    let completedCount = 0;
+    let count = 0;
 
     for (let i = 0; i < id.length; i++) {
 
-        // For each duty/quest, check if character has completed it.
         const duty = dutyList[i];
 
+        // For each duty/quest, check if character has completed it.
         if (achievements.includes(id[i])) {
 
             // Yes, styling
@@ -431,7 +428,7 @@ function displayActivityCompletion(id, type, achievements) {
             duty.prepend(checkmark);
             duty.setAttribute('class', "quests-text--complete");
 
-            completedCount++;
+            count++;
 
         } else {
 
@@ -445,8 +442,7 @@ function displayActivityCompletion(id, type, achievements) {
         dutyHeaders[i].style.marginLeft = "6rem";
     }
 
-    return completedCount;
-
+    return count;
 }
 
 main();

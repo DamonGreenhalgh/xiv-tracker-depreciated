@@ -52,6 +52,10 @@ p {
     margin: 0;
 }
 
+li {
+    list-style: none;
+}
+
 /* Disable default link effect */
 a, a:hover, a:focus, a:active {
     text-decoration: none;
@@ -164,7 +168,7 @@ body {
 }
 
 .header--character-banner {
-    grid-template-columns: 6rem 1rem 1fr;
+    grid-template-columns: 6rem 2rem 1fr;
     grid-template-rows: 3.5rem .5rem 1fr;
     grid-template-areas: 
         "avatar . name  "
