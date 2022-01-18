@@ -1,8 +1,8 @@
-# XIV Tracker
-**XIV Tracker** is a tool to help track character progress through Final Fantasy 14.
+![home-logo-extended](https://user-images.githubusercontent.com/59471444/149874938-e8316b1a-3fce-40c8-87fe-5d3c30e7dd0b.png)
+**XIV Tracker** is a website designed to track character data, stats, and much more.
 
 ## Features
-Current features of the web app include the following,
+Current features of the site include the following,
 
 - Character display, with currently equiped gear, attributes and profile information.
 - Mounts and Minions
