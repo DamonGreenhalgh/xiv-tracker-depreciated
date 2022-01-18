@@ -29,6 +29,7 @@ async function main() {
 
                 document.getElementById(tabId[i] + '-tab-button').setAttribute('class', "button");
                 document.getElementById(tabId[i] + '-panel').style.visibility = "hidden";
+
             }
 
             // Enable current content.
@@ -65,6 +66,15 @@ async function main() {
             showQuestContent = true;
 
         }
+    });
+
+    // Notice Action Listeners
+    
+    document.getElementById('general-notice-exit').addEventListener('click', function() {
+        document.getElementById('general-notice').style.display = "none";
+    });
+    document.getElementById('quests-notice-exit').addEventListener('click', function() {
+        document.getElementById('quests-notice').style.display = "none";
     });
     
 
@@ -348,14 +358,17 @@ async function main() {
         document.getElementById("raids-completion-label").innerText = (Math.ceil((completedNormalRaids + completedAllianceRaids) / (normalRaidId.length + allianceRaidId.length) * 100)).toString() + "%";
         document.getElementById("high-end-completion-label").innerText = (Math.ceil((completedSavageRaids + completedUltimateRaids) / (savageRaidId.length + ultimateRaidId.length) * 100)).toString() + "%";
         
-        document.getElementById('quests').setAttribute('class', "quests__container");
+        
 
     } else {
 
         // Display notice
-        document.getElementById('quests-hidden-notice').style.display = "flex";
+        document.getElementById('quests-notice').style.display = "flex";
 
     }
+
+    document.getElementById('quests').setAttribute('class', "quests__container");
+    document.getElementById('loading-icon').style.display = "none";
 }
 
 // Function to make requests to XIVAPI

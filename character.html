@@ -11,26 +11,30 @@
         <script src="https://kit.fontawesome.com/5bafc6c881.js" crossorigin="anonymous"></script>
         <script src="https://img.finalfantasyxiv.com/lds/pc/global/js/eorzeadb/loader.js?v2"></script>
     </head>
+    
     <body>
 
         <!-- Navbar -->
         <div class="navbar">
 
             <!-- Navigation -->
-            <div style="display: flex; align-items: center; gap: 2rem">
+            <div class="navbar__container">
 
                 <!-- Main Logo -->
-                <a href="index.html"><img src="img/home-logo.png" style="width: 3rem; margin-right: 1rem;"></a>
+                <a href="index.html"><img src="img/home-logo.png" class="icon icon--home"></a>
 
                 <!-- Nav Buttons -->
                 <a href="#character-page" class="navbar__button">Character</a>
                 <a href="#jobs-page" class="navbar__button">Jobs</a>
                 <a href="#quests-page" class="navbar__button">Quests</a>
+
             </div>
             
             <!-- Search Bar -->
             <script src="scripts/search.js" defer></script>
+
             <div class="search-bar">
+
                 <select id="server-list" class="search-bar__item search-bar__item--server-list interactable">
                     <option>Server</option>
                     <option>Adamantoise</option>
@@ -125,10 +129,13 @@
                     <option>RouFengHaiWan</option>
                     <option>HuPoYuan</option>
                 </select>
+
                 <input id="character-name-textbox" type="text" placeholder="Character Name" class="search-bar__item">   
+                
                 <button id="search-button" class="search-bar__item interactable">
                     <img src="img/search-icon.png" style="width: 1.5rem;">
                 </button>
+
             </div>
 
         </div>
@@ -136,6 +143,13 @@
         <a id="character-page"></a>
 
         <div class="main" style="margin-top: 8rem;">
+
+            <!-- General Notice -->
+            <div class="notice" id="general-notice">
+                <img class="icon" src="img/notice-inverse.png">
+                <img id="general-notice-exit" class="icon icon--exit absolute interactable" src="img/exit.png">
+                <p class="text--inverse">Some XIV Tracker features may not function properly due to a dependency on some Lodestone privacy settings being set to public (Achievements and Friends). You can change these settings <a href="https://na.finalfantasyxiv.com/lodestone/my/setting/account/" style="text-decoration: underline;">here</a>.</p>
+            </div>
 
             <!-- Header -->
             <div class="header">
@@ -148,7 +162,6 @@
                 <div class=" header__divider divider divider--horizontal"></div>
 
             </div>
-
 
             <!-- Character -->
             <div class="character">
@@ -285,25 +298,25 @@
                                 <p class="text--secondary">Free Company</p>
                                 <p id="free-company-name">-</p>
                                 <div style="position: relative; align-self: flex-start; margin-top: .75rem;">
-                                    <div class="icon--profile absolute" id="free-company-crest-1"></div>
-                                    <div class="icon--profile absolute" id="free-company-crest-2"></div>
-                                    <div class="icon--profile absolute" id="free-company-crest-3"></div>
+                                    <div class="icon--small absolute" id="free-company-crest-1"></div>
+                                    <div class="icon--small absolute" id="free-company-crest-2"></div>
+                                    <div class="icon--small absolute" id="free-company-crest-3"></div>
                                 </div>
                                 
                                 <!-- Grand Company -->
                                 <p class="text--secondary">Grand Company</p>
                                 <p id="grand-company-name">-</p>
-                                <div class="icon--profile" id="grand-company-icon"></div>
+                                <div class="icon--small" id="grand-company-icon"></div>
 
                                 <!-- Race / Clan / Gender -->
                                 <p class="text--secondary">Race / Clan / Gender</p>
                                 <p id="race-clan">-</p>
-                                <div class="icon--profile" id="gender"></div>
+                                <div class="icon--small" id="gender"></div>
 
                                 <!-- City State -->
                                 <p class="text--secondary">City State</p>
                                 <p class="profile__character-data" id="city-state">-</p>
-                                <div class="icon--profile" id="city-state-icon"></div>
+                                <div class="icon--small" id="city-state-icon"></div>
 
                                 <!-- Name Day -->
                                 <p class="text--secondary">Name Day</p>
@@ -313,7 +326,7 @@
                                 <!-- Guardian Diety -->
                                 <p class="text--secondary">Guardian Diety</p>
                                 <p id="guardian-name">-</p>
-                                <div class="icon--profile" id="guardian-icon"></div>
+                                <div class="icon--small" id="guardian-icon"></div>
 
                             </div>
 
@@ -349,7 +362,6 @@
                 </div>
                 
             </div>
-
 
             <a id="jobs-page" style="padding-bottom: 3rem;"></a>
             <div class="section-header">
@@ -607,7 +619,6 @@
 
             </div>
 
-
             <a id="quests-page" style="padding-bottom: 3rem;"></a>
             <div class="section-header">
                 <div class="divider divider--horizontal"></div>
@@ -615,12 +626,17 @@
                 <div class="divider divider--horizontal"></div>
             </div>
 
+            <!-- Quests -->
             <div class="quests">
 
-                <div class="notice" id="quests-hidden-notice">
-                    <img class="icon--quests" src="img/notice-inverse.png">
-                    <p class="text--inverse">Chracter has Achievements hidden on Lodestone! Unable to retrieve Quest and Duty Data.</p>
+                <!-- Notice -->
+                <div class="notice notice--quests" id="quests-notice">
+                    <img class="icon" src="img/notice.png">
+                    <img id="quests-notice-exit" class="icon icon--exit absolute interactable" src="img/error-exit.png">
+                    <p class="text--inverse">Character has achievements set to private on Lodestone! Unable to retrieve Quest and Duty data.</p>
                 </div>
+
+                <img id="loading-icon" src="img/loading.svg" class="loading loading--quests absolute">
 
                 <div class="overlay" id="overlay"></div>
 
@@ -960,7 +976,7 @@
         <div id="footer" class="footer-wrapper">
             <div class="footer">
                 <div class="footer-text-container">
-                    <p class="footer-text">XIV Tracker Designed and Developed by Damon Greenhalgh.</p>
+                    <p class="footer-text">XIV Tracker is Designed and Developed by Damon Greenhalgh.</p>
                     <p class="footer-text">FINAL FANTASY XIV CONTENT IS PROPERTY OF SQUARE ENIX CO,. LTD.</p>
                 </div>
                 <a class="social-link" href="https://github.com/DamonGreenhalgh/ffxiv-tracker"><i class="fa-brands fa-github fa-lg"></i></a>
