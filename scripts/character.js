@@ -46,24 +46,27 @@ async function main() {
     let showQuestContent = false;
     const showQuestsBtn = document.getElementById('show-quests');
     const questContent = document.getElementById('quests');
+    const questOverlay = document.getElementById('overlay');
 
     showQuestsBtn.addEventListener('click', function() {
 
         if (showQuestContent) {
 
-            questContent.style.height = "60.5rem";
+            questContent.style.height = "40rem";
+            questOverlay.style.height = "40rem";
             showQuestsBtn.innerText = "Show More";
             showQuestContent = false;
 
         } else {
 
-            questContent.style.height = "190rem";
+            questContent.style.height = "200rem";
+            questOverlay.style.height = "200rem";
             showQuestsBtn.innerText = "Show Less";
             showQuestContent = true;
 
         }
     });
-
+    
 
     // General Character Information
     // -----------------------------
@@ -148,7 +151,7 @@ async function main() {
     }
 
     // If the character is associated with a free company.
-    if (characterData.FreeCompany !== undefined) {
+    if (characterData.FreeCompanyName !== null) {
         document.getElementById('free-company-name').innerText = characterData.FreeCompanyName;
 
         let freeCompanyData;
@@ -191,7 +194,7 @@ async function main() {
         }
     }
 
-    document.getElementById('jobs').style.filter = "none";
+    document.getElementById('jobs').setAttribute('class', "jobs");
 
     
 
@@ -344,9 +347,13 @@ async function main() {
         document.getElementById("trials-completion-label").innerText = (Math.ceil(completedTrials / trialId.length * 100)).toString() + "%";
         document.getElementById("raids-completion-label").innerText = (Math.ceil((completedNormalRaids + completedAllianceRaids) / (normalRaidId.length + allianceRaidId.length) * 100)).toString() + "%";
         document.getElementById("high-end-completion-label").innerText = (Math.ceil((completedSavageRaids + completedUltimateRaids) / (savageRaidId.length + ultimateRaidId.length) * 100)).toString() + "%";
+        
+        document.getElementById('quests').setAttribute('class', "quests__container");
 
-        // Remove blur filter when everything has been loaded.
-        document.getElementById('quests').style.filter = "none";   
+    } else {
+
+        // Display notice
+        document.getElementById('quests-hidden-notice').style.display = "flex";
 
     }
 }

@@ -141,10 +141,10 @@
             <div class="header">
 
                 <img id="character-avater" class="header__avatar">
-                <p id="prefix-name" class="header__title--prefix secondary-text"></p>
+                <p id="prefix-name" class="header__title--prefix text--secondary"></p>
                 <h1 id="character-name" class="header__name"></h1>
-                <p id="suffix-name" class="header__title--suffix secondary-text"></p>
-                <p id="character-server" class="header__server secondary-text"></p>
+                <p id="suffix-name" class="header__title--suffix text--secondary"></p>
+                <p id="character-server" class="header__server text--secondary"></p>
                 <div class=" header__divider divider divider--horizontal"></div>
 
             </div>
@@ -164,9 +164,9 @@
                 </div>
 
                 <!-- Active Job Portrait -->
-                <div id="character-portrait" class="character__portrait">
-                    <img id="active-job-icon" class="character__job-icon">
-                    <p id="active-job-level" class="character__level"></p>
+                <div id="character-portrait" class="portrait">
+                    <img id="active-job-icon" class="icon--active-job absolute">
+                    <p id="active-job-level" class="active-job-level"></p>
                 </div>
 
                 <!-- Right Equipment Column -->
@@ -194,14 +194,14 @@
                     <div class="panel-container" id="content" >
 
                         <!-- Attributes -->
-                        <div class="panel panel--attributes" id="attributes-panel">
+                        <div class="panel" id="attributes-panel">
 
                             <div class="main-attribute-container">
 
                                 <!-- HP -->
                                 <div class="main-attribute">
                                     <div class="main-attribute__text">
-                                        <p class="secondary-text">HP</p>
+                                        <p class="text--secondary">HP</p>
                                         <p id="hp">-</p>
                                     </div>
                                     <div class="bar bar--health"></div>
@@ -210,7 +210,7 @@
                                 <!-- MP -->
                                 <div class="main-attribute">
                                     <div class="main-attribute__text">
-                                        <p class="secondary-text">MP</p>
+                                        <p class="text--secondary">MP</p>
                                         <p id="mp">-</p>
                                     </div>
                                     <div class="bar bar--mana"></div>                                  
@@ -221,55 +221,55 @@
                             <!-- Attributes Grid -->
                             <ol class="gallery gallery--attributes" id="attributes-list">
 
-                                <p class="secondary-text">Strength</p>
+                                <p class="text--secondary">Strength</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Dexterity</p>
+                                <p class="text--secondary">Dexterity</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Vitality</p>
+                                <p class="text--secondary">Vitality</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Intelligence</p>
+                                <p class="text--secondary">Intelligence</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Mind</p>
+                                <p class="text--secondary">Mind</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Critical Hit</p>
+                                <p class="text--secondary">Critical Hit</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Determination</p>
+                                <p class="text--secondary">Determination</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Direct Hit Rate</p>
+                                <p class="text--secondary">Direct Hit Rate</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Defense</p>
+                                <p class="text--secondary">Defense</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Magical Defense</p>
+                                <p class="text--secondary">Magical Defense</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Attack Power</p>
+                                <p class="text--secondary">Attack Power</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Skill Speed</p>
+                                <p class="text--secondary">Skill Speed</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Attack Magic Potency</p>
+                                <p class="text--secondary">Attack Magic Potency</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Healing Magic Potency</p>
+                                <p class="text--secondary">Healing Magic Potency</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Spell Speed</p>
+                                <p class="text--secondary">Spell Speed</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Tenacity</p>
+                                <p class="text--secondary">Tenacity</p>
                                 <li>-</li>
 
-                                <p class="secondary-text">Piety</p>
+                                <p class="text--secondary">Piety</p>
                                 <li>-</li>
 
                             </ol>
@@ -282,38 +282,38 @@
                             <div class="gallery gallery--profile">
                             
                                 <!-- Free Company -->
-                                <p class="secondary-text">Free Company</p>
+                                <p class="text--secondary">Free Company</p>
                                 <p id="free-company-name">-</p>
                                 <div style="position: relative; align-self: flex-start; margin-top: .75rem;">
-                                    <div class="profile__icon profile__icon--free-company" id="free-company-crest-1"></div>
-                                    <div class="profile__icon profile__icon--free-company" id="free-company-crest-2"></div>
-                                    <div class="profile__icon profile__icon--free-company" id="free-company-crest-3"></div>
+                                    <div class="icon--profile absolute" id="free-company-crest-1"></div>
+                                    <div class="icon--profile absolute" id="free-company-crest-2"></div>
+                                    <div class="icon--profile absolute" id="free-company-crest-3"></div>
                                 </div>
                                 
                                 <!-- Grand Company -->
-                                <p class="secondary-text">Grand Company</p>
+                                <p class="text--secondary">Grand Company</p>
                                 <p id="grand-company-name">-</p>
-                                <div class="profile__icon" id="grand-company-icon"></div>
+                                <div class="icon--profile" id="grand-company-icon"></div>
 
                                 <!-- Race / Clan / Gender -->
-                                <p class="secondary-text">Race / Clan / Gender</p>
+                                <p class="text--secondary">Race / Clan / Gender</p>
                                 <p id="race-clan">-</p>
-                                <div class="profile__icon" id="gender"></div>
+                                <div class="icon--profile" id="gender"></div>
 
                                 <!-- City State -->
-                                <p class="secondary-text">City State</p>
+                                <p class="text--secondary">City State</p>
                                 <p class="profile__character-data" id="city-state">-</p>
-                                <div class="profile__icon" id="city-state-icon"></div>
+                                <div class="icon--profile" id="city-state-icon"></div>
 
                                 <!-- Name Day -->
-                                <p class="secondary-text">Name Day</p>
+                                <p class="text--secondary">Name Day</p>
                                 <p class="profile__character-data" id="name-day">-</p>
                                 <div></div>
 
                                 <!-- Guardian Diety -->
-                                <p class="secondary-text">Guardian Diety</p>
+                                <p class="text--secondary">Guardian Diety</p>
                                 <p id="guardian-name">-</p>
-                                <div class="profile__icon" id="guardian-icon"></div>
+                                <div class="icon--profile" id="guardian-icon"></div>
 
                             </div>
 
@@ -359,35 +359,35 @@
             </div>
 
             <!-- Jobs -->
-            <div class="jobs" id="jobs">
+            <div class="jobs hidden" id="jobs">
 
                 <!-- Tanks and Healers -->
                 <div class="jobs__column">
 
                     <!-- Tank -->
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/paladin">
-                        <img src="img/job/paladin.png" class="jobs__icon">
+                        <img src="img/job/paladin.png" class="icon--small">
                         <p class="jobs__name">Paladin</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/warrior">
-                        <img src="img/job/warrior.png" class="jobs__icon">
+                        <img src="img/job/warrior.png" class="icon--small">
                         <p class="jobs__name">Warrior</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/darkknight">
-                        <img src="img/job/darkknight.png" class="jobs__icon">
+                        <img src="img/job/darkknight.png" class="icon--small">
                         <p class="jobs__name">Dark Knight</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/gunbreaker">
-                        <img src="img/job/gunbreaker.png" class="jobs__icon">
+                        <img src="img/job/gunbreaker.png" class="icon--small">
                         <p class="jobs__name">Gunbreaker</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
@@ -395,28 +395,28 @@
                 
                     <!-- Healer -->
                     <a class="jobs__item" style="margin-top: 5rem;" href="https://na.finalfantasyxiv.com/jobguide/whitemage">
-                        <img src="img/job/whitemage.png" class="jobs__icon">
+                        <img src="img/job/whitemage.png" class="icon--small">
                         <p class="jobs__name">Whitemage</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/scholar">
-                        <img src="img/job/scholar.png" class="jobs__icon">
+                        <img src="img/job/scholar.png" class="icon--small">
                         <p class="jobs__name">Scholar</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/astrologian">
-                        <img src="img/job/astrologian.png" class="jobs__icon">
+                        <img src="img/job/astrologian.png" class="icon--small">
                         <p class="jobs__name">Astrologian</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/sage">
-                        <img src="img/job/sage.png" class="jobs__icon">
+                        <img src="img/job/sage.png" class="icon--small">
                         <p class="jobs__name">Sage</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
@@ -429,35 +429,35 @@
 
                     <!-- Melee -->
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/monk">
-                        <img src="img/job/monk.png" class="jobs__icon">
+                        <img src="img/job/monk.png" class="icon--small">
                         <p class="jobs__name">Monk</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/dragoon">
-                        <img src="img/job/dragoon.png" class="jobs__icon">
+                        <img src="img/job/dragoon.png" class="icon--small">
                         <p class="jobs__name">Dragoon</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/ninja">
-                        <img src="img/job/ninja.png" class="jobs__icon">
+                        <img src="img/job/ninja.png" class="icon--small">
                         <p class="jobs__name">Ninja</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/samurai">
-                        <img src="img/job/samurai.png" class="jobs__icon">
+                        <img src="img/job/samurai.png" class="icon--small">
                         <p class="jobs__name">Samurai</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/reaper">
-                        <img src="img/job/reaper.png" class="jobs__icon">
+                        <img src="img/job/reaper.png" class="icon--small">
                         <p class="jobs__name">Reaper</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
@@ -465,21 +465,21 @@
 
                     <!-- Ranged -->
                     <a class="jobs__item" style="margin-top: 2rem" href="https://na.finalfantasyxiv.com/jobguide/bard">
-                        <img src="img/job/bard.png" class="jobs__icon">
+                        <img src="img/job/bard.png" class="icon--small">
                         <p class="jobs__name">Bard</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/machinist">
-                        <img src="img/job/machinist.png" class="jobs__icon">
+                        <img src="img/job/machinist.png" class="icon--small">
                         <p class="jobs__name">Machinist</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/dancer">
-                        <img src="img/job/dancer.png" class="jobs__icon">
+                        <img src="img/job/dancer.png" class="icon--small">
                         <p class="jobs__name">Dancer</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
@@ -487,28 +487,28 @@
 
                     <!-- Magic -->
                     <a class="jobs__item" style="margin-top: 3rem;" href="https://na.finalfantasyxiv.com/jobguide/blackmage">
-                        <img src="img/job/blackmage.png" class="jobs__icon">
+                        <img src="img/job/blackmage.png" class="icon--small">
                         <p class="jobs__name">Black Mage</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/summoner">
-                        <img src="img/job/summoner.png" class="jobs__icon">
+                        <img src="img/job/summoner.png" class="icon--small">
                         <p class="jobs__name">Summoner</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/redmage">
-                        <img src="img/job/redmage.png" class="jobs__icon">
+                        <img src="img/job/redmage.png" class="icon--small">
                         <p class="jobs__name">Red Mage</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </a>
 
                     <a class="jobs__item" href="https://na.finalfantasyxiv.com/jobguide/bluemage">
-                        <img src="img/job/bluemage.png" class="jobs__icon">
+                        <img src="img/job/bluemage.png" class="icon--small">
                         <p class="jobs__name">Blue Mage</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
@@ -522,56 +522,56 @@
                 <div class="jobs__column">
 
                     <div class="jobs__item">
-                        <img src="img/job/carpenter.png" class="jobs__icon">
+                        <img src="img/job/carpenter.png" class="icon--small">
                         <p class="jobs__name">Carpenter</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </div>
 
                     <div class="jobs__item">
-                        <img src="img/job/blacksmith.png" class="jobs__icon">
+                        <img src="img/job/blacksmith.png" class="icon--small">
                         <p class="jobs__name">Blacksmith</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </div>
 
                     <div class="jobs__item">
-                        <img src="img/job/armorer.png" class="jobs__icon">
+                        <img src="img/job/armorer.png" class="icon--small">
                         <p class="jobs__name">Armorer</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </div>
 
                     <div class="jobs__item">
-                        <img src="img/job/goldsmith.png" class="jobs__icon">
+                        <img src="img/job/goldsmith.png" class="icon--small">
                         <p class="jobs__name">Goldsmith</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </div>
 
                     <div class="jobs__item">
-                        <img src="img/job/leatherworker.png" class="jobs__icon">
+                        <img src="img/job/leatherworker.png" class="icon--small">
                         <p class="jobs__name">Leatherworker</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </div>
 
                     <div class="jobs__item">
-                        <img src="img/job/weaver.png" class="jobs__icon">
+                        <img src="img/job/weaver.png" class="icon--small">
                         <p class="jobs__name">Weaver</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </div>
 
                     <div class="jobs__item">
-                        <img src="img/job/alchemist.png" class="jobs__icon">
+                        <img src="img/job/alchemist.png" class="icon--small">
                         <p class="jobs__name">Alchemist</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </div>
 
                     <div class="jobs__item">
-                        <img src="img/job/culinarian.png" class="jobs__icon">
+                        <img src="img/job/culinarian.png" class="icon--small">
                         <p class="jobs__name">Culinarian</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
@@ -583,21 +583,21 @@
                 <div class="jobs__column">
 
                     <div class="jobs__item">
-                        <img src="img/job/miner.png" class="jobs__icon">
+                        <img src="img/job/miner.png" class="icon--small">
                         <p class="jobs__name">Miner</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </div>
 
                     <div class="jobs__item">
-                        <img src="img/job/botanist.png" class="jobs__icon">
+                        <img src="img/job/botanist.png" class="icon--small">
                         <p class="jobs__name">Botanist</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
                     </div>
 
                     <div class="jobs__item">
-                        <img src="img/job/fisher.png" class="jobs__icon">
+                        <img src="img/job/fisher.png" class="icon--small">
                         <p class="jobs__name">Fisher</p>
                         <p class="jobs__level">-</p>
                         <div class="jobs__bar"><div class="jobs__bar--active"></div></div>
@@ -615,332 +615,344 @@
                 <div class="divider divider--horizontal"></div>
             </div>
 
-            <!-- Quests -->
-            <div id="quests" class="quests" style="position: relative;">
+            <div class="quests">
 
-                <!-- Main Scenario Quests, Raids, Relic Weapons -->
-                <div class="quests-column">
+                <div class="notice" id="quests-hidden-notice">
+                    <img class="icon--quests" src="img/notice-inverse.png">
+                    <p class="text--inverse">Chracter has Achievements hidden on Lodestone! Unable to retrieve Quest and Duty Data.</p>
+                </div>
 
-                    <div class="quests__header" style="margin-bottom: .75rem;">
-                        <img class="quests__logo" src="img/quests/msq.png">
-                        <h2>Main</h2>
-                        <h2 class="quests__completion-label" id="main-scenario-completion-label">-%</h2>
-                    </div>
-                    
-                    <div class="quests__content">
+                <div class="overlay" id="overlay"></div>
 
-                        <div class="msq__progress-bar">
-                            <div class="progress-bar__bar" id="msq-bar"></div>
-                            <div class="progress-bar__point" id="msq-bar-point"></div>
+                <!-- Quests -->
+                <div id="quests" class="quests__container hidden">
+
+                    <!-- Main Scenario Quests, Raids, Relic Weapons -->
+                    <div class="quests-column">
+
+                        <div class="quests__header" style="margin-bottom: .75rem;">
+                            <img class="icon--quests" src="img/quests/msq.png">
+                            <h2>Main</h2>
+                            <h2 class="quests__completion-label" id="main-scenario-completion-label">-%</h2>
                         </div>
-    
-                        <ol class="list list--msq" id="msq-list">
-
-                            <li class="quests-text"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/3ab32cfebf8/" class="eorzeadb_link">A Realm Reborn</a></li>
-                            
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/defec516ba9/" class="eorzeadb_link">A Realm Awoken</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/7f72ebda286/" class="eorzeadb_link">Through the Maelstrom</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/e31b1481e7a/" class="eorzeadb_link">Defenders of Eorzea</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/48e85c94175/" class="eorzeadb_link">Dreams of Ice</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/7be5b6453e1/" class="eorzeadb_link">Before the Fall</a></li>
-
-                            <li class="quests-text"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/29fa56153f5/" class="eorzeadb_link">Heavensward</a></li>
-
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/02f039d7119/" class="eorzeadb_link">As Goes Light, So Goes Darkness</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/64c819d8eb3/" class="eorzeadb_link">The Gears of Change</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/36d55886b37/" class="eorzeadb_link">Revenge of the Horde</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/723efddb90c/" class="eorzeadb_link">Soul Surrender</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/f024c2b6931/" class="eorzeadb_link">The Far Edge of Fate</a></li>
-
-                            <li class="quests-text"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/08908744553/" class="eorzeadb_link">Stormblood</a></li>
-
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/4b032f92080/" class="eorzeadb_link">The Legend Returns</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/6ef50b6c9fe/" class="eorzeadb_link">Rise of a New Sun</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/82318efbb39/" class="eorzeadb_link">Under the Moonlight</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/692bc7a1186/" class="eorzeadb_link">Prelude in Violet</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/4e3ff3ab391/" class="eorzeadb_link">A Requiem for Heroes</a></li>
-
-                            <li class="quests-text"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/4ed1668d377/" class="eorzeadb_link">Shadowbringers</a></li>
-
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/fc70298b76f/" class="eorzeadb_link">Vows of Virtue, Deeds of Cruelty</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/b7a00665b7b/" class="eorzeadb_link">Echoes of a Fallen Star</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/90de78eeddc/" class="eorzeadb_link">Reflections in Crystal</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/a424070bc4c/" class="eorzeadb_link">Futures Rewritten</a></li>
-                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/964cf0528f1/" class="eorzeadb_link">Death Unto Dawn</a></li>
-
-                            <li class="quests-text"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/52a65d1961d/" class="eorzeadb_link">Endwalker</a></li>
-                        </ol>
-                    </div>
-
-                    <!-- Raids -->
-                    <div class="quests__header">
-                        <img src="img/quests/raid.png" class="quests__logo">
-                        <h2>Raids</h2>
-                        <h2 class="quests__completion-label" id="raids-completion-label">-%</h2>
-                    </div>
-
-                    <ol class="list" id="normal-raids-list">
-
-                        <h3>Normal</h3>
-
-                        <li>Bahamut</li>
-                        <li>Alexander</li>
-                        <li>Omega</li>
-                        <li>Eden</li>
-                        <li>Pandæmonium</li>
-                    </ol>
-
-                    <ol class="list" id="alliance-raids-list">
-
-                        <h3>Alliance</h3>
-
-                        <li>Crystal Tower</li>
-                        <li>Shadow of Mhach</li>
-                        <li>Return to Ivalice</li>
-                        <li>YoRHa: Dark Apocalypse</li>
-
-                    </ol>
-
-                    <!-- Relic -->
-                    <div class="quests__header">
-                        <img class="quests__logo" src="img/quests/relic.png">
-                        <h2>Relic</h2>
-                        <h2 class="quests__completion-label" id="relic-completion-label">-%</h2>
-                    </div>
-
-                    <ol class="list" id="relic-list">
-
-                        <li>Zodiac</li>
-                        <li>Anima</li>
-                        <li>Eurekan</li>
-                        <li>Resistance</li>
-                        <li>Skysteel</li>
                         
-                    </ol>
+                        <div class="quests__content">
 
-                </div>
+                            <div class="msq__progress-bar">
+                                <div class="progress-bar__bar" id="msq-bar"></div>
+                                <div class="progress-bar__point" id="msq-bar-point"></div>
+                            </div>
+        
+                            <ol class="list list--msq" id="msq-list">
 
-                <div class="divider divider--vertical"></div>
-                
-                <!-- Dungeons -->
-                <div class="quests-column">
+                                <li class="quests-text"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/3ab32cfebf8/" class="eorzeadb_link">A Realm Reborn</a></li>
+                                
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/defec516ba9/" class="eorzeadb_link">A Realm Awoken</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/7f72ebda286/" class="eorzeadb_link">Through the Maelstrom</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/e31b1481e7a/" class="eorzeadb_link">Defenders of Eorzea</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/48e85c94175/" class="eorzeadb_link">Dreams of Ice</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/7be5b6453e1/" class="eorzeadb_link">Before the Fall</a></li>
 
-                    <div class="quests__header">
-                        <img src="img/quests/dungeon.png" class="quests__logo">
-                        <h2>Dungeons</h2>
-                        <h2 class="quests__completion-label" id="dungeons-completion-label">-%</h2>
+                                <li class="quests-text"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/29fa56153f5/" class="eorzeadb_link">Heavensward</a></li>
+
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/02f039d7119/" class="eorzeadb_link">As Goes Light, So Goes Darkness</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/64c819d8eb3/" class="eorzeadb_link">The Gears of Change</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/36d55886b37/" class="eorzeadb_link">Revenge of the Horde</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/723efddb90c/" class="eorzeadb_link">Soul Surrender</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/f024c2b6931/" class="eorzeadb_link">The Far Edge of Fate</a></li>
+
+                                <li class="quests-text"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/08908744553/" class="eorzeadb_link">Stormblood</a></li>
+
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/4b032f92080/" class="eorzeadb_link">The Legend Returns</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/6ef50b6c9fe/" class="eorzeadb_link">Rise of a New Sun</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/82318efbb39/" class="eorzeadb_link">Under the Moonlight</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/692bc7a1186/" class="eorzeadb_link">Prelude in Violet</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/4e3ff3ab391/" class="eorzeadb_link">A Requiem for Heroes</a></li>
+
+                                <li class="quests-text"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/4ed1668d377/" class="eorzeadb_link">Shadowbringers</a></li>
+
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/fc70298b76f/" class="eorzeadb_link">Vows of Virtue, Deeds of Cruelty</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/b7a00665b7b/" class="eorzeadb_link">Echoes of a Fallen Star</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/90de78eeddc/" class="eorzeadb_link">Reflections in Crystal</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/a424070bc4c/" class="eorzeadb_link">Futures Rewritten</a></li>
+                                <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/964cf0528f1/" class="eorzeadb_link">Death Unto Dawn</a></li>
+
+                                <li class="quests-text"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/quest/52a65d1961d/" class="eorzeadb_link">Endwalker</a></li>
+                            </ol>
+                        </div>
+
+                        <!-- Raids -->
+                        <div class="quests__header">
+                            <img src="img/quests/raid.png" class="icon">
+                            <h2>Raids</h2>
+                            <h2 class="quests__completion-label" id="raids-completion-label">-%</h2>
+                        </div>
+
+                        <ol class="list" id="normal-raids-list">
+
+                            <h3>Normal</h3>
+
+                            <li>Bahamut</li>
+                            <li>Alexander</li>
+                            <li>Omega</li>
+                            <li>Eden</li>
+                            <li>Pandæmonium</li>
+                        </ol>
+
+                        <ol class="list" id="alliance-raids-list">
+
+                            <h3>Alliance</h3>
+
+                            <li>Crystal Tower</li>
+                            <li>Shadow of Mhach</li>
+                            <li>Return to Ivalice</li>
+                            <li>YoRHa: Dark Apocalypse</li>
+
+                        </ol>
+
+                        <!-- Relic -->
+                        <div class="quests__header">
+                            <img class="icon--quests" src="img/quests/relic.png">
+                            <h2>Relic</h2>
+                            <h2 class="quests__completion-label" id="relic-completion-label">-%</h2>
+                        </div>
+
+                        <ol class="list" id="relic-list">
+
+                            <li>Zodiac</li>
+                            <li>Anima</li>
+                            <li>Eurekan</li>
+                            <li>Resistance</li>
+                            <li>Skysteel</li>
+                            
+                        </ol>
+
                     </div>
 
-                    <ol class="list" id="dungeons-list">
-
-                        <h3>A Realm Reborn</h3>
-
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b229b89b3a8/" class="eorzeadb_link">Sastasha</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/29e71c3b0a0/" class="eorzeadb_link">The Tam-Tara Deepcroft</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/619923ac984/" class="eorzeadb_link">Copperbell Mines</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/98319325b98/" class="eorzeadb_link">Halatali</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/cf7612fa294/" class="eorzeadb_link">The Thousand Maws of Toto-Rak</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e9740dde26c/" class="eorzeadb_link">Haukke Manor</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e371c7ab919/" class="eorzeadb_link">Brayflox's Longstop</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b7a48152df9/" class="eorzeadb_link">The Sunken Temple of Qarn</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/d601f85dc1e/" class="eorzeadb_link">Cutter's Cry</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b6491e1b508/" class="eorzeadb_link">The Stone Vigil</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/4a36cbca533/" class="eorzeadb_link">Dzemael Darkhold</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f507633618c/" class="eorzeadb_link">The Aurum Vale</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/59c2b3b84fa/" class="eorzeadb_link">Castrum Meridianum</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/2407dbd0cae/" class="eorzeadb_link">The Praetorium</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/6f1778eb631/" class="eorzeadb_link">Snowcloak</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/5e75d2059af/" class="eorzeadb_link">The Keeper of the Lake</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/3fd66be47b2/" class="eorzeadb_link">The Wanderer's Palace</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/ae8a92122ec/" class="eorzeadb_link">Amdapor Keep</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a8dd3748467/" class="eorzeadb_link">Pharos Sirius</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a780ca9b970/" class="eorzeadb_link">Copperbell Mines (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/61c74c68e00/" class="eorzeadb_link">Haukke Manor (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/87d3b951d3d/" class="eorzeadb_link">The Lost City of Amdapor</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/d536b8f0cc8/" class="eorzeadb_link">Halatali (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/40681f6c94a/" class="eorzeadb_link">Brayflox's Longstop (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/18aeffad7c5/" class="eorzeadb_link">Hullbreaker Isle</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/418628edfbf/" class="eorzeadb_link">The Stone Vigil (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/84d01fe5b6c/" class="eorzeadb_link">The Tam-Tara Deepcroft (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/df38ed5c808/" class="eorzeadb_link">Sastasha (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/6b35d4a1179/" class="eorzeadb_link">The Sunken Temple of Qarn (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/7c11b0ba080/" class="eorzeadb_link">The Wanderer's Palace (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a4288ecf826/" class="eorzeadb_link">Amdapor Keep (Hard)</a></li>
-
-                        <h3>Heavensward</h3>
-
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/df5ab8bfd61/" class="eorzeadb_link">The Dusk Vigil</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/eed0add7a62/" class="eorzeadb_link">Sohm Al</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/339c4923556/" class="eorzeadb_link">The Aery</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a62f7ee3718/" class="eorzeadb_link">The Vault</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f368b40c648/" class="eorzeadb_link">The Great Gubal Library</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/923e0a1d1d0/" class="eorzeadb_link">The Aetherochemical Research Facility</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/36e172ff46c/" class="eorzeadb_link">The Antitower</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a8c7c5c13bd/" class="eorzeadb_link">Sohr Khai</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/1d95a773990/" class="eorzeadb_link">Xelphatol</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/bc72ef27ade/" class="eorzeadb_link">Baelsar's Wall</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/618168354ea/" class="eorzeadb_link">Neverreap</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c39cf50a6a5/" class="eorzeadb_link">The Fractal Continuum</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/cdad1cb65e8/" class="eorzeadb_link">Saint Mocianne's Arboretum</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/cd500c08682/" class="eorzeadb_link">Pharos Sirius (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/193a96b0fa4/" class="eorzeadb_link">The Lost City of Amdapor (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/313b1415d0f/" class="eorzeadb_link">Hullbreaker Isle (Hard)</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/d6e98e35e6f/" class="eorzeadb_link">The Great Gubal Library (Hard)</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/9bd9004a140/" class="eorzeadb_link">Sohm Al (Hard)</a></li>
-
-                        <h3>Stormblood</h3>
-
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/471227e1ee7/" class="eorzeadb_link">The Sirensong Sea</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/39ba54ada1c/" class="eorzeadb_link">Shisui of the Violet Tides</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/53d7100d839/" class="eorzeadb_link">Bardam's Mettle</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/cd924bd8eac/" class="eorzeadb_link">Doma Castle</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e635797754f/" class="eorzeadb_link">Castrum Abania</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c71bb06e67b/" class="eorzeadb_link">Ala Mhigo</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/47ef709fb04/" class="eorzeadb_link">The Drowned City of Skalla</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c8608c977a6/" class="eorzeadb_link">The Burn</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/33a05f144e4/" class="eorzeadb_link">The Ghimlyt Dark</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/37d0e83919d/" class="eorzeadb_link">Kugane Castle</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/23edcb0d626/" class="eorzeadb_link">The Temple of the Fist</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f9ab5899e9d/" class="eorzeadb_link">Hells' Lid</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b8bea03880d/" class="eorzeadb_link">The Fractal Continuum (Hard)</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/35ed52cf463/" class="eorzeadb_link">The Swallow's Compass</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/25cf070eeb4/" class="eorzeadb_link">Saint Mocianne's Arboretum (Hard)</a></li>
-
-                        <h3>Shadowbringers</h3>
-
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a6165958a5c/" class="eorzeadb_link">Holminster Switch</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/5f9f024b774/" class="eorzeadb_link">Dohn Mheg</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/3aff2d6760c/" class="eorzeadb_link">The Qitana Ravel</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f8fff809d77/" class="eorzeadb_link">Malikah's Well</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/72f2e86daba/" class="eorzeadb_link">Mt. Gulg</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c5de427bfef/" class="eorzeadb_link">Amaurot</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/1f246825352/" class="eorzeadb_link">The Grand Cosmos</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/969e6501eb7/" class="eorzeadb_link">Anamnesis Anyder</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/44073b7449c/" class="eorzeadb_link">The Heroes' Gauntlet</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/81f08141768/" class="eorzeadb_link">Paglth'an</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/be6a14f45a6/" class="eorzeadb_link">The Twinning</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/d2b053e4e31/" class="eorzeadb_link">Akadaemia Anyder</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/5a30eb6b20d/" class="eorzeadb_link">Matoya's Relict</a></li>
-
-                        <h3>Endwalker</h3>
-
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/9c317b74e3a/" class="eorzeadb_link">The Tower of Zot</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/3297718033f/" class="eorzeadb_link">The Tower of Babil</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/dadcd891cc1/" class="eorzeadb_link">Vanaspati</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/8514a64c969/" class="eorzeadb_link">Ktisis Hyperboreia</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/fd65b266f55/" class="eorzeadb_link">The Aitiascope</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/ba59c193b71/" class="eorzeadb_link">The Dead Ends</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/175e6a7245d/" class="eorzeadb_link">Smileton</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/25f8ec27427/" class="eorzeadb_link">The Stigma Dreamscape</a></li>
-
-                    </ol>
-
-                </div>
-
-                <div class="divider divider--vertical"></div>
-
-                <!-- Trials, High End Duty -->
-                <div class="quests-column">
+                    <div class="divider divider--vertical"></div>
                     
-                    <div class="quests__header">
-                        <img src="img/quests//trial.png" class="quests__logo">
-                        <h2>Trials</h2>
-                        <h2 style="color: var(--completed-color); margin-left: auto;" id="trials-completion-label">-%</h2>
+                    <!-- Dungeons -->
+                    <div class="quests-column" style="width: 40%;">
+
+                        <div class="quests__header">
+                            <img src="img/quests/dungeon.png" class="icon--quests">
+                            <h2>Dungeons</h2>
+                            <h2 class="quests__completion-label" id="dungeons-completion-label">-%</h2>
+                        </div>
+
+                        <ol class="list" id="dungeons-list">
+
+                            <h3>A Realm Reborn</h3>
+
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b229b89b3a8/" class="eorzeadb_link">Sastasha</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/29e71c3b0a0/" class="eorzeadb_link">The Tam-Tara Deepcroft</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/619923ac984/" class="eorzeadb_link">Copperbell Mines</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/98319325b98/" class="eorzeadb_link">Halatali</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/cf7612fa294/" class="eorzeadb_link">The Thousand Maws of Toto-Rak</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e9740dde26c/" class="eorzeadb_link">Haukke Manor</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e371c7ab919/" class="eorzeadb_link">Brayflox's Longstop</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b7a48152df9/" class="eorzeadb_link">The Sunken Temple of Qarn</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/d601f85dc1e/" class="eorzeadb_link">Cutter's Cry</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b6491e1b508/" class="eorzeadb_link">The Stone Vigil</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/4a36cbca533/" class="eorzeadb_link">Dzemael Darkhold</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f507633618c/" class="eorzeadb_link">The Aurum Vale</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/59c2b3b84fa/" class="eorzeadb_link">Castrum Meridianum</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/2407dbd0cae/" class="eorzeadb_link">The Praetorium</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/6f1778eb631/" class="eorzeadb_link">Snowcloak</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/5e75d2059af/" class="eorzeadb_link">The Keeper of the Lake</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/3fd66be47b2/" class="eorzeadb_link">The Wanderer's Palace</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/ae8a92122ec/" class="eorzeadb_link">Amdapor Keep</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a8dd3748467/" class="eorzeadb_link">Pharos Sirius</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a780ca9b970/" class="eorzeadb_link">Copperbell Mines (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/61c74c68e00/" class="eorzeadb_link">Haukke Manor (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/87d3b951d3d/" class="eorzeadb_link">The Lost City of Amdapor</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/d536b8f0cc8/" class="eorzeadb_link">Halatali (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/40681f6c94a/" class="eorzeadb_link">Brayflox's Longstop (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/18aeffad7c5/" class="eorzeadb_link">Hullbreaker Isle</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/418628edfbf/" class="eorzeadb_link">The Stone Vigil (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/84d01fe5b6c/" class="eorzeadb_link">The Tam-Tara Deepcroft (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/df38ed5c808/" class="eorzeadb_link">Sastasha (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/6b35d4a1179/" class="eorzeadb_link">The Sunken Temple of Qarn (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/7c11b0ba080/" class="eorzeadb_link">The Wanderer's Palace (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a4288ecf826/" class="eorzeadb_link">Amdapor Keep (Hard)</a></li>
+
+                            <h3>Heavensward</h3>
+
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/df5ab8bfd61/" class="eorzeadb_link">The Dusk Vigil</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/eed0add7a62/" class="eorzeadb_link">Sohm Al</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/339c4923556/" class="eorzeadb_link">The Aery</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a62f7ee3718/" class="eorzeadb_link">The Vault</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f368b40c648/" class="eorzeadb_link">The Great Gubal Library</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/923e0a1d1d0/" class="eorzeadb_link">The Aetherochemical Research Facility</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/36e172ff46c/" class="eorzeadb_link">The Antitower</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a8c7c5c13bd/" class="eorzeadb_link">Sohr Khai</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/1d95a773990/" class="eorzeadb_link">Xelphatol</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/bc72ef27ade/" class="eorzeadb_link">Baelsar's Wall</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/618168354ea/" class="eorzeadb_link">Neverreap</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c39cf50a6a5/" class="eorzeadb_link">The Fractal Continuum</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/cdad1cb65e8/" class="eorzeadb_link">Saint Mocianne's Arboretum</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/cd500c08682/" class="eorzeadb_link">Pharos Sirius (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/193a96b0fa4/" class="eorzeadb_link">The Lost City of Amdapor (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/313b1415d0f/" class="eorzeadb_link">Hullbreaker Isle (Hard)</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/d6e98e35e6f/" class="eorzeadb_link">The Great Gubal Library (Hard)</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/9bd9004a140/" class="eorzeadb_link">Sohm Al (Hard)</a></li>
+
+                            <h3>Stormblood</h3>
+
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/471227e1ee7/" class="eorzeadb_link">The Sirensong Sea</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/39ba54ada1c/" class="eorzeadb_link">Shisui of the Violet Tides</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/53d7100d839/" class="eorzeadb_link">Bardam's Mettle</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/cd924bd8eac/" class="eorzeadb_link">Doma Castle</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e635797754f/" class="eorzeadb_link">Castrum Abania</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c71bb06e67b/" class="eorzeadb_link">Ala Mhigo</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/47ef709fb04/" class="eorzeadb_link">The Drowned City of Skalla</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c8608c977a6/" class="eorzeadb_link">The Burn</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/33a05f144e4/" class="eorzeadb_link">The Ghimlyt Dark</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/37d0e83919d/" class="eorzeadb_link">Kugane Castle</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/23edcb0d626/" class="eorzeadb_link">The Temple of the Fist</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f9ab5899e9d/" class="eorzeadb_link">Hells' Lid</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b8bea03880d/" class="eorzeadb_link">The Fractal Continuum (Hard)</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/35ed52cf463/" class="eorzeadb_link">The Swallow's Compass</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/25cf070eeb4/" class="eorzeadb_link">Saint Mocianne's Arboretum (Hard)</a></li>
+
+                            <h3>Shadowbringers</h3>
+
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a6165958a5c/" class="eorzeadb_link">Holminster Switch</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/5f9f024b774/" class="eorzeadb_link">Dohn Mheg</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/3aff2d6760c/" class="eorzeadb_link">The Qitana Ravel</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f8fff809d77/" class="eorzeadb_link">Malikah's Well</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/72f2e86daba/" class="eorzeadb_link">Mt. Gulg</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c5de427bfef/" class="eorzeadb_link">Amaurot</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/1f246825352/" class="eorzeadb_link">The Grand Cosmos</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/969e6501eb7/" class="eorzeadb_link">Anamnesis Anyder</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/44073b7449c/" class="eorzeadb_link">The Heroes' Gauntlet</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/81f08141768/" class="eorzeadb_link">Paglth'an</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/be6a14f45a6/" class="eorzeadb_link">The Twinning</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/d2b053e4e31/" class="eorzeadb_link">Akadaemia Anyder</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/5a30eb6b20d/" class="eorzeadb_link">Matoya's Relict</a></li>
+
+                            <h3>Endwalker</h3>
+
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/9c317b74e3a/" class="eorzeadb_link">The Tower of Zot</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/3297718033f/" class="eorzeadb_link">The Tower of Babil</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/dadcd891cc1/" class="eorzeadb_link">Vanaspati</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/8514a64c969/" class="eorzeadb_link">Ktisis Hyperboreia</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/fd65b266f55/" class="eorzeadb_link">The Aitiascope</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/ba59c193b71/" class="eorzeadb_link">The Dead Ends</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/175e6a7245d/" class="eorzeadb_link">Smileton</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/25f8ec27427/" class="eorzeadb_link">The Stigma Dreamscape</a></li>
+
+                        </ol>
+
                     </div>
 
-                    <ol class="list" id="trials-list">
+                    <div class="divider divider--vertical"></div>
 
-                        <h3>A Realm Reborn</h3>
+                    <!-- Trials, High End Duty -->
+                    <div class="quests-column">
+                        
+                        <div class="quests__header">
+                            <img src="img/quests//trial.png" class="icon--quests">
+                            <h2>Trials</h2>
+                            <h2 style="color: var(--completed-color); margin-left: auto;" id="trials-completion-label">-%</h2>
+                        </div>
 
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/6af1a94ccca/" class="eorzeadb_link">The Bowl of Embers</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/589c727302e/" class="eorzeadb_link">The Navel</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/7c17ae70cc6/" class="eorzeadb_link">The Howling Eye</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b7c47c44490/" class="eorzeadb_link">Thornmarch</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/0850a8627aa/" class="eorzeadb_link">The Whorleater</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/4d8cae741db/" class="eorzeadb_link">The Striking Tree</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/5f786d57228/" class="eorzeadb_link">The Akh Afah Amphitheatre</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/2fac3746c16/" class="eorzeadb_link">The Chrysalis</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f80af21461f/" class="eorzeadb_link">The Steps of Faith</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/cb876745bce/" class="eorzeadb_link">Battle in the Big Keep</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/21d8c5bd54b/" class="eorzeadb_link">Urth's Fount</a></li>
-                    
-                        <h3>Heavensward</h3>
+                        <ol class="list" id="trials-list">
 
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/83f028575c8/" class="eorzeadb_link">Thok ast Thok</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e9bb63551a4/" class="eorzeadb_link">The Limitless Blue</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a8a4860068c/" class="eorzeadb_link">Thordan's Reign</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e05c982993d/" class="eorzeadb_link">Containment Bay S1T7</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/0e880006330/" class="eorzeadb_link">Nidhogg's Rage</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/212ceb19a34/" class="eorzeadb_link">Containment Bay P1T6</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/26a86785be9/" class="eorzeadb_link">Containment Bay Z1T9</a></li>
+                            <h3>A Realm Reborn</h3>
 
-                        <h3>Stormblood</h3>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/6af1a94ccca/" class="eorzeadb_link">The Bowl of Embers</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/589c727302e/" class="eorzeadb_link">The Navel</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/7c17ae70cc6/" class="eorzeadb_link">The Howling Eye</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b7c47c44490/" class="eorzeadb_link">Thornmarch</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/0850a8627aa/" class="eorzeadb_link">The Whorleater</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/4d8cae741db/" class="eorzeadb_link">The Striking Tree</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/5f786d57228/" class="eorzeadb_link">The Akh Afah Amphitheatre</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/2fac3746c16/" class="eorzeadb_link">The Chrysalis</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f80af21461f/" class="eorzeadb_link">The Steps of Faith</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/cb876745bce/" class="eorzeadb_link">Battle in the Big Keep</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/21d8c5bd54b/" class="eorzeadb_link">Urth's Fount</a></li>
+                        
+                            <h3>Heavensward</h3>
 
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b28f61e6212/" class="eorzeadb_link">The Pool of Tribute</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/7de6a27d145/" class="eorzeadb_link">Emanation</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/8c829b8dd8c/" class="eorzeadb_link">Shinryu's Domain</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/44fc4abc0eb/" class="eorzeadb_link">The Jade Stoa</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/0919d2674e0/" class="eorzeadb_link">Tsukuyomi's Pain</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/52328939737/" class="eorzeadb_link">The Great Hunt</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/628e9a05d34/" class="eorzeadb_link">Hells' Kier</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c79d50c803d/" class="eorzeadb_link">The Wreath of Snakes</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/bad56c435a5/" class="eorzeadb_link">Kugane Ohashi</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/83f028575c8/" class="eorzeadb_link">Thok ast Thok</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e9bb63551a4/" class="eorzeadb_link">The Limitless Blue</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/a8a4860068c/" class="eorzeadb_link">Thordan's Reign</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/e05c982993d/" class="eorzeadb_link">Containment Bay S1T7</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/0e880006330/" class="eorzeadb_link">Nidhogg's Rage</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/212ceb19a34/" class="eorzeadb_link">Containment Bay P1T6</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/26a86785be9/" class="eorzeadb_link">Containment Bay Z1T9</a></li>
 
-                        <h3>Shadowbringers</h3>
+                            <h3>Stormblood</h3>
 
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/bad53f19540/" class="eorzeadb_link">The Dancing Plague</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/55504d0495f/" class="eorzeadb_link">The Crown of the Immaculate</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b2e08d16bce/" class="eorzeadb_link">Hades's Elegy</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b388be5eb05/" class="eorzeadb_link">Cinder Drift</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/1543e03ff37/" class="eorzeadb_link">The Seat of Sacrifice</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/841d3f69efd/" class="eorzeadb_link">Memoria Misera</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/16e9780d10e/" class="eorzeadb_link">Castrum Marinum</a></li>
-                        <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c4a2acf0912/" class="eorzeadb_link">The Cloud Deck</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b28f61e6212/" class="eorzeadb_link">The Pool of Tribute</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/7de6a27d145/" class="eorzeadb_link">Emanation</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/8c829b8dd8c/" class="eorzeadb_link">Shinryu's Domain</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/44fc4abc0eb/" class="eorzeadb_link">The Jade Stoa</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/0919d2674e0/" class="eorzeadb_link">Tsukuyomi's Pain</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/52328939737/" class="eorzeadb_link">The Great Hunt</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/628e9a05d34/" class="eorzeadb_link">Hells' Kier</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c79d50c803d/" class="eorzeadb_link">The Wreath of Snakes</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/bad56c435a5/" class="eorzeadb_link">Kugane Ohashi</a></li>
 
-                        <h3>Endwalker</h3>
+                            <h3>Shadowbringers</h3>
 
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f40a8f14d6d/" class="eorzeadb_link">Zodiark's Fall</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/0dbba05fd0f/" class="eorzeadb_link">Hydaelyn's Call</a></li>
-                        <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/7b4070f67f6/" class="eorzeadb_link">The Final Day</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/bad53f19540/" class="eorzeadb_link">The Dancing Plague</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/55504d0495f/" class="eorzeadb_link">The Crown of the Immaculate</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b2e08d16bce/" class="eorzeadb_link">Hades's Elegy</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/b388be5eb05/" class="eorzeadb_link">Cinder Drift</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/1543e03ff37/" class="eorzeadb_link">The Seat of Sacrifice</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/841d3f69efd/" class="eorzeadb_link">Memoria Misera</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/16e9780d10e/" class="eorzeadb_link">Castrum Marinum</a></li>
+                            <li><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/c4a2acf0912/" class="eorzeadb_link">The Cloud Deck</a></li>
 
-                    </ol>
+                            <h3>Endwalker</h3>
 
-                    <!-- High End Duty -->
-                    <div class="quests__header">
-                        <img src="img/quests/high-end.png" class="quests__logo">
-                        <h2>High End</h2>
-                        <h2 class="quests__completion-label" id="high-end-completion-label">-%</h2>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/f40a8f14d6d/" class="eorzeadb_link">Zodiark's Fall</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/0dbba05fd0f/" class="eorzeadb_link">Hydaelyn's Call</a></li>
+                            <li class="hidden"><a href="https://na.finalfantasyxiv.com/lodestone/playguide/db/duty/7b4070f67f6/" class="eorzeadb_link">The Final Day</a></li>
+
+                        </ol>
+
+                        <!-- High End Duty -->
+                        <div class="quests__header">
+                            <img src="img/quests/high-end.png" class="icon--quests">
+                            <h2>High End</h2>
+                            <h2 class="quests__completion-label" id="high-end-completion-label">-%</h2>
+                        </div>
+
+                        <!-- Savage -->
+                        <ol class="list" id="savage-raids-list">
+
+                            <h3>Savage</h3>
+
+                            <li>Bahamut</li>
+                            <li>Alexander</li>
+                            <li>Omega</li>
+                            <li>Eden</li>
+                            <li>Pandæmonium</li>
+
+                        </ol>
+
+                        <!-- Ultimate -->
+                        <ol class="list" id="ultimate-raids-list">
+
+                            <h3>Ultimate</h3>
+
+                            <li>The Unending Coils of Bahamut</li>
+                            <li>The Weapon's Refrain</li>
+                            <li>The Epic of Alexander</li>
+
+                        </ol>
+
                     </div>
-
-                    <!-- Savage -->
-                    <ol class="list" id="savage-raids-list">
-
-                        <h3>Savage</h3>
-
-                        <li>Bahamut</li>
-                        <li>Alexander</li>
-                        <li>Omega</li>
-                        <li>Eden</li>
-                        <li>Pandæmonium</li>
-
-                    </ol>
-
-                    <!-- Ultimate -->
-                    <ol class="list" id="ultimate-raids-list">
-
-                        <h3>Ultimate</h3>
-
-                        <li>The Unending Coils of Bahamut</li>
-                        <li>The Weapon's Refrain</li>
-                        <li>The Epic of Alexander</li>
-
-                    </ol>
-
+                        
                 </div>
-                    
-            </div>
 
-            <button class="button button--show-more" id="show-quests">Show More</button>
+                <button class="button button--show-more absolute" id="show-quests">Show More</button>
+
+            </div>  
+
 
         </div>
 

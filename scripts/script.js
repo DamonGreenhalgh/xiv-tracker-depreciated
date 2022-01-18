@@ -90,7 +90,7 @@ function createCharacterBanner(character) {
     avatar.setAttribute('class', "header__avatar");
     avatar.setAttribute('src', character.Avatar);
     name.setAttribute('class', "header__name");
-    server.setAttribute('class', "header__server secondary-text");
+    server.setAttribute('class', "header__server text--secondary");
 
     // Append
     banner.append(avatar);
