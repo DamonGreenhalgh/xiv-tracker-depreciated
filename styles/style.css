@@ -530,7 +530,7 @@ body {
     width: 10rem;
     bottom: 120%;
     left: 50%;
-    margin-left: -5.5rem;
+    margin-left: -5rem;
 }
 
 .item:hover .tooltip {
