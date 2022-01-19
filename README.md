@@ -12,20 +12,20 @@ Current features of the site include the following,
 ## Upcoming
 
 - Better non-Eorzea Database tooltips
-- Free Company Banner
+- ~Free Company Banner~
 - Friends
 - Updates to raids and other miscellaneous quests.
 - General optimization
 
-## Preview
+## Screenshots
 
 > Home
 
-![Home](github/home.png)
+![Home](.github/home.png)
 
 > Character
 
-![Character](github/character.png)
+![Character](.github/character.png)
 
 > Character Panels, Attributes, Profile, Mounts and Minions.
 
@@ -38,12 +38,12 @@ Current features of the site include the following,
 
 > Jobs
 
-![Jobs](github/jobs.png)
+![Jobs](.github/jobs.png)
 
 > Quests
 
-![Quests](github/quests-hidden.png)
+![Quests](.github/quests-hidden.png)
 
 > Eorzea Database tooltips on quest and duty activities.
 
-![Quests Tooltip](github/quests-tooltip.png)
+![Quests Tooltip](.github/quests-tooltip.png)

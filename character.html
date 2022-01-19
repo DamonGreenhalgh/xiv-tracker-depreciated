@@ -25,9 +25,9 @@
                 <a href="index.html"><img src="img/home-logo.png" class="icon icon--home"></a>
 
                 <!-- Nav Buttons -->
-                <a href="#character-page" class="navbar__button">Character</a>
-                <a href="#jobs-page" class="navbar__button">Jobs</a>
-                <a href="#quests-page" class="navbar__button">Quests</a>
+                <a href="#character" class="navbar__button">Character</a>
+                <a href="#jobs" class="navbar__button">Jobs</a>
+                <a href="#quests" class="navbar__button">Quests</a>
 
             </div>
             
@@ -141,8 +141,6 @@
 
         </div>
 
-        <a id="character-page"></a>
-
         <div class="main" style="margin-top: 8rem;">
 
             <!-- General Notice -->
@@ -153,7 +151,7 @@
             </div>
 
             <!-- Header -->
-            <div class="header">
+            <div class="header" id="character">
 
                 <img id="character-avater" class="header__avatar">
                 <p id="prefix-name" class="header__title--prefix text--secondary"></p>
@@ -365,8 +363,7 @@
             </div>
 
             <!-- Free Company -->
-            <script src="scripts/freecompany.js" defer></script>
-            <div class="free-company">
+            <div class="free-company" id="free-company-banner">
                 <div class="free-company__avatar" id="free-company-avatar">
                     <img id="free-company-avatar-1" class="free-company__avatar__component absolute">
                     <img id="free-company-avatar-2" class="free-company__avatar__component absolute">
@@ -377,7 +374,6 @@
                 <p class="free-company__rank text--secondary" id="free-company-rank"></p>
             </div>
 
-            <a id="jobs-page" style="padding-bottom: 3rem;"></a>
             <div class="section-header">
                 <div class="divider divider--horizontal"></div>
                 <h1>Jobs</h1>
@@ -633,7 +629,6 @@
 
             </div>
 
-            <a id="quests-page" style="padding-bottom: 3rem;"></a>
             <div class="section-header">
                 <div class="divider divider--horizontal"></div>
                 <h1>Quests</h1>
@@ -641,7 +636,7 @@
             </div>
 
             <!-- Quests -->
-            <div class="quests">
+            <div class="quests" id="quests">
 
                 <!-- Notice -->
                 <div class="notice notice--quests" id="quests-notice">
@@ -655,7 +650,7 @@
                 <div class="overlay" id="overlay"></div>
 
                 <!-- Quests -->
-                <div id="quests" class="quests__container hidden">
+                <div id="quests-container" class="quests__container hidden">
 
                     <!-- Main Scenario Quests, Raids, Relic Weapons -->
                     <div class="quests-column">
@@ -982,7 +977,6 @@
                 <button class="button button--show-more absolute" id="show-quests">Show More</button>
 
             </div>  
-
 
         </div>
 

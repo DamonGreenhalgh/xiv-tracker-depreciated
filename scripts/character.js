@@ -14,14 +14,9 @@ async function main() {
         .then(data => characterData = data.Character);
         
     console.log(characterData);
-    
-    // Load server json file
-    let serverData;
-    fetch("data.json")
-        .then(response => response.json())
-        .then(data => serverData = data);
 
 
+    // Apply action listeners to various interactable elements on the page.
     const tabId = ['attributes', 'profile', 'mounts', 'minions'];
     let currentTabIndex;
 
@@ -49,10 +44,10 @@ async function main() {
     // Default tab on window open.
     document.getElementById('attributes-tab-button').click();
 
-    // Action listener for the show more button for quests.
+    // Action listener for the 'Show More' button.
     let showQuestContent = false;
     const showQuestsBtn = document.getElementById('show-quests');
-    const questContent = document.getElementById('quests');
+    const questContent = document.getElementById('quests-container');
     const questOverlay = document.getElementById('overlay');
 
     showQuestsBtn.addEventListener('click', function() {
@@ -75,7 +70,6 @@ async function main() {
     });
 
     // Notice Action Listeners
-    
     document.getElementById('general-notice-exit').addEventListener('click', function() {
         document.getElementById('general-notice').style.display = "none";
     });
@@ -83,6 +77,7 @@ async function main() {
         document.getElementById('quests-notice').style.display = "none";
     });
     
+
 
     // General Character Information
     // -----------------------------
@@ -163,12 +158,33 @@ async function main() {
 
     // If the character is associated with a free company.
     if (characterData.FreeCompany !== null) {
-        freeCompany();
+
+        // Request free company data.
+        await fetch("https://xivapi.com/freecompany/" + characterData.FreeCompanyId, {mode: 'cors'})
+            .then(response => response.json())
+            .then(data => freeCompanyData = data.FreeCompany);
+
+        // Update Free Company Banner
+        document.getElementById('free-company-banner').style.display = "grid";
+        document.getElementById('free-company-banner-name').innerText = freeCompanyData.Name;
+        document.getElementById('free-company-slogan').innerText = freeCompanyData.Slogan;
+        document.getElementById('free-company-avatar-1').setAttribute('src', freeCompanyData.Crest[0]);
+        document.getElementById('free-company-avatar-2').setAttribute('src', freeCompanyData.Crest[1]);
+        document.getElementById('free-company-avatar-3').setAttribute('src', freeCompanyData.Crest[2]);
+        document.getElementById('free-company-rank').innerText = "Rank: " + freeCompanyData.Rank;
+
+        // Update Profile Elements
+        document.getElementById('free-company-crest-1').style.backgroundImage = "url('" + freeCompanyData.Crest[0] + "')";
+        document.getElementById('free-company-crest-2').style.backgroundImage = "url('" + freeCompanyData.Crest[1] + "')";
+        document.getElementById('free-company-crest-3').style.backgroundImage = "url('" + freeCompanyData.Crest[2] + "')";
+        document.getElementById('free-company-name').innerText = characterData.FreeCompanyName;
+    
     }
+
+
 
     // Jobs
     // ----
-
     let job;
 
     const jobLevel = document.getElementsByClassName('jobs__level');
@@ -198,15 +214,10 @@ async function main() {
 
     document.getElementById('jobs').setAttribute('class', "jobs");
 
-    
-
-
-
 
     
     // Minions and Mounts
     // ------------------
-
     let minionData, mountData;
     let storedData = localStorage.getItem("storedData");
 
@@ -216,14 +227,11 @@ async function main() {
 
     storedData = JSON.parse(localStorage.getItem("storedData"));
 
-    // Call XIVAPI for character data.
     let data;
     await fetch("https://xivapi.com/character/" + characterId + "?data=MIMO", {mode: 'cors'})
         .then(promise => promise.json())
         .then(responseData => data = responseData);
 
-    // If XIVAPI does not return mount and minion data, look in local storage to see if it was retrieved and stored
-    // before. If so, load that data.
 
     // Check if XIVAPI returns null;
     if (data.Minions == null || data.Mounts == null) {
@@ -288,13 +296,17 @@ async function main() {
         });
     }
 
-
-
-
-
+    
 
     // Quests
     // ------
+
+    // Load server json file
+    let serverData;
+    fetch("data.json")
+        .then(response => response.json())
+        .then(data => serverData = data);
+    
     let achievementData
     await fetch("https://xivapi.com/character/" + characterId + "?data=AC", {mode: 'cors'})
         .then(promise => promise.json())
@@ -354,8 +366,6 @@ async function main() {
         document.getElementById("raids-completion-label").innerText = (Math.ceil((completedNormalRaids + completedAllianceRaids) / (normalRaidId.length + allianceRaidId.length) * 100)).toString() + "%";
         document.getElementById("high-end-completion-label").innerText = (Math.ceil((completedSavageRaids + completedUltimateRaids) / (savageRaidId.length + ultimateRaidId.length) * 100)).toString() + "%";
         
-        
-
     } else {
 
         // Display notice
@@ -363,7 +373,7 @@ async function main() {
 
     }
 
-    document.getElementById('quests').setAttribute('class', "quests__container");
+    document.getElementById('quests-container').setAttribute('class', "quests__container");
     document.getElementById('loading-icon').style.display = "none";
 }
 
@@ -398,20 +408,7 @@ function displayPage(pageCapacity, pageNumber, pageType, content, labelName) {
     document.getElementById(labelName).innerText = pageNumber;
 }
 
-/**DisplayActivityCompeltion
- * 
- * Description: This function updates the list items of the quests section of 
- * the webpage. If the character has completed a certain quest/duty, it will be 
- * marked with green text and a checkmark.
- * 
- * Params:
- * id: An array containing specific xivapi achievements id.
- * type: A string used to get elements in the DOM.
- * achievements: An array containing all the character achievement ids.
- * 
- * Return:
- * count: An integer representing the number of completed duties/quests.
- * */ 
+// Function to checkmark every completed quest/duty.
 function displayActivityCompletion(id, type, achievements) {
 
     document.getElementById(type + "-list").style.marginLeft = "0";
