@@ -1,14 +1,20 @@
+// Global Variables
+let characterData, freeCompanyData, mountData, minionData, achievementData;
+
 async function main() {
 
-    // Get character id and name from url parameter.
     const searchParams = new URLSearchParams(window.location.search);
     const characterId = searchParams.get('id');
     const characterName = searchParams.get('name');
-
+    
     document.title = characterName + " | XIV Tracker";
-    document.getElementById('character-name').innerText = characterName;
 
-
+    await fetch("https://xivapi.com/character/" + characterId + "?extended=1", {mode: "cors"})
+        .then(response => response.json())
+        .then(data => characterData = data.Character);
+        
+    console.log(characterData);
+    
     // Load server json file
     let serverData;
     fetch("data.json")
@@ -80,14 +86,9 @@ async function main() {
 
     // General Character Information
     // -----------------------------
-    let characterData;
-    await fetch("https://xivapi.com/character/" + characterId + "?extended=1", {mode: "cors"})
-        .then(response => response.json())
-        .then(data => characterData = data.Character)
     
-    console.log(characterData);
-
     // Update DOM elements with recieved data for xivapi
+    document.getElementById('character-name').innerText = characterData.Name;
     document.getElementById('character-server').innerText = characterData.Server;
     document.getElementById('character-avater').setAttribute('src', characterData.Avatar);
     document.getElementById('character-portrait').style.backgroundImage = "url('" + characterData.Portrait + "')";
@@ -161,17 +162,8 @@ async function main() {
     }
 
     // If the character is associated with a free company.
-    if (characterData.FreeCompanyName !== null) {
-        document.getElementById('free-company-name').innerText = characterData.FreeCompanyName;
-
-        let freeCompanyData;
-        await fetch("https://xivapi.com/freecompany/" + characterData.FreeCompanyId, {mode: "cors"})
-            .then(response => response.json())
-            .then(data => freeCompanyData = data);
-
-        document.getElementById('free-company-crest-1').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[0] + "')";
-        document.getElementById('free-company-crest-2').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[1] + "')";
-        document.getElementById('free-company-crest-3').style.backgroundImage = "url('" + freeCompanyData.FreeCompany.Crest[2] + "')";
+    if (characterData.FreeCompany !== null) {
+        freeCompany();
     }
 
     // Jobs
@@ -225,9 +217,10 @@ async function main() {
     storedData = JSON.parse(localStorage.getItem("storedData"));
 
     // Call XIVAPI for character data.
-    data = await requestData("character/" + characterId + "?data=MIMO");
-
-
+    let data;
+    await fetch("https://xivapi.com/character/" + characterId + "?data=MIMO", {mode: 'cors'})
+        .then(promise => promise.json())
+        .then(responseData => data = responseData);
 
     // If XIVAPI does not return mount and minion data, look in local storage to see if it was retrieved and stored
     // before. If so, load that data.
@@ -302,7 +295,10 @@ async function main() {
 
     // Quests
     // ------
-    let achievementData = (await requestData("character/" + characterId + "?data=AC")).Achievements.List;
+    let achievementData
+    await fetch("https://xivapi.com/character/" + characterId + "?data=AC", {mode: 'cors'})
+        .then(promise => promise.json())
+        .then(data => achievementData = data.Achievements.List);
 
     // Check if character has achievements public.
     if (achievementData.length !== 0) {
@@ -369,14 +365,6 @@ async function main() {
 
     document.getElementById('quests').setAttribute('class', "quests__container");
     document.getElementById('loading-icon').style.display = "none";
-}
-
-// Function to make requests to XIVAPI
-async function requestData(content) {
-    let response = await fetch("https://xivapi.com/" + content, {mode: 'cors'});
-    let data = await response.json();
-
-    return data;
 }
 
 // Function to display current page for mounts and minions.

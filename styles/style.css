@@ -461,6 +461,7 @@ body {
 }
 
 .divider {
+    grid-area: divider;
     border-radius: .1rem; 
     background-color: var(--foreground-color);
 }
@@ -535,6 +536,50 @@ body {
 
 .item:hover .tooltip {
     visibility: visible;
+}
+
+.free-company {
+    display: grid;
+    grid-template-columns: 5rem 2rem 1fr auto;
+    grid-template-rows: 2rem .5rem 2rem 1fr;
+    grid-template-areas: 
+        "avatar . name    rank   "
+        "avatar . divider divider"
+        "avatar . bio     .      "
+        ".      . bio     .      "
+    ;
+    padding: 2rem;
+    width: 100%; 
+    height: 9rem; 
+    align-items: center;
+    border-radius: .5rem;
+    border: 1px solid var(--foreground-color);
+}
+
+.free-company__avatar {
+    grid-area: avatar;
+    position: relative;
+    align-self: flex-start;
+}
+
+.free-company__avatar__component {
+    width: 5rem;
+    height: 5rem;
+    border-radius: .5rem;
+    border: 1px solid var(--mid-color);
+}
+
+.free-company__name {
+    grid-area: name;
+}
+
+.free-company__slogan {
+    grid-area: bio;
+}
+
+.free-company__rank {
+    grid-area: rank;
+    align-self: flex-start;
 }
 
 .jobs {
