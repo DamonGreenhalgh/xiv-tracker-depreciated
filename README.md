@@ -30,10 +30,10 @@ Current features of the site include the following,
 > Character Panels, Attributes, Profile, Mounts and Minions.
 
 <p align="center">
-  <img src="github/attributes.png" alt="Atrributes">
-  <img src="github/profile.png" alt="Profile">
-  <img src="github/mounts.png" alt="Mounts">
-  <img src="github/minions.png" alt="Minions">
+  <img src=".github/attributes.png" alt="Atrributes">
+  <img src=".github/profile.png" alt="Profile">
+  <img src=".github/mounts.png" alt="Mounts">
+  <img src=".github/minions.png" alt="Minions">
  </p>
 
 > Jobs
