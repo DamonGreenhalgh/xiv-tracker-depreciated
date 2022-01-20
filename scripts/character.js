@@ -334,7 +334,6 @@ async function main() {
             }
         }
 
-
         // Compute the height required to meet current quest.
         const maxIndex = completedMainQuests-1;
         const msqListChildren = document.getElementById('msq-list').childNodes;
@@ -343,28 +342,23 @@ async function main() {
         document.getElementById('msq-bar').style.height = (msqProgressBarHeight + currentQuest.getBoundingClientRect().height/2).toString() + "px";      
         document.getElementById('msq-bar-point').style.top = (msqProgressBarHeight - currentQuest.getBoundingClientRect().height/2).toString() + "px";   
 
-
         // Checklist
         const dungeonId = Object.values(serverData.dungeons);
         const trialId = Object.values(serverData.trials);
-        const normalRaidId = Object.values(serverData.raids.normal);
-        const allianceRaidId = Object.values(serverData.raids.alliance);
-        const savageRaidId = Object.values(serverData.highEnd.savage);
-        const ultimateRaidId = Object.values(serverData.highEnd.ultimate);
+        const raidId = Object.values(serverData.raids);
+        const highendId = Object.values(serverData.highend);
 
         const completedDungeons = displayActivityCompletion(dungeonId, 'dungeons', achievementData);
         const completedTrials = displayActivityCompletion(trialId, 'trials', achievementData);
-        const completedNormalRaids = displayActivityCompletion(normalRaidId, 'normal-raids', achievementData);
-        const completedAllianceRaids = displayActivityCompletion(allianceRaidId, 'alliance-raids', achievementData);
-        const completedSavageRaids = displayActivityCompletion(savageRaidId, 'savage-raids', achievementData);
-        const completedUltimateRaids = displayActivityCompletion(ultimateRaidId, 'ultimate-raids', achievementData);
+        const completedRaids = displayActivityCompletion(raidId, 'raids', achievementData);
+        const completedHighend = displayActivityCompletion(highendId, 'high-end', achievementData);
 
         // Set percentage completion labels.
         document.getElementById("main-scenario-completion-label").innerText = (Math.ceil(completedMainQuests / msqId.length * 100)).toString() + "%";
         document.getElementById("dungeons-completion-label").innerText = (Math.ceil(completedDungeons / dungeonId.length * 100)).toString() + "%";
         document.getElementById("trials-completion-label").innerText = (Math.ceil(completedTrials / trialId.length * 100)).toString() + "%";
-        document.getElementById("raids-completion-label").innerText = (Math.ceil((completedNormalRaids + completedAllianceRaids) / (normalRaidId.length + allianceRaidId.length) * 100)).toString() + "%";
-        document.getElementById("high-end-completion-label").innerText = (Math.ceil((completedSavageRaids + completedUltimateRaids) / (savageRaidId.length + ultimateRaidId.length) * 100)).toString() + "%";
+        document.getElementById("raids-completion-label").innerText = (Math.ceil(completedRaids / raidId.length * 100)).toString() + "%";
+        document.getElementById("high-end-completion-label").innerText = (Math.ceil(completedHighend / highendId.length * 100)).toString() + "%";
         
     } else {
 
@@ -444,7 +438,7 @@ function displayActivityCompletion(id, type, achievements) {
 
     const dutyHeaders = document.getElementById(type + "-list").getElementsByTagName('h3');
     for (let i = 0; i < dutyHeaders.length; i++) {
-        dutyHeaders[i].style.marginLeft = "6rem";
+        dutyHeaders[i].style.marginLeft = "4rem";
     }
 
     return count;

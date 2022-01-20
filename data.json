@@ -154,73 +154,47 @@
         "The Final Day": 2958
     },
     "raids": {
-        "normal": {
-            "Bahamut": 1040,
-            "Alexander": 1639,
-            "Omega": 2024,
-            "Eden": 2719,
-            "Pandæmonium": 3035
-        },
-        "alliance": {
-            "Crystal Tower": 1068,
-            "Shadow of Mhach": 1689,
-            "Return to Ivalice": 2164,
-            "YoRHa: Dark Apocalypse": 2847
-        }
+        "The Binding Coil of Bahamut": 747,
+        "The Second Coil of Bahamut": 887,
+        "The Final Coil of Bahamut": 1040,
+        "Alexander: Gordias": 1228,
+        "Alexander: Midas": 1476,
+        "Alexander: The Creator": 1639,
+        "Omega: Deltascape": 1895,
+        "Omega: Sigmascape": 2024,
+        "Omega: Alpahscape": 2118,
+        "Eden's Gate": 2409,
+        "Eden's Verse": 2591,
+        "Eden's Promise": 2719,
+        "Asphodelos": 3035,
+        "Labyrinth of the Ancients": 883,
+        "Syrcus Tower": 995,
+        "The World of Darkness": 1068,
+        "The Void Ark": 1399,
+        "The Weeping City of Mhach": 1574,
+        "Dun Scaith": 1689,
+        "The Royal City of Rabanastre": 1992,
+        "The Ridorana Lighthouse": 2106,
+        "The Orbonne Monastery": 2164,
+        "The Copied Factory": 2443,
+        "The Puppet's Bunker": 2622,
+        "The Tower at Paradigm's Breach": 2847
     },
-    "highEnd": {
-        "extreme": {
-            "The Bowl of Embers": 856,
-            "The Navel": 857,
-            "The Howling Eye": 855,
-            "Thornmarch": 894,
-            "The Whorleater": 893,
-            "The Striking Tree": 994,
-            "Akh Afah Amphitheatre": 1045,
-            "Urth's Fount": 1064,
-            "Thok ask Thok": 1221,
-            "The Limitless Blue": 1220,
-            "Thordan's Reign": 1400,
-            "Nidhogg's Rage": 1601,
-            "Containment Bay S1T7": 1485,
-            "Containment Bay P1T6": 1636,
-            "Containment Bay Z1T9": 1685,
-            "The Pool of Tribute": 1902,
-            "Emanation": 1901,
-            "Shinryu's Domain": 1989,
-            "Tsukuyomi's Pain": 2060,
-            "The Jade Stoa": 2023,
-            "The Great Hunt": 2109,
-            "Hell's Kier": 2117,
-            "The Wreath of Snakes": 2165,
-            "The Dancing Plague": 2385,
-            "The Crown of the Immaculate": 2386,
-            "Hade's Elegy": 2441,
-            "The Seat of Sacrifice": 2621,
-            "Memoria Misera": 2586,
-            "Cinder Drift": 2590,
-            "Castrum Marinum": 2718,
-            "The Cloud Deck": 2846,
-            "Zodiark's Fall": 2988,
-            "Hydaelyn's Call": 2989
-        },
-        "unreal": {
-            "The Navel": 0,
-            "The Whorleater": 0,
-            "The Akh Amphitheatre": 0
-        },
-        "savage": {
-            "Bahamut": 1000,
-            "Alexander": 1642,
-            "Omega": 2027,
-            "Eden": 2722,
-            "Pandæmonium": 3038
-        },
-        "ultimate": {
-            "The Unending Coils of Bahamut": 1993,
-            "The Weapon's Refrain": 2107,
-            "The Epic of Alexander": 2444
-        }
+    "highend": {
+        "The Second Coil of Bahamut": 1000,
+        "Alexander: Gordias": 1231,
+        "Alexander: Midas": 1479,
+        "Alexander: The Creator": 1642,
+        "Omega: Deltascape": 1898,
+        "Omega: Sigmascape": 2027,
+        "Omega: Alpahscape": 2121,
+        "Eden's Gate": 2412,
+        "Eden's Verse": 2594,
+        "Eden's Promise": 2722,
+        "Asphodelos": 3038,
+        "The Unending Coils of Bahamut": 1993,
+        "The Weapon's Refrain": 2107,
+        "The Epic of Alexander": 2444
     },
     "relic": {
         "Zodiac": 1081,

@@ -38,7 +38,7 @@ h1 {
 }
 
 h2 {
-    margin: auto 0 auto 3rem;
+    margin: auto auto auto 2rem;
     font-size: 1.5rem;
 }
 
@@ -667,7 +667,7 @@ body {
 .quests__container {
     overflow: hidden;
     display: flex;
-    gap: 3rem;
+    gap: 1rem;
     height: 40rem;
     width: 100%;
     padding: 1rem;
@@ -713,7 +713,7 @@ body {
 
 .quests__completion-label {
     color: var(--completed-color);
-    margin-left: auto;
+    margin-right: 0;
 }
 
 .quests__content {
@@ -722,13 +722,13 @@ body {
 
 .quests__checkmark {
     max-height: .7rem;
-    margin: 0 4rem 0 1rem;
+    margin: 0 2rem 0 1rem;
 }
 
 .msq__progress-bar {
     display: flex;
     position: relative;
-    margin: 0 1rem;
+    margin: 0 2rem 0 1rem;
     height: 100%; 
     width: 1rem; 
     background-color: var(--foreground-color); 
@@ -760,12 +760,12 @@ body {
     padding-left: 0;
     gap: 1rem;
     color: var(--text-midground-color);
-    margin-left: 6rem;
+    margin-left: 4rem;
     font-size: .8rem; 
 }
 
 .list--msq {
-    margin: 0 0 0 3rem;
+    margin: 0;
 }
 
 .quests-text {
@@ -782,7 +782,7 @@ body {
 }
 
 .quests-text--incomplete {
-    margin-left: 6rem;
+    margin-left: 4rem;
 }
 
 .hidden {
