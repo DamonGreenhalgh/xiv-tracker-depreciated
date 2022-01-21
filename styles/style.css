@@ -10,7 +10,6 @@
 
     --shadow-color: #0c0d0f;
     --background-color:  #111214;
-    /* --midground-color: #141518; */
     --midground-color: #16171a;
 
     --foreground-color: #1b1d22;
@@ -38,7 +37,7 @@ h1 {
 }
 
 h2 {
-    margin: auto auto auto 2rem;
+    margin: auto auto auto 1.5rem;
     font-size: 1.5rem;
 }
 
@@ -721,8 +720,15 @@ body {
 }
 
 .quests__checkmark {
-    max-height: .7rem;
+    max-height: .75rem;
     margin: 0 2rem 0 1rem;
+}
+
+.quests__msq {
+    max-height: 1.25rem;
+    margin-left: auto;
+    margin-right: 1rem;
+    filter: invert(67%) sepia(3%) saturate(529%) hue-rotate(184deg) brightness(97%) contrast(83%);
 }
 
 .msq__progress-bar {
@@ -758,7 +764,7 @@ body {
     flex-direction: column; 
     list-style: none;
     padding-left: 0;
-    gap: 1rem;
+    gap: .5rem;
     color: var(--text-midground-color);
     margin-left: 4rem;
     font-size: .8rem; 
@@ -768,17 +774,23 @@ body {
     margin: 0;
 }
 
+.list li {
+    display: flex;
+    align-items: center;
+    height: 1.25rem;
+}
+
 .quests-text {
-    color: var(--text-foreground-color);
     font-weight: bold;
     font-size: 1rem;
     margin: 1rem 0;
+    color: var(--text-foreground-color);
 }
 
 .quests-text--complete {
-    color: var(--completed-color);
     margin-left: 0;
-    filter: none;
+    color: black;
+    filter: invert(58%) sepia(29%) saturate(900%) hue-rotate(90deg) brightness(97%) contrast(98%);
 }
 
 .quests-text--incomplete {

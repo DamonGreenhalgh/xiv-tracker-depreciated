@@ -61,8 +61,8 @@ async function main() {
 
         } else {
 
-            questContent.style.height = "200rem";
-            questOverlay.style.height = "200rem";
+            questContent.style.height = "180rem";
+            questOverlay.style.height = "180rem";
             showQuestsBtn.innerText = "Show Less";
             showQuestContent = true;
 
@@ -157,7 +157,7 @@ async function main() {
     }
 
     // If the character is associated with a free company.
-    if (characterData.FreeCompany !== null) {
+    if (characterData.FreeCompanyName !== null) {
 
         // Request free company data.
         await fetch("https://xivapi.com/freecompany/" + characterData.FreeCompanyId, {mode: 'cors'})
@@ -422,10 +422,10 @@ function displayActivityCompletion(id, type, achievements) {
             // Yes, styling
             const checkmark = document.createElement('img');
             checkmark.setAttribute('class', "quests__checkmark");
-            checkmark.setAttribute('src', "img/checkmark.png");
+            checkmark.setAttribute('src', "img/quests/checkmark.svg");
 
             duty.prepend(checkmark);
-            duty.setAttribute('class', "quests-text--complete");
+            duty.setAttribute('class', " quests-text--complete");
 
             count++;
 
