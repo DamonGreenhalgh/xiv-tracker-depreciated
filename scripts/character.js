@@ -219,13 +219,13 @@ async function main() {
     // Minions and Mounts
     // ------------------
     let minionData, mountData;
-    let storedData = localStorage.getItem("storedData");
+    let storedData = sessionStorage.getItem("storedData");
 
     if (storedData == null) {
-        localStorage.setItem("storedData", "{}");
+        sessionStorage.setItem("storedData", "{}");
     }
 
-    storedData = JSON.parse(localStorage.getItem("storedData"));
+    storedData = JSON.parse(sessionStorage.getItem("storedData"));
 
     let data;
     await fetch("https://xivapi.com/character/" + characterId + "?data=MIMO", {mode: 'cors'})
@@ -251,7 +251,7 @@ async function main() {
 
         // If data is valid, store into local storage.
         storedData[characterId] = {"Minions": minionData, "Mounts": mountData};
-        localStorage.setItem("storedData", JSON.stringify(storedData));
+        sessionStorage.setItem("storedData", JSON.stringify(storedData));
     } 
 
 

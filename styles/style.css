@@ -259,7 +259,7 @@ body {
     background-color: var(--foreground-color);
     background-size: cover;
     background-position: center;
-    box-shadow: 0 1rem 2rem var(--shadow-color);
+    box-shadow: 0 .5rem 1rem var(--shadow-color);
 }
 
 .active-job-level {
@@ -371,7 +371,7 @@ body {
     height: 100%;
     border-radius: 0 0 .5rem .5rem;
     background-color: var(--foreground-color);
-    box-shadow: 0 1rem 2rem var(--shadow-color);
+    box-shadow: 0 .5rem 1rem var(--shadow-color);
     font-size: .9rem;
 }
 
@@ -551,8 +551,10 @@ body {
         ".      . bio     .      "
     ;
     padding: 2rem;
-    width: 100%; 
+    width: 73rem; 
     height: 9rem; 
+    margin: 0 auto;
+    box-shadow: 0 .5rem 1rem var(--shadow-color);
     border-radius: .5rem;
     background-color: var(--mid-2-color);
 }
@@ -566,7 +568,6 @@ body {
 .free-company__avatar__component {
     width: 5rem;
     height: 5rem;
-    border: 1px solid var(--mid-color);
 }
 
 .free-company__name {
@@ -653,7 +654,7 @@ body {
     color: var(--background-color); 
     gap: 1rem;
     padding: 1rem;
-    box-shadow: 0 1rem 1rem var(--shadow-color);
+    box-shadow: 0 .5rem 1rem var(--shadow-color);
 }
 
 .notice--quests {
