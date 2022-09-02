@@ -1,3 +1,5 @@
+# **THIS REPOSITORY HAS BEEN DEPRECIATED, CONSIDER LOOKING INTO [XIV Tracker](https://github.com/DamonGreenhalgh/xivtracker)**
+
 ![home-logo-extended](https://user-images.githubusercontent.com/59471444/149874938-e8316b1a-3fce-40c8-87fe-5d3c30e7dd0b.png)
 [*XIV Tracker*](https://damongreenhalgh.github.io/xivtracker) is a website designed to track character data, stats, and much more.
 
